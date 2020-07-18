@@ -1,0 +1,74 @@
+<view class="container">
+  <!-- 导航栏 -->
+  <app-header title="个人中心" backgroundColor="transparent" tintColor="#FFFFFF" gradientColor="transparent" />
+  <!-- 用户信息 -->
+  <view class="user-info px-38 position-relative">
+    <!-- 信息 -->
+    <view class="infos d-flex align-items-center">
+      <image class="avatar mr-24" src="" />
+      <view class="color-FFFFFF flex-1 text-left">
+        <view class=" d-flex align-items-center">
+          LikG
+          <view class="real-name f22 color-6A2B01 flex-center rounded-6 ml-12">已实名</view>
+        </view>
+        <view class="f26 mt-4">135****8546</view>
+      </view>
+    </view>
+    <!-- 优惠券 -->
+    <view class="coupon-bar absolute-bottom d-flex justify-content-between align-items-center pl-44 pr-24">
+      <view class="flex-center">
+        <image class="icon-coupon mr-14" src="./images/icon_coupon.png" />
+        <view class="f26 f-bold color-5D3604">我的优惠券</view>
+      </view>
+      <view class="coupon f26 color-FFFFFF flex-center bg-88582E px-20 py-6 rounded-24">
+        剩余3张
+        <image class="icon-back ml-6" src="../../assets/images/icon_back.png" />
+      </view>
+    </view>
+  </view>
+  <view class="contents px-20 scroll-y ">
+    <!-- 宠物档案 -->
+    <view class="pet-files my-20 pt-32 pb-28 bg-FFFFFF rounded-24">
+      <image class="pet-files-title d-block mb-20 mx-auto " src="https://img.meituan.net/csc/df8f008b4cfda156fbb5eda717589a147595.png" />
+      <!-- 宠物信息 -->
+      <view class="f26 color-6E6E6E lh-36 px-30">
+        <view class="d-flex justify-content-between align-items-center mb-20">
+          <view class="flex-1 mr-20">品种：布偶猫</view>
+          <view class="flex-1">血统：美国纯种血统</view>
+        </view>
+        <view class="d-flex justify-content-between align-items-center mb-20">
+          <view class="flex-1 mr-20">宠物性别：公</view>
+          <view class="flex-1">宠物类型：长毛猫</view>
+        </view>
+        <view class="d-flex justify-content-between align-items-center mb-20">
+          <view class="flex-1 mr-20">出生日期：2019-10-01</view>
+          <view class="flex-1">年龄：2岁</view>
+        </view>
+        <view class="d-flex justify-content-between align-items-center mb-20">
+          <view class="flex-1 mr-20">宠物品级：精品</view>
+          <view class="flex-1">绝育：已绝育</view>
+        </view>
+        <view class="d-flex justify-content-between align-items-center">
+          <view class="flex-1">驱虫：2019-12-07</view>
+        </view>
+      </view>
+    </view>
+    <!-- 订单 -->
+    <view class="order-bar px-30 pt-28 pb-32 bg-FFFFFF rounded-24">
+      <view class="f32 lh-44 color-2A2A2A mb-38">我的订单</view>
+      <view class="d-flex justify-content-between">
+        <view class="flex-v-center f26 lh-36 color-3D3D3D" wx:for="{{orders}}" wx:key="item">
+          <image class="icon-order mb-12" src="{{item.imgPath}}" />
+          {{item.text}}
+        </view>
+      </view>
+    </view>
+    <!-- 菜单 -->
+    <view class="mt-20 mb-54 px-30 bg-FFFFFF rounded-24">
+      <view class="menu-item d-flex justify-content-between align-items-center {{index === 0 ? '' : 'border-top'}}" wx:for="{{menus}}" wx:key="{{item.text}}">
+        <view class="f28 lh-40 color-444444">{{item.text}}</view>
+        <image class="icon-arrow-right" src="../../assets/images/icon_arrow_right.png"/>
+      </view>
+    </view>
+  </view>
+</view>

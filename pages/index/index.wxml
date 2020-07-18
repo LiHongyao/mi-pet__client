@@ -1,0 +1,40 @@
+<view class="container">
+		<!-- 头部 -->
+		<app-header title="觅宠" leftStyle="custom" backgroundColor="#FFFFFF">
+				<view class="flex-center" slot="left">
+						<span class="f14">成都</span>
+						<van-icon name="arrow-down" size="12" />
+				</view>
+		</app-header>
+		<!-- 搜索栏 -->
+		<view class="bg-FFFFFF py-20">
+				<view class="search-box mx-auto">
+						<van-search custom-class="position-relative w-full h-full p-0 bg-F5F5F5 " value="{{ keywords }}" shape="round" use-action-slot clearable placeholder="搜索商品品牌、名称">
+								<view class="search-button bg-F82F5C absolute-right  color-FFFFFF flex-center rounded-30" slot="action" bind:tap="onSearch">
+										搜索
+								</view>
+						</van-search>
+				</view>
+		</view>
+		<!-- banner -->
+		<swiper class="banners" indicator-dots="{{true}}" indicator-color="rgba(0, 0, 0, .3)" indicator-active-color="#F5F5F5" duration="400" circular="{{true}}">
+				<swiper-item class="h-full" wx:for="{{banners}}" wx:key="index">
+						<view class="swiper-item h-full">
+								<image src="{{item.images_url}}" class=" w-full h-full" />
+						</view>
+				</swiper-item>
+		</swiper>
+		<!-- 频道 -->
+		<view class="channel d-flex justify-content-around align-items-center py-36 bg-FFFFFF">
+				<view wx:for="{{channels}}" wx:key="item.text" class=" flex-v-center">
+						<image class="channel-icon" src="{{item.imgPath}}" />
+						<text class="f26 color-2A2A2A f-bold mt-20">{{item.text}}</text>
+				</view>
+		</view>
+		<!-- 菜单 -->
+		<view class="mt-20 f14 bg-FFFFFF">
+				<van-tabs active="{{ active }}" bind:change="onChange" :border="{{false}}" color="#d4237a">
+						<van-tab wx:for="{{10}}" wx:key="index" title="宠物用品"></van-tab>
+				</van-tabs>
+		</view>
+</view>

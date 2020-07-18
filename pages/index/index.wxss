@@ -1,0 +1,21 @@
+.search-box {
+  width: 690rpx;
+  height: 60rpx;
+}
+
+.search-button {
+  width: 130rpx;
+  height: 60rpx;
+}
+
+
+.banners {
+  height: 300rpx;
+  overflow: hidden;
+}
+
+.channel-icon {
+  width: 70rpx;
+  height: 70rpx;
+}
+

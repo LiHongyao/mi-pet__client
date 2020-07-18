@@ -1,0 +1,54 @@
+.user-info {
+  padding-top: 144rpx;
+  height: 332rpx;
+  background: linear-gradient(135deg, #FF6565, #F51358);
+}
+.infos {
+  height: 96rpx;
+}
+.avatar {
+  width: 96rpx;
+  height: 96rpx;
+  background-color: cornflowerblue;
+}
+.real-name {
+  width: 92rpx;
+  height: 34rpx;
+  background: linear-gradient(to right, #FFE47A, #FFA200);
+}
+.coupon-bar {
+  width: 628rpx;
+  height: 68rpx;
+  background: url('https://img.meituan.net/csc/27d414360d681cb7fcd1d299f9afd9966145.png') no-repeat center center;
+  background-size: 100% 100%;
+}
+.icon-coupon {
+  width: 34rpx;
+  height: 29rpx;
+}
+.icon-back {
+  width: 14rpx;
+  height: 24rpx;
+}
+
+.contents {
+  height: calc(100% - 332rpx);
+}
+
+.pet-files-title {
+  width: 240rpx;
+  height: 40rpx;
+}
+.icon-order {
+  width: 60rpx;
+  height: 56rpx;
+}
+
+
+.menu-item {
+  height: 96rpx;
+}
+.icon-arrow-right {
+  width: 12rpx;
+  height: 22rpx;
+}
