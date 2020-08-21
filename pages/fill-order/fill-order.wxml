@@ -1,0 +1,82 @@
+<view wx:if="{{address !== null}}" class="container fill-order">
+  <scroll-view class="contents" scroll-x="false" scroll-y="true">
+    <!-- 已有收货信息 -->
+    <address-item 
+      wx:if="{{address}}" 
+      data="{{address}}" 
+      editable="{{false}}" 
+      showLeftIcon="{{true}}" 
+      showRightIcon="{{true}}"
+      showDefaultTips="{{false}}"
+      bind:itemTap="onGoAddressList"
+    />
+    <!-- 暂无收货信息 -->
+    <view wx:else class="bg-FFFFFF px-32 pt-76 pb-74 d-flex align-items-center" bind:tap="onGoAddress">
+      <image class="icon-location" src="../../assets/images/icon_location.png" />
+      <text class=" color-828282 f26 lh-36 mx-24">暂无收货信息，点击添加</text>
+      <image class="icon-arrow-right" src="../../assets/images/icon_arrow_right.png" />
+    </view>
+    <!-- 商品信息 -->
+    <view class="bg-FFFFFF pl-32 pt-24 pr-28 pb-28 my-12">
+      <view class="d-flex">
+        <image class="thumbnail border border-E9E9E9 rounded-10 mr-24" src="{{goods.images[0]}}" alt mode="scaleToFill" ></image>
+        <view class="flex-1">
+          <view class="color-2D2D2D f28 lh-40 mb-28">{{goods.title + goods.specifications[sIndex].title}}</view>
+          <view class="d-flex justify-content-between align-items-center mb-26">
+            <view class="flex-center">
+              <view class="color-FF2121 f-bold">
+                <text class="f20 lh-38">¥</text>
+                <text class="f32 lh-38">{{goods.specifications[sIndex].salePrice}}</text>
+              </view>
+              <view class="color-FF7F2A f16 lh-22 border border-FF7F2A ml-10 px-4 py-2">限时折扣</view>
+            </view>
+            <view class=" color-BFBFBF f20 lh-28 line-through">￥{{goods.specifications[sIndex].originPrice}}</view>
+          </view>
+          <view class="d-flex justify-content-end">
+            <van-stepper value="{{ num }}" bind:change="onNumChange" />
+          </view>
+        </view>
+      </view>
+    </view>
+    <!-- 规格信息 -->
+    <view wx:if="{{goods.specifications.length > 0}}" class="px-32 pt-32 pb-28 bg-FFFFFF mb-12">
+      <view class="color-2D2D2D f28 lh-40 f-bold">选择规格</view>
+      <view class="d-flex flex-wrap mt-28">
+        <view  wx:for="{{goods.specifications}}" wx:key="specId" data-index="{{index}}" class="specifications-item flex-center border border-DFDFDF  rounded-16 f22 lh-32  px-28 mb-20 position-relative {{sIndex === index ? 'border-F82F5C' : ''}}"  catch:tap="onSpecificationsItemTap">
+          {{item.title}}
+          <image class="icon-selected absolute-tr {{sIndex === index ? 'd-block' : 'd-none'}}" src="../../assets/images/icon_selected.png"></image>
+        </view>
+      </view>
+    </view>
+    <!-- 订单信息 -->
+    <view class="bg-FFFFFF">
+      <!-- 配送方式 -->
+      <view class="row-item pl-32 d-flex align-items-center">
+        <view class="left-title color-2D2D2D f26 lh-36 mr-46 text-justify">配送方式</view>
+        <view class="flex-1 h-full pr-28 border-bottom d-flex justify-content-end align-items-center color-828282 f26 lh-36">
+          {{goods.isFreeShipping ? '包邮' : ''}}
+        </view>
+      </view>
+    </view>
+  </scroll-view>
+  <!-- 确认订单 -->
+  <view class="page-action--safe fixed-bottom bg-FFFFFF d-flex justify-content-between align-items-center">
+    <view>
+      <view>
+        <text class="color-2D2D2D f26 lh-36 mr-6">合计</text>
+        <text class="f-bold f20 lh-38 color-FF2121">¥</text>
+        <text class="f-bold f32 lh-38 color-FF2121">{{totalPrice}}</text>
+      </view>
+      <view class="color-2D2D2D f20 lh-28 mt-4">
+        <text>运费：</text>
+        <text class="color-FF2121 mr-28">¥0.00</text>
+        <text>抵扣：</text>
+        <text class="color-FF2121">¥0.00</text>
+      </view>
+    </view>
+    <van-button type="default" custom-style="width: 222rpx; height: 68rpx; background-color:#F82F5C; color:#FFFFFF; border-radius: 34rpx;" catch:tap="onSureOrder">
+      确认订单
+    </van-button>
+  </view>
+</view>
+<loading wx:else />

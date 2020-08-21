@@ -1,0 +1,86 @@
+/**
+ * 手机号码格式/隐藏中间四位
+ * @param tel 
+ */
+function telFormat(tel) {
+  if (!tel) {
+    return '';
+  }
+  return tel.replace(getRegExp('(\d{3})\d{4}(\d{4})'), "$1****$2");
+}
+
+/**
+ * 富文本样式/图片宽度
+ * @param htmlStr 
+ */
+function richTextFormat(htmlStr) {
+  if (!htmlStr) {
+    return ''
+  }
+  return htmlStr.replace(getRegExp('width:auto', 'gi'), 'width:100% !important;');
+}
+
+
+/**
+ * 数字格式/ 小于10位前面+0
+ * @param n 
+ */
+function formatNumber(n) {
+  n = n.toString()
+  return n[1] ? n : '0' + n
+}
+
+/**
+ * 日期格式
+ * @param timeStamp 时间戳
+ * @param format 日期格式
+ * 
+ */
+function dateFormat(timeStamp, format) {
+  var date = getDate(timeStamp * 1000);
+  var year = formatNumber(date.getFullYear());
+  var month = formatNumber(date.getMonth() + 1);
+  var day = formatNumber(date.getDate());
+
+  var hour = formatNumber(date.getHours());
+  var minute = formatNumber(date.getMinutes());
+  var second = formatNumber(date.getSeconds());
+
+  if(format) {
+    return format
+    .replace('yyyy', year)
+    .replace('mm', month)
+    .replace('dd', day)
+    .replace('hh', hour)
+    .replace('mm', minute)
+    .replace('ss', second);
+  }
+  var res = "";
+  res += year + '-' + month  + '-' + day + ' ';
+  res += hour + ':' + minute + ':' + second;
+  return res;
+
+}
+
+/**
+ * 计算过期时间
+ */
+function expires(timeStamp) {
+  var targetDate  = getDate(timeStamp * 1000);
+  var currentDate = getDate().getTime();
+  return Math.floor((targetDate - currentDate ) / 1000 / 60 / 60 / 24);
+}
+
+
+// 1603209599999
+
+module.exports = {
+  telFormat: telFormat,
+  richTextFormat: richTextFormat,
+  dateFormat:dateFormat,
+  expires:expires
+}
+
+
+
+

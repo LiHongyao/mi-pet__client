@@ -1,0 +1,20 @@
+.slide-cell__wrapper {
+  overflow: hidden;
+  margin: 0 auto 20rpx;
+}
+.slide-cell__scroll {
+  height: 100%;
+  display: flex;
+}
+.slide-cell__contents {
+  height: 100%;
+}
+.slide-cell__delete {
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #FF2626;
+  color: #FFFFFF;
+  border-radius: 24rpx;
+}

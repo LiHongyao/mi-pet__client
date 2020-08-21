@@ -1,0 +1,16 @@
+.justify-box__wrapper {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: relative;
+}
+
+.justify-box__wrapper.required::after {
+  content: '*';
+  color: #F82F2F;
+  font-weight: bold;
+  font-size: 14px;
+  position: absolute;
+  right: -12px;
+  top: 0;
+}

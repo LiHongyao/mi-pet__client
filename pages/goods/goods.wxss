@@ -1,0 +1,65 @@
+.custom-class {
+  width: 690rpx;
+  margin: 0 auto;
+}
+.van-field__input  {
+  width: 400rpx !important;
+}
+.filters {
+  height: 72rpx;
+}
+
+.drop-mask {
+  z-index: 10000;
+  background-color: rgba(0, 0, 0, .65);
+}
+.icon-screen {
+  width: 25rpx;
+  height: 24rpx;
+}
+.icon-price {
+  width: 35rpx;
+  height: 35rpx;
+  transition: all .2s linear;
+}
+.icon-price.asc {
+  transform: rotateZ(180deg);
+}
+.icon-price.hidden {
+  opacity: 0;
+}
+
+
+.price-item {
+  height: 80rpx;
+}
+
+.screem-item {
+  width: 216rpx;
+  height: 80rpx;
+}
+.screem-item:not(:nth-child(3n)) {
+  margin-right: 18rpx;
+}
+
+.icon-selected {
+  width: 44rpx;
+  height: 28rpx;
+  display: none;
+}
+.button {
+  width: 216rpx;
+  height: 68rpx;
+}
+
+.screem-item.selected {
+  color: #F82F5C;
+  border-color: #F82F5C;
+}
+.screem-item.selected .icon-selected {
+  display: block;
+
+}
+
+
+

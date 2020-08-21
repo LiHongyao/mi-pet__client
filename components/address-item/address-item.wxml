@@ -1,0 +1,12 @@
+<view class="address-item d-flex justify-content-between align-items-center px-30 bg-FFFFFF py-28 mb-12" catch:tap="onItemTap">
+  <image wx:if="{{showLeftIcon}}" class="icon-location mr-28" src="../../assets/images/icon_location.png" />
+  <view class="flex-1">
+    <view class="mb-18">
+      <text class="color-393939 f30 lh-42 mr-22">{{data.name}}</text>
+      <text class="color-828282 f24 lh-34">{{data.phone}}</text>
+    </view>
+    <view class="pr-38 color-393939 f26 lh-36 {{data.default && showDefaultTips ? 'default-address' : ''}}">{{data.address + (data.doorplate || '')}}</view>
+  </view>
+  <image wx:if="{{showRightIcon}}" class="icon-right" src="../../assets/images/icon_arrow_right.png" />
+  <view wx:if="{{editable}}" class="color-949494 f24 lh-34 pl-58 border-left border-DEDEDE" catch:tap="onEdit">编辑</view>
+</view>

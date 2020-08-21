@@ -1,0 +1,8 @@
+{
+  "usingComponents": {
+    "lg-search":"../../components/@lgs/search/index",
+    "list-wrap":"../../components/list-wrap/list-wrap",
+    "list":"../../components/list/list",
+    "goods-item":"../../components/goods-item/goods-item"
+  }
+}

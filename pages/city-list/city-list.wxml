@@ -1,0 +1,8 @@
+<view class="container">
+  <van-index-bar>
+			<view wx:for="{{citys}}" wx:key="code">
+					<van-index-anchor index="{{item.code}}"  />
+					<van-cell wx:for="{{item.citys}}" wx:for-item="city" wx:key="city" title="{{city}}" data-city="{{city}}" bind:tap="onChooseCity" />
+				</view>
+		</van-index-bar>
+</view>

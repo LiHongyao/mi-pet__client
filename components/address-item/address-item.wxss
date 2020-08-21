@@ -1,0 +1,19 @@
+.default-address::before {
+  content: '默认地址';
+  font-size: 24rpx;
+  line-height: 34rpx;
+  color: #F82F5C;
+  background-color:#FFE9E9;
+  margin-right: 20rpx;
+  padding: 0 12rpx;
+  border-radius: 6rpx;
+}
+
+.icon-location {
+  width: 30rpx;
+  height: 42rpx;
+}
+.icon-right {
+  width: 12rpx;
+  height: 22rpx;
+}

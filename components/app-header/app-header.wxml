@@ -1,6 +1,6 @@
 <view class="app-header">
   <!-- 导航栏 -->
-  <view class="navigation-bar" style="background-color: {{gradientColor ? 'transparent' : backgroundColor}}; color: {{tintColor}}">
+  <view class="navigation-bar" style="background: {{gradientColor ? 'transparent' : backgroundColor}}; color: {{tintColor}}">
     <!-- 状态栏 -->
     <view class="status-bar" style="height: {{statusBarHeight}}px" />
     <!-- 标题栏 -->

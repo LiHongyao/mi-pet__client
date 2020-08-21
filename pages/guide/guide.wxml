@@ -1,2 +1,24 @@
-<!--pages/guide/guide.wxml-->
-<text>pages/guide/guide.wxml</text>
+<view class="container overflow-hidden">
+  <!-- 搜索栏 -->
+  <view class="py-20 bg-FFFFFF">
+    <lg-search value="{{keyword}}" placeHolder="搜索商品品牌、名称" bind:change="onInputChange"  bind:search="onSearch" clear="{{true}}" />
+  </view>
+  <!-- 切换菜单 -->
+  <view class="bg-FFFFFF mb-20">
+    <menu-bar menus="{{menus}}" active="{{active}}" bind:change="onChange" />
+  </view>
+  <view class="tab-contents px-20">
+    <!-- 猫猫指南 -->
+    <list-wrap class="{{active === 0 ? 'd-block' : 'd-none'}}" data="{{catList}}">
+      <list class="{{active === 0 ? 'd-block' : 'd-none'}}" bind:load="onLoadMore" height="{{listHeight}}px" finished="{{catFinished}}">
+        <guide-item wx:for="{{catList}}" wx:key="id" data="{{item}}" bind:itemTap="onItemTap" />
+      </list>
+    </list-wrap>
+    <!-- 狗狗指南 -->
+    <list-wrap class="{{active === 1 ? 'd-block' : 'd-none'}}" data="{{dogList}}">
+      <list class="{{active === 1 ? 'd-block' : 'd-none'}}" bind:load="onLoadMore" height="{{listHeight}}px" finished="{{dogFinished}}">
+        <guide-item wx:for="{{dogList}}" wx:key="id" data="{{item}}" bind:itemTap="onItemTap" />
+      </list>
+    </list-wrap>
+  </view>
+</view>

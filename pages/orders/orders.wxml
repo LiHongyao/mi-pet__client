@@ -1,2 +1,51 @@
-<!--pages/orders/orders.wxml-->
-<text>pages/orders/orders.wxml</text>
+<view class="container px-20">
+  <list-wrap data="{{orders}}">
+    <list finished="{{true}}">
+      <order-item 
+        wx:for="{{orders}}"
+        wx:key="order_no" 
+        title="{{title}}"
+        status="{{status}}" 
+        data="{{item}}"
+        index="{{index}}"
+        bind:orderTap="onOrderItemTap"
+        bind:cancel="onCancelOrder"
+        bind:payment="onPayment"
+        bind:confirmReceipt="onConfirmReceipt"
+        bind:evaluate="onEvaluate"
+        bind:buyAgain="onBuyAgain"
+        bind:revoke="onRevoke"
+        bind:refund="onRefund"
+        bind:reminder="onReminder"
+      />
+    </list>
+  </list-wrap>
+  <!-- 评价信息 -->
+  <van-overlay show="{{ show }}" bind:tap="onCancelEvaluate">
+    <view class="evaluate-wrapper position-relative">
+      <view class="evaluate-content bg-FFFFFF rounded-24 px-32 pt-40 absolute-top t-100">
+        <!-- 评分视图 -->
+        <view class="d-flex align-items-center mb-18">
+          <text class=" f26 ">综合评价：</text>
+          <van-rate
+            value="{{ evaluateRate}}"
+            size="{{20}}"
+            color="#FFD21D"
+            void-color="#eee"
+            void-icon="star"
+            bind:change="onEvaluateValueChange"
+          />
+        </view>
+        <!-- 评价内容 -->
+        <textarea class="border border-E8E8E8 py-20 px-20 rounded-16  color-828282" value="{{evaluateContent}}"  placeholder="从多个角度评价商品，可以帮助更多想买的人"  bindinput="onEvaluateContentInput"></textarea>
+        <!-- 提交评价按钮 -->
+        <view class="d-flex justify-content-center align-items-center mt-22">
+          <van-button type="default" custom-style="width: 222rpx; height: 68rpx; background-color:#F82F5C; color:#FFFFFF; border-radius: 34rpx;" catch:tap="onSubmitEvaluate">
+            提交评价
+          </van-button>
+        </view>
+        <view class=" text-center f26 color-828282 mt-22" catch:tap="onCancelEvaluate">暂不评价</view>
+      </view>
+    </view>
+  </van-overlay>
+</view>

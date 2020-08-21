@@ -24,8 +24,8 @@
 		}
 	},
 	"compileType": "miniprogram",
-	"libVersion": "2.11.1",
-	"appid": "wx9d0f652e42541e26",
+	"libVersion": "2.10.0",
+	"appid": "wxbaf6b94b9db4b2de",
 	"projectname": "seek-pets",
 	"debugOptions": {
 		"hidedInDevtools": []

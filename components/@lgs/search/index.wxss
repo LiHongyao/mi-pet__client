@@ -1,0 +1,38 @@
+.lg-search {
+  height: 60rpx;
+  padding: 0 0 0 20rpx;
+  display: flex;
+  align-items: center;
+  background-color: #F5F5F5;
+  position: relative;
+}
+.lg-search__control {
+  flex: 1;
+}
+.lg-search.shape {
+  border-radius: 30rpx;
+}
+.lg-search__icon {
+  width: 26rpx;
+  height: 27rpx;
+}
+.lg-search__right_button {
+  width: 130rpx;
+  height: inherit;
+  background-color: #F82F5C;
+  font-size: 32rpx;
+  color: #FFFFFF;
+  border-radius: 30rpx;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.lg-search__mask {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 2;
+}

@@ -1,0 +1,18 @@
+.avatar {
+  width: 44rpx;
+  height: 44rpx;
+}
+.thumbnail {
+  width: 148rpx;
+  height: 148rpx;
+}
+
+.button {
+  width: 184rpx;
+  height: 56rpx;
+}
+
+.count-down {
+  font-size: 22rpx !important;
+  color: #F82F5C !important;
+}

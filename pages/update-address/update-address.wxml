@@ -1,0 +1,36 @@
+<view class="container">
+  
+  <view class="wrapper px-30 bg-FFFFFF">
+    <view class="item d-flex justify-content-between align-items-center border-bottom">
+      <view class="title f28 f-bold color-393939">收货人</view>
+      <input class="flex-1 color-949494 f28" value="{{formData.name}}" type="text" placeholder="请填写收货人的姓名" data-key="name" bindinput="onInput" />
+    </view>
+    <view class="item d-flex justify-content-between align-items-center  border-bottom">
+      <view class="title f28 f-bold color-393939">手机号</view>
+      <input class="flex-1  color-949494 f28" value="{{formData.phone}}" type="tel" maxlength="11" placeholder="请填写收货人手机号码" data-key="phone" bindinput="onInput" />
+    </view>
+    <view class="item d-flex justify-content-between align-items-center  border-bottom">
+      <view class="title f28 f-bold color-393939">详细地址</view>
+      <view wx:if="{{formData.address}}" class="flex-1  color-949494 f28" catch:tap="onChooseAddress">{{formData.address}}</view>
+      <view wx:else class="flex-1 color-949494 f28" catch:tap="onChooseAddress">
+        <image class="icon-location" src="../../assets/images/icon_location.png" />
+        点击选择收货地址
+      </view>
+    </view>
+    <view class="item d-flex justify-content-between align-items-center  border-bottom">
+      <view class="title f28 f-bold color-393939">门牌号</view>
+      <input class="flex-1  color-949494 f28" value="{{formData.doorplate}}" type="text" placeholder="详细地址，例1层101室" data-key="doorplate"  bindinput="onInput"/>
+    </view>
+    <view class="item d-flex justify-content-between align-items-center  border-bottom">
+      <view class="f28 f-bold color-393939">设置为默认地址</view>
+      <van-switch checked="{{ formData.default ? true : false }}" bind:change="onChange" />
+    </view>
+    <view wx:if="{{formData.addrId}}" class="item d-flex align-items-center f28 f-bold color-FF0000" bind:tap="onDeleteAddress">
+      删除地址
+    </view>
+  </view>
+
+  <view class="mt-48 d-flex justify-content-center">
+    <van-button type="default" custom-style="width: 690rpx; height: 100rpx; background-color:#F82F5C; color:#FFFFFF; border-radius: 50rpx;" catch:tap="onSaveAddress">保存收货地址</van-button>
+  </view>
+</view>

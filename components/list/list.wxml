@@ -1,0 +1,15 @@
+
+<view class="hy-list__wrapper">
+  <scroll-view 
+    style="height:{{height}}" 
+    scroll-y 
+    bindscrolltolower="onScrollToLower" 
+  >
+    <view class="hy-list__contents">
+      <slot />
+      <view class="hy-list__load_more">
+        {{finished ? finishedText : loadingText}}
+      </view>
+    </view>
+  </scroll-view>
+</view>

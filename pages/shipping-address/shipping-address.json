@@ -1,0 +1,7 @@
+{
+  "navigationBarTitleText": "收货地址",
+  "usingComponents": {
+    "address-item":"../../components/address-item/address-item",
+    "no-data":"../../components/no-data/no-data"
+  }
+}

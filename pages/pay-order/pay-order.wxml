@@ -1,0 +1,70 @@
+<view wx:if="{{coupons}}" class="container pay-order">
+  <!-- 商品信息 -->
+  <view class="bg-FFFFFF pl-32 pt-24 pr-28 pb-28 my-12">
+    <view class="color-828282 f26 lh-36 mb-20">订单编号：{{order.orderNo}}</view>
+    <view class="d-flex">
+      <image class="thumbnail border border-E9E9E9 rounded-10 mr-24" src="{{order.thumbnail}}" alt mode="scaleToFill" ></image>
+      <view class="flex-1">
+        <view class="color-2D2D2D f28 lh-40 mb-28">{{order.title}}</view>
+        <view class="d-flex justify-content-between align-items-center mb-26">
+          <view class="flex-center">
+            <view class="color-FF2121 f-bold">
+              <text class="f20 lh-38">¥</text>
+              <text class="f32 lh-38">{{order.totalSaleTPrice}}</text>
+            </view>
+            <view class="color-FF7F2A f16 lh-22 border border-FF7F2A mx-10 px-4 py-2">限时折扣</view>
+            <view class="color-BFBFBF f20 lh-28 line-through">￥{{order.totalOriginPrice}}</view>
+          </view>
+          <view class="color-BFBFBF f20 lh-28">x{{order.num}}</view>
+        </view>
+      </view>
+    </view>
+  </view>
+  <!-- 配送方式/优惠券 -->
+  <view class="px-32 py-28 bg-FFFFFF">
+    <view class="d-flex justify-content-between align-items-center mb-28">
+       <justify-view class="title color-2D2D2D f26 lh-36" text="配送方式" />
+      <text class="color-828282 f26 lh-36">包邮</text>
+    </view>
+    <view class="d-flex justify-content-between align-items-center f26 lh-36" catch:tap="onChooseCoupon">
+      <justify-view class="title color-2D2D2D " text="优惠券" />
+      <view wx:if="{{!deduction}}">
+        <text class="color-FF2121  mr-16">{{coupons.use.length}}张可用</text>
+        <image class="icon-arrow-right" src="../../assets/images/icon_arrow_right_1.png"></image>
+      </view>
+      <text wx:else class="color-FF2121 ">已抵扣 ￥{{deduction}}</text>
+    </view>
+  </view>
+  <!-- 收货信息 -->
+  <view class="px-32 py-28 bg-FFFFFF mt-12">
+    <view class="d-flex align-items-center mb-28 f26 lh-36">
+      <justify-view class="title color-2D2D2D " text="收货人" />
+      <text class=" mr-20">{{order.address.name}}</text>
+      <text class=" color-828282 f24 lh-34">{{order.address.phone}}</text>
+    </view>
+     <view class="d-flex justify-content-between mb-28 f26 lh-36 ">
+      <justify-view class="title color-2D2D2D" text="收货地址" />
+      <text class="color-393939 flex-1">{{order.address.address + order.address.doorplate}}</text>
+    </view>
+  </view>
+  <!-- 立即支付 -->
+  <view class="page-action--safe fixed-bottom bg-FFFFFF d-flex justify-content-between align-items-center">
+    <view>
+      <view>
+        <text class="color-2D2D2D f26 lh-36 mr-6">合计</text>
+        <text class="f-bold f20 lh-38 color-FF2121">¥</text>
+        <text class="f-bold f32 lh-38 color-FF2121">{{payAmount}}</text>
+      </view>
+      <view class="color-2D2D2D f20 lh-28 mt-4">
+        <text>运费：</text>
+        <text class="color-FF2121 mr-28">¥0.00</text>
+        <text>抵扣：</text>
+        <text class="color-FF2121">¥{{deduction}}</text>
+      </view>
+    </view>
+    <van-button type="default" custom-style="width: 222rpx; height: 68rpx; background-color:#F82F5C; color:#FFFFFF; border-radius: 34rpx;" catch:tap="onPay">
+      立即支付
+    </van-button>
+  </view>
+</view>
+<loading  wx:else/>

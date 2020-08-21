@@ -1,3 +1,11 @@
 {
-  "usingComponents": {}
+  "usingComponents": {
+    "van-overlay": "@vant/weapp/overlay/index",
+    "van-rate": "@vant/weapp/rate/index",
+    "van-button": "@vant/weapp/button/index",
+    "van-field": "@vant/weapp/field/index",
+    "list": "../../components/list/list",
+    "list-wrap": "../../components/list-wrap/list-wrap",
+    "order-item": "../../components/order-item/order-item"
+  }
 }

@@ -1,0 +1,6 @@
+<view class="radio__wrapper">
+  <view class="radio__item" wx:for="{{data}}" wx:key="value" data-label="{{item.label}}" data-value="{{item.value}}" catch:tap="onRadioItemTap">
+    <image class="radio__icon" src="{{(selected === item.label || selected === item.value) ? checkedIconPath : iconPath}}"/>
+    <text class="radio__label">{{item.label}}</text>
+  </view>
+</view>

@@ -1,0 +1,72 @@
+<view wx:if="{{petInfo}}" class="container px-20 pt-20">
+  <!-- 基本信息 -->
+  <view class="pl-24 bg-FFFFFF pt-32 rounded-24">
+    <image class="avatar d-flex mx-auto mb-40" src="{{petInfo.avatar}}" />
+    <view class="info-item border-bottom d-flex align-items-center color-272727 f26">
+      <justify-view class="info-title" text="宠物昵称" />
+      <text class="ml-42">{{petInfo.nickname}}</text>
+    </view>
+    <view class="info-item border-bottom d-flex align-items-center color-272727 f26">
+      <justify-view class="info-title" text="品种" />
+      <text class="ml-42">{{petInfo.breed}}</text>
+    </view>
+    <view class="info-item border-bottom d-flex align-items-center color-272727 f26">
+      <justify-view class="info-title" text="性别" />
+      <text class="ml-42">{{petInfo.gender}}</text>
+    </view>
+    <view class="info-item border-bottom d-flex align-items-center color-272727 f26">
+      <justify-view class="info-title" text="生日" />
+      <text class="ml-42">{{petInfo.birthday}}</text>
+    </view>
+    <view class="info-item border-bottom d-flex align-items-center color-272727 f26">
+      <justify-view class="info-title" text="品级" />
+      <text class="ml-42">{{petInfo.grade}}</text>
+    </view>
+    <view class="info-item d-flex align-items-center color-272727 f26">
+      <justify-view class="info-title" text="是否绝育" />
+      <text class="ml-42">{{petInfo.isSterilization ? '已绝育' : '未绝育'}}</text>
+    </view>
+  </view>
+  <view class="buttons flex-center mt-22 f26">
+    <view class="button ls-6 rounded-44 flex-center border border-E1E1E1 color-272727" catch:tap="onDeletePetFile">
+      删除档案
+    </view>
+    <view class="button ls-6 rounded-44 flex-center ml-28 bg-F82F5C color-FFFFFF" catch:tap="onEditPetFile">
+      编辑档案
+    </view>
+  </view>
+  <!-- 疫苗情况v2.0 -->
+  <!-- <view class="pl-24 pr-32 bg-FFFFFF pt-32 rounded-24 my-20 pb-26">
+    <view class="color-272727 f28 lh-40 f-bold mb-22">疫苗情况</view>
+    <view class="d-flex justify-content-between align-items-center color-272727 f26 lh-36 mb-32">
+      <view class="d-flex align-items-center">
+        <view class="mr-44 py-6 px-36 border border-E8E8E8 rounded-8">第一针</view>
+        <view>1993-07-16</view>
+      </view>
+      <view>84疫苗</view>
+    </view>
+    <view class="d-flex justify-content-between align-items-center color-272727 f26 lh-36 mb-32">
+      <view class="d-flex align-items-center">
+        <view class="mr-44 py-6 px-36 border border-E8E8E8  rounded-8">第一针</view>
+        <view>1993-07-16</view>
+      </view>
+      <view>84疫苗</view>
+    </view>
+    <view class="d-flex justify-content-between align-items-center color-272727 f26 lh-36 mb-32">
+      <view class="d-flex align-items-center">
+        <view class="mr-44 py-6 px-36 border border-E8E8E8  rounded-8">第一针</view>
+        <view>1993-07-16</view>
+      </view>
+      <view>84疫苗</view>
+    </view>
+  </view> -->
+  <!-- 宠物图片v2.0 -->
+  <!-- <view class="pl-24 bg-FFFFFF pt-32 rounded-24 my-20 pb-26">
+    <view class="color-272727 f28 lh-40 f-bold mb-22">宠物图片</view>
+    <view class="d-flex flex-wrap">
+      <view class="pet-image bg-F82F5C rounded-8 mb-12" wx:for="{{5}}" wx:key="index"></view>
+    </view>
+  </view> -->
+</view>
+
+<loading wx:else />

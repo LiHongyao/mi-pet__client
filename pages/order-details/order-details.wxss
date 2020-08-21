@@ -1,0 +1,17 @@
+.top-bar {
+  height: 166rpx;
+  background: url('https://img.meituan.net/csc/5490f02541e38f99b86c5e5b3d4b56573303.png') no-repeat center center;
+  background-size: cover;
+}
+.top-bar.dsh {
+  height: 232rpx;
+}
+.van-count-down {
+  color: #FFFFFF !important;
+  font-size: 30rpx !important;
+}
+
+.pay-button {
+  width: 394rpx;
+  height: 88rpx;
+}

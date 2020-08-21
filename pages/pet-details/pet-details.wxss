@@ -1,0 +1,25 @@
+.avatar {
+  width: 128rpx;
+  height: 128rpx;
+}
+
+
+.info-item {
+  height: 92rpx;
+}
+.info-title {
+  width: 140rpx;
+}
+
+.pet-image {
+  width: 160rpx;
+  height: 188rpx;
+}
+.pet-image:not(:nth-child(4n)) {
+  margin-right: 12rpx;
+}
+
+.button {
+  width: 300rpx;
+  height: 80rpx;
+}

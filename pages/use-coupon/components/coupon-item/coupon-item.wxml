@@ -1,0 +1,17 @@
+<wxs src="../../../../filters/index.wxs" module="utils" />
+<view class="mb-20 pt-54 pb-44 pl-44 pr-32 bg-FFFFFF rounded-16" catch:tap="onCouponItemTap">
+  <view class="d-flex justify-content-between align-items-center mb-18">
+    <view class="f-bold f36 lh-50 {{disabled ? 'color-828282' : 'color-2D2D2D' }}">{{data.title}}</view>
+    <view>
+      <text class="{{disabled ? 'color-828282' : 'color-FF2121' }} f-bold">
+        <text wx:if="{{data.condition}}" class="f42 lh-72">¥</text>
+        <text class="f60 lh-72">{{data.value}}</text>
+        <text wx:if="{{!data.condition}}" class="f42 lh-72">折</text>
+      </text>
+    </view>
+  </view>
+  <view class="d-flex justify-content-between align-items-center">
+    <view class="color-828282 f24 lh-34">{{utils.dateFormat(data.start_date, 'yyyy-mm-dd')}}至{{utils.dateFormat(data.end_date, 'yyyy-mm-dd')}}</view>
+    <view wx:if="{{data.condition}}" class="color-828282 f24 lh-34">满{{data.condition}}元可用</view>
+  </view>
+</view>

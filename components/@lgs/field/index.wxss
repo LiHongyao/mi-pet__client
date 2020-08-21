@@ -1,0 +1,19 @@
+.lg-field {
+  height: 60rpx;
+  padding: 0 20rpx;
+  display: flex;
+  align-items: center;
+}
+
+.lg-field__control {
+  flex: 1;
+  height: inherit;
+  font-size: 24rpx;
+  color: #272727;
+}
+
+.lg-field__clear {
+  width: 26rpx;
+  height: 26rpx;
+  margin-left: 20px;
+}

@@ -1,0 +1,36 @@
+
+.contents {
+  height: calc(100% - 98rpx - constant(safe-area-inset-bottom));
+  height: calc(100% - 98rpx - env(safe-area-inset-bottom));
+}
+.icon-location {
+  width: 30rpx;
+  height: 42rpx;
+}
+
+.avatar {
+  width: 40rpx;
+  height: 40rpx;
+}
+.thumbnail {
+  width: 148rpx;
+  height: 148rpx;
+}
+
+.row-item {
+  height: 92rpx;
+}
+.left-title {
+  width: 104rpx;
+}
+.specifications-item {
+  width: 333rpx;
+  height: 64rpx;
+}
+.specifications-item:not(:nth-child(2n)) {
+  margin-right: 20rpx;
+}
+.icon-selected {
+  width: 44rpx;
+  height: 28rpx;
+}

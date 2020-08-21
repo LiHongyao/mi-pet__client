@@ -1,0 +1,8 @@
+// 处理筛选图标
+function screenIcon(varietySelectedIndex, brandSelectedIndex) {
+  return (varietySelectedIndex == -1 && brandSelectedIndex === -1) ? './images/icon_screen.png' : './images/icon_screen_sel.png';
+}
+
+module.exports = {
+  screenIcon: screenIcon
+}

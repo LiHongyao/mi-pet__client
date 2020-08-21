@@ -1,0 +1,3 @@
+.disabled {
+  color: #828282 !important;
+}

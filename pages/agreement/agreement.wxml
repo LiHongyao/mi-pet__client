@@ -1,0 +1,3 @@
+<view class="container p-20 bg-FFFFFF">
+  <rich-text nodes="{{htmlStr}}" />
+</view>

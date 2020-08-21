@@ -1,0 +1,10 @@
+.fixed-box  {
+  width: 150rpx;
+  height: 65rpx;
+  background: rgba(0, 0, 0, .75);
+}
+
+.check-image {
+  width: 44rpx;
+  height: 44rpx;
+}

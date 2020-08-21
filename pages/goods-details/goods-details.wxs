@@ -1,0 +1,8 @@
+function favor(isFavor) {
+  return isFavor ? {text: '已收藏', imgPath: './images/icon_collection_sel.png' } : {text: '收藏', imgPath: './images/icon_collection.png' }
+}
+
+
+module.exports = {
+  favor:favor
+}

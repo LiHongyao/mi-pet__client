@@ -1,0 +1,22 @@
+<view class="order-info pt-28 pb-38 px-32 bg-FFFFFF my-12">
+  <view class="color-828282 f26 lh-36 mb-20">订单编号：3123213213321</view>
+  <view class="d-flex">
+    <image class="image border rounded-10 mr-24" src="{{data.images}}" />
+    <view class="flex-1 ">
+      <view class="color-2D2D2D f28 lh-40 line-clamp-2 mb-30">冠能猫粮幼猫粮奶糕初乳粮增肥发腮离乳期猫粮1.2kg</view>
+      <view class="d-flex justify-content-between" wx:if="{{showAmountAndNum}}">
+        <view>
+          <text class="color-2D2D2D f26 lh-36 mr-10">实付</text>
+          <text class="color-FF2121 f-bold f20 lh-38">¥</text>
+          <text class="color-FF2121 f-bold f32 lh-38">199.00</text>
+        </view>
+        <view class="color-2D2D2D f26 lh-36">x6</view>
+      </view>
+      <view class="d-flex justify-content-end">
+        <view class="button rounded-34 flex-center bg-F82F5C color-FFFFFF mt-28 f26 " wx:if="{{showAfterSaleButton}}" catch:tap="onAfterSaleButtonTap">
+          申请售后
+        </view>
+      </view>
+    </view>
+  </view>
+</view>

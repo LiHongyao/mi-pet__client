@@ -1,0 +1,94 @@
+<view class="container px-20">
+  <!-- 基本信息 -->
+  <view class="content px-20 pt-32 mt-20 bg-FFFFFF rounded-24">
+    <!-- 上传图片 -->
+    <view class="flex-v-center mb-30">
+      <van-uploader class="avatar-uploader" accept="image" max-count="1" mutiple="{{false}}" file-list="{{ files }}" bind:after-read="onFilesAfterRead" bind:delete="onDelete" />
+      <view class="color-828282 f24 lh-34 mt-8">上传宠物照片</view>
+    </view>
+    <!-- 表单 -->
+    <view class="form">
+      <!-- 昵称 -->
+      <view class="form-item d-flex justify-content-between align-items-center">
+        <justify-view class="item-title mr-42 f26 color-272727" text="昵称" required />
+        <input data-key="nickname" value="{{values.nickname}}" class="color-828282 f24" type="text" placeholder="请输入宠物昵称" bindinput="onInput" />
+      </view>
+      <!-- 品种 -->
+      <view class="form-item d-flex justify-content-between align-items-center">
+        <justify-view class="item-title mr-42 f26 color-272727" text="品种" required />
+        <input data-key="breed" value="{{values.breed}}" class="color-828282 f24" type="text" placeholder="请输入宠物品种" bindinput="onInput" />
+      </view>
+      <!-- 性别 -->
+      <view class="form-item d-flex justify-content-between align-items-center">
+        <justify-view class="item-title mr-42 f26 color-272727" text="性别" required />
+        <radio-box key="gender" data="{{radio.gender}}" defaultSelected="{{values.gender}}" bind:change="onRadioChange" class="flex-1" />
+      </view>
+      <!-- 生日 -->
+      <view class="form-item d-flex justify-content-between align-items-center" catch:tap="onShowPicker" data-key="birthday">
+        <justify-view class="item-title mr-42 f26 color-272727" text="生日"  />
+        <text class="flex-1 color-828282 f24">{{values.birthday || '请选择宠物生日'}}</text>
+      </view>
+      <!-- 品级 -->
+      <view class="form-item d-flex justify-content-between align-items-center">
+        <justify-view class="item-title mr-42 f26 color-272727" text="品级" />
+        <radio-box key="grade" data="{{radio.grade}}" defaultSelected="{{values.grade}}" bind:change="onRadioChange" class="flex-1" />
+      </view>
+      <!-- 是否绝育 -->
+      <view class="form-item d-flex justify-content-between align-items-center">
+        <justify-view class="item-title mr-42 f26 color-272727" text="是否绝育" />
+        <radio-box key="is_sterilization" data="{{radio.sterilization}}" defaultSelected="{{values.is_sterilization}}" bind:change="onRadioChange" class="flex-1" />
+      </view>
+    </view>
+  </view>
+  <!-- 添加按钮 -->
+  <view class="mt-48 d-flex justify-content-center pb-74">
+    <van-button type="default" custom-style="width: 394rpx; height: 88rpx; background-color:#F82F5C; color:#FFFFFF; border-radius: 50rpx;" catch:tap="onAddPets">
+      {{isAdd ? '添加宠物' : '确认编辑'}}
+    </van-button>
+  </view>
+  <!-- 日期选择器 -->
+  <date-picker show="{{show}}" bind:change="onPickerChange" />
+  <!-- 疫苗情况v2.0 -->
+  <!-- <view class="content px-20 pt-32 pb-24 mt-20 bg-FFFFFF rounded-24 mb-99">
+    <view class="color-272727 f28 lh-40 f-bold mb-22">疫苗情况（必填）</view>
+      <view class="border-bottom border-DEDEDE pt-18">
+        <view class="f-bold f28 color-828282">第一针</view>
+        <view class="vaccines-item d-flex justify-content-between align-items-center">
+          <justify-view class="item-title mr-42 f26 color-272727" text="疫苗名称" />
+          <input class="color-828282 f24" type="text" placeholder="请输入注射疫苗名称" bindinput="onInputBreed" />
+        </view>
+        <view class="vaccines-item d-flex justify-content-between align-items-center" catch:tap="onShowPicker" data-key="birthday">
+          <justify-view class="item-title mr-42 f26 color-272727" text="注射时间" />
+          <text class="flex-1 color-828282 f24">{{values.birthday || '请选择第一针疫苗时间'}}</text>
+        </view>
+      </view>
+      <view class="border-bottom border-DEDEDE pt-18">
+        <view class="f-bold f28 color-828282">第二针</view>
+        <view class="vaccines-item d-flex justify-content-between align-items-center">
+          <justify-view class="item-title mr-42 f26 color-272727" text="疫苗名称" />
+          <input class="color-828282 f24" type="text" placeholder="请输入注射疫苗名称" bindinput="onInputBreed" />
+        </view>
+        <view class="vaccines-item d-flex justify-content-between align-items-center" catch:tap="onShowPicker" data-key="birthday">
+          <justify-view class="item-title mr-42 f26 color-272727" text="注射时间" />
+          <text class="flex-1 color-828282 f24">{{values.birthday || '请选择第一针疫苗时间'}}</text>
+        </view>
+      </view>
+      <view class="pt-18">
+        <view class="f-bold f28 color-828282">第三针</view>
+        <view class="vaccines-item d-flex justify-content-between align-items-center">
+          <justify-view class="item-title mr-42 f26 color-272727" text="注射时间" />
+          <input class="color-828282 f24" type="text" placeholder="请输入注射疫苗名称" bindinput="onInputBreed" />
+        </view>
+        <view class="vaccines-item d-flex justify-content-between align-items-center" catch:tap="onShowPicker" data-key="birthday">
+          <justify-view class="item-title mr-42 f26 color-272727" text="注射时间" />
+          <text class="flex-1 color-828282 f24">{{values.birthday || '请选择第一针疫苗时间'}}</text>
+        </view>
+      </view>
+    </view>
+  </view> -->
+  <!-- 宠物详情v2.0 -->
+  <!-- <view class="content px-20 pt-32 pb-30 mt-20 bg-FFFFFF rounded-24">
+    <view class="color-272727 f28 lh-40 f-bold mb-22">宠物图片（选填）</view>
+    <van-uploader file-list="{{ petImageFiles }}" bind:after-read="onPetImageFilesAfterRead" />
+  </view> -->
+</view>

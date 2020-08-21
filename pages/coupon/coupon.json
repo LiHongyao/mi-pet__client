@@ -1,0 +1,11 @@
+{
+  "navigationBarTitleText": "优惠券",
+  "usingComponents": {
+    "van-tab": "@vant/weapp/tab/index",
+    "van-tabs": "@vant/weapp/tabs/index",
+    "list": "../../components/list/list",
+    "loading": "../../components/loading/loading",
+    "no-data": "../../components/no-data/no-data",
+    "coupon-item": "../../components/coupon-item/coupon-item"
+  }
+}

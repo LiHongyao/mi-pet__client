@@ -1,0 +1,14 @@
+.no-data__wrapper  {
+  padding-top: 246rpx;
+  text-align: center;
+}
+.no-data__img {
+  width: 291rpx;
+  height: 254rpx;
+}
+.no-data__tips {
+  margin-top: 40rpx;
+  color: #949494;
+  font-size: 28rpx;
+  line-height: 40rpx;
+}

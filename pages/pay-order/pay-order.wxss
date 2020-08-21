@@ -1,0 +1,22 @@
+
+.pay-order {
+  height: calc(100% - 98rpx - constant(safe-area-inset-bottom));
+  height: calc(100% - 98rpx - env(safe-area-inset-bottom));
+}
+.thumbnail {
+  width: 148rpx;
+  height: 148rpx;
+}
+
+.icon-arrow-right {
+  width: 12rpx;
+  height: 22rpx;
+}
+
+.title {
+  width: 50px;
+  margin-right: 30px;
+}
+.sure-box {
+  height: 98rpx;
+}

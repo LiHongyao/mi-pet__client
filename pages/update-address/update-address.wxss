@@ -1,0 +1,13 @@
+.item {
+  height: 96rpx;
+}
+.title {
+  width: 160rpx;
+}
+.icon-location {
+  width: 25rpx;
+  height: 35rpx;
+}
+.delete-button .van-cell__title  {
+  color: #FF0000;
+}

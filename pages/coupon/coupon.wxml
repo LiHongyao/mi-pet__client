@@ -1,0 +1,29 @@
+<view wx:if="{{useful}}" class="container">
+  <van-tabs  active="{{ active }}" color="#F82F5C" line-width="52" line-height="4" sticky="{{true}}" swipeable="{{true}}" title-inactive-color="#828282" title-active-color="#F82F5C">
+    <van-tab title="可用({{useful.length}})">
+      <view class="tab-content mt-20">
+        <list wx:if="{{useful.length > 0}}" height="{{listHeight}}px" finished="{{true}}">
+          <coupon-item wx:for="{{useful}}" wx:key="couponId" type="{{1}}" data="{{item}}"></coupon-item>
+        </list>
+        <no-data wx:else tips="没有优惠券信息~" />
+      </view>
+    </van-tab>
+    <van-tab title="已过期({{expired.length}})">
+      <view class="tab-content mt-20">
+        <list wx:if="{{expired.length > 0}}" height="{{listHeight}}px" finished="{{true}}">
+          <coupon-item  wx:for="{{expired}}" wx:key="couponId" type="{{2}}" data="{{item}}"></coupon-item>
+        </list>
+        <no-data wx:else tips="没有优惠券信息~" />
+      </view>
+    </van-tab>
+    <van-tab title="已使用({{used.length}})">
+      <view class="tab-content mt-20">
+        <list wx:if="{{used.length > 0}}" height="{{listHeight}}px" finished="{{true}}">
+          <coupon-item  wx:for="{{used}}" wx:key="couponId" type="{{3}}" data="{{item}}"></coupon-item>
+        </list>
+        <no-data wx:else tips="没有优惠券信息~" />
+      </view>
+    </van-tab>
+  </van-tabs>
+</view>
+<loading wx:else />

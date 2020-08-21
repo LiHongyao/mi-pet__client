@@ -1,0 +1,35 @@
+
+.avatar-uploader .van-uploader__upload {
+  width: 128rpx !important;
+  height: 128rpx !important;
+  border-radius: 50% !important;
+  background-color: #FFFFFF !important;
+  border: 2rpx dashed #E1E1E1;
+  margin: 0 !important;
+}
+
+.form-item {
+  height: 92rpx;
+}
+
+.form-item:not(:last-child) {
+  border-bottom: 2rpx #F5F5F5 solid;
+}
+.item-title {
+  width: 104rpx;
+}
+.vaccines-item {
+  height: 70rpx;
+}
+.vaccines-item .title {
+  width: 140rpx;
+}
+.icon_check {
+  width: 32rpx;
+  height: 32rpx;
+}
+
+input {
+  width: calc(100% - 104rpx - 42rpx);
+  height: 100%;
+}

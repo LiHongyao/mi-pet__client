@@ -1,0 +1,9 @@
+<lg-search
+  placeHolder="请输入账号" 
+  value="" 
+  bind:change="onChange" 
+  clear="{{true}}" 
+  bind:confirm="onConfirm" 
+  bind:search="onSearch"
+/>
+

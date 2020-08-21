@@ -1,0 +1,3 @@
+<view class="justify-box__wrapper {{required ? 'required' : ''}}">
+  <text wx:for="{{letters}}" wx:key="index">{{item}}</text>
+</view>

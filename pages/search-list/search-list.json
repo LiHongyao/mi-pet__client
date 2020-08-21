@@ -1,0 +1,9 @@
+{
+  "navigationBarTitleText": "搜索",
+  "usingComponents": {
+    "lg-search":"../../components/@lgs/search/index",
+    "list":"../../components/list/list",
+    "goods-item": "../../components/goods-item/goods-item",
+    "loading": "../../components/loading/loading"
+  }
+}

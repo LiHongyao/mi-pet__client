@@ -1,0 +1,21 @@
+<view class="container">
+  <!-- top-bar -->
+  <view class="top-bar position-relative">
+    <image class="top-bg" src="./images/bg.png" />
+    <view class="infos absolute-top flex-v-center">
+      <image class="logo" src="../../assets/images/icon_logo.png" />
+      <text class=" color-FFFFFF f36 lh-50 mt-26 f-bold">觅宠</text>
+    </view>
+  </view>
+  <!-- 授权按钮 -->
+  <view class="auth-button mx-auto">
+     <button class="rounded-44 bg-F82F5C color-FFFFFF" open-type="getUserInfo" bind:getuserinfo="onGetUserInfo">微信授权登录</button>
+  </view>
+  <view class="color-3D3D3D f26 lh-36 text-center mt-44" catch:tap="onNoLogin">暂不登录</view>
+  <!-- 阅读用户政策及隐私协议 -->
+  <view class="agreement w-full px-38 color-828282 f24 lh-34 text-center fixed-bottom b-56">
+    若您的微信号未注册，将为您直接注册，注册即视为同意
+    <text class="color-FF9191" catch:tap="onPush" data-path="../agreement/agreement">《用户协议》</text>、
+    <text class="color-FF9191" catch:tap="onPush" data-path="../privacy/privacy">《隐私政策》</text>
+  </view>
+</view>

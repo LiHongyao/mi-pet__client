@@ -1,0 +1,9 @@
+{
+  "navigationBarTitleText": "填写订单",
+  "usingComponents": {
+    "van-stepper": "@vant/weapp/stepper/index",
+    "van-button": "@vant/weapp/button/index",
+    "loading":"../../components/loading/loading",
+    "address-item":"../../components/address-item/address-item"
+  }
+}

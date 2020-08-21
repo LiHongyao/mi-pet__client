@@ -1,0 +1,18 @@
+<wxs src="../../filters/index.wxs" module="filters" />
+<view wx:if="{{details}}" class="container bg-FFFFFF px-32">
+  <!-- 头 -->
+  <view class="mb-28">
+    <view class="color-2C2C2C f32 lh-56 mb-12">{{details.title}}</view>
+    <view class="color-B5B5B5 f20 lh-28">
+      <text class="mr-60">{{details.time}}</text>
+      <text>{{details.readNum}}人看过</text>
+    </view>
+  </view>
+  <!-- 内容 -->
+  <rich-text class="rich-text f26 lh-36 color-393939 pb-30 bg-FFFFFF" nodes="{{filters.richTextFormat(details.content)}}"></rich-text>
+  <!-- 悬浮按钮 -->
+  <view class="fixed-box position-fixed l-20 b-20 rounded-12 flex-center" catch:tap="onFavorTap">
+    <image class="check-image" src="{{details.isFavor ? './images/icon_checked.png' : './images/icon_check.png'}}" ></image>
+  </view>
+</view>
+<loading wx:else />

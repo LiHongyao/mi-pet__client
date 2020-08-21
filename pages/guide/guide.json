@@ -1,3 +1,12 @@
 {
-  "usingComponents": {}
+  "navigationBarTitleText": "指南",
+  "usingComponents": {
+    "lg-search":"../../components/@lgs/search/index",
+    "menu-bar": "../../components/menu-bar/menu-bar",
+    "loading": "../../components/loading/loading",
+    "list": "../../components/list/list",
+    "list-wrap": "../../components/list-wrap/list-wrap",
+    "guide-item": "../../components/guide-item/guide-item"
+    
+  }
 }

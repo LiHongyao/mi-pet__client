@@ -1,0 +1,10 @@
+{
+  "navigationBarTitleText": "添加宠物",
+  "usingComponents": {
+    "van-button": "@vant/weapp/button/index",
+    "van-uploader": "@vant/weapp/uploader/index",
+    "radio-box": "../../components/radio-box/radio-box",
+    "date-picker":"../../components/date-picker/date-picker",
+    "justify-view":"../../components/justify-view/justify-view"
+  }
+}

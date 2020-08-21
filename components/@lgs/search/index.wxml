@@ -1,0 +1,21 @@
+<view class="lg-search {{shape && 'shape'}} custom-class">
+  <!-- icon -->
+  <image class="lg-search__icon" src="./images/icon_search.png" alt />
+  <lg-field
+    class="lg-search__control"
+    value="{{value}}"
+    type="text"
+    placeHolder="{{placeHolder}}"
+    confirmType="{{confirmType}}"
+    placeHolderStyle="{{placeHolderStyle}}"
+    caretColor="{{caretColor}}"
+    clear="{{clear}}"
+    bind:change="onChange"
+    bind:confirm="onConfirm"
+  />
+  <!-- button -->
+  <view wx:if="{{showRightButton}}" class="lg-search__right_button" catch:tap="onSearch">
+    搜索
+  </view>
+  <view wx:if="{{disabled}}" class="lg-search__mask" catch:tap="onTap"></view>
+</view>

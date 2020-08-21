@@ -1,0 +1,9 @@
+.coupon-item {
+  width: 710rpx;
+  height: 180rpx;
+}
+
+.right-box {
+  height: 100%;
+  width: 180rpx;
+}

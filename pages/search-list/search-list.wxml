@@ -1,0 +1,15 @@
+<view class="container">
+  <!-- 搜索栏 -->
+  <view class="py-20 bg-FFFFFF">
+    <lg-search value="{{keyword}}" placeHolder="搜索商品品牌、名称" bind:change="onInputChange"  bind:search="onSearch" clear="{{true}}" />
+  </view>
+  <!-- 搜索结果 -->
+  <view class="search-res">
+    <list wx:if="{{list}}" class="goods-list" finished="{{finished}}" height="{{listHeight}}px" bind:load="onLoadMore">
+      <view class=" mt-20 px-30 d-flex flex-wrap justify-content-between">
+        <goods-item wx:for="{{list}}" wx:key="index" data="{{item}}" bind:itemTap="onGoodsItemTap" />
+      </view>
+    </list>
+    <loading wx:if="{{showLoading}}" />
+  </view>
+</view>

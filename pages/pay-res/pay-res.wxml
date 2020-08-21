@@ -1,0 +1,28 @@
+<view class="container">
+  <block wx:if="{{status !== -1}}">
+    <view wx:if="{{status === '1'}}" class="flex-v-center pt-102">
+      <image class="status-image" src="../../assets/images/icon_pay_success.png" />
+      <view class="color-202020 f32 lh-44 mt-36">付款成功</view>
+      <view class="buttons d-flex mt-72">
+        <view class="button rounded-50 border border-F82F5C flex-center f30 color-F82F5C" catch:tap="onGoHome">
+          返回首页
+        </view>
+        <view class="button rounded-50 bg-F82F5C flex-center f30 color-FFFFFF ml-34" catch:tap="onGoOrderDetails">
+          查看订单
+        </view>
+      </view>
+    </view>
+    <view wx:else class="flex-v-center pt-102">
+      <image class="status-image" src="../../assets/images/icon_pay_fail.png" />
+      <view class="color-202020 f32 lh-44 mt-36">付款失败</view>
+      <view class="buttons d-flex mt-72">
+        <view class="button rounded-50 border border-F82F5C flex-center f30 color-F82F5C" catch:tap="onGoHome">
+          返回首页
+        </view>
+        <view class="button rounded-50 bg-F82F5C flex-center f30 color-FFFFFF ml-34" catch:tap="onRePlay">
+          重新付款
+        </view>
+      </view>
+    </view>
+  </block>
+</view>

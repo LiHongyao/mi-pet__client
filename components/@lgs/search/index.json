@@ -1,0 +1,6 @@
+{
+  "component": true,
+  "usingComponents": {
+    "lg-field":"../field/index"
+  }
+}

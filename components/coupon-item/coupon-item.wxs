@@ -1,0 +1,8 @@
+
+function getBgPath(type) {
+  return type === 1 ? './images/bg_coupon_1.png' : './images/bg_coupon_2.png'
+}
+
+module.exports = {
+  getBgPath:getBgPath
+}

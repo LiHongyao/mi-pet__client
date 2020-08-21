@@ -1,0 +1,65 @@
+<wxs src="./goods.wxs" module="fn" />
+<view class="container">
+  <!-- 搜索栏 -->
+  <view class="py-20 bg-FFFFFF">
+    <lg-search value="{{keyword}}" placeHolder="搜索商品品牌、名称" bind:change="onInputChange"  bind:search="onSearch" clear="{{true}}" />
+  </view>
+  <!-- 筛选 -->
+  <view class="filters bg-FFFFFF position-relative">
+    <view class="h-full d-flex justify-content-around align-items-center">
+      <!-- 推荐 -->
+      <view class="f26 lh-40 {{sIndex === 0 ? 'color-F82F5C' : 'color-828282'}}" data-index="{{0}}" bind:tap="onFilterItemTap">推荐</view>
+      <!-- 销量 -->
+      <view class="f26 lh-40 {{sIndex === 1 ? 'color-F82F5C' : 'color-828282'}}" data-index="{{1}}" bind:tap="onFilterItemTap">销量</view>
+      <!-- 价格 -->
+      <view class="f26 lh-40 {{sIndex === 2 ? 'color-F82F5C' : 'color-828282'}}" data-index="{{2}}" bind:tap="onFilterItemTap">
+        <text>价格</text>
+        <image class="icon-price  {{priceStatus === 1 ? 'asc' : ''}} {{sIndex !== 2 ? 'hidden' : ''}}" src="./images/icon_down.png" />
+      </view>
+      <!-- 筛选 -->
+      <view class="f26 lh-40 {{(breedSelectedIndex !== -1 || brandSelectedIndex !== -1)  ? 'color-F82F5C' : 'color-828282'}}" bind:tap="onScreenTap">
+        <text class="mr-8">筛选</text>
+        <image class="icon-screen" src="{{fn.screenIcon(breedSelectedIndex, brandSelectedIndex)}}"></image>
+      </view>
+    </view>
+    <!-- 品种/拍拍筛选面板 -->
+    <view hidden="{{!screenChecked}}" class="drop-mask absolute-tl t-full w-full" style="height: {{listHeight}}px;">
+      <view class="bg-FFFFFF px-32 pb-42 pt-28 ">
+        <!-- 品种选择 -->
+        <view class="f28 lh-40">品种选择</view>
+        <view class="d-flex align-items-center flex-wrap fw-150">
+          <view class="screem-item flex-center border border-DFDFDF rounded-16 my-16 position-relative {{breedSelectedIndex === index ? 'selected' : ''}}" wx:for="{{breedsAndBrands}}" wx:key="index" data-index="{{index}}" data-id="{{item.id}}" bind:tap="onBreedItemTap">
+            {{item.name}}
+            <image class="icon-selected absolute-tr" src="./images/icon_selected.png"></image>
+          </view>
+        </view>
+        <!-- 品牌选择 -->
+        <block wx:if="{{breedsAndBrands[breedSelectedIndex].brand}}">
+          <view class="f28 lh-40 mt-32">品牌选择</view>
+          <view class="d-flex align-items-center flex-wrap fw-150">
+            <view wx:for="{{breedsAndBrands[breedSelectedIndex].brand}}" wx:key="index"  data-index="{{index}}" data-brand="{{item}}" class="screem-item flex-center border border-DFDFDF rounded-16 my-16 position-relative {{brandSelectedIndex === index ? 'selected' : ''}}"  bind:tap="onBrandItemTap">
+              {{item}}
+              <image class="icon-selected absolute-tr" src="./images/icon_selected.png"></image>
+            </view>
+          </view>
+          <view class="flex-center f32 color-FFFFFF mt-32">
+            <view class="button rounded-34 flex-center bg-FF9972 mr-46" bind:tap="onResetFilters">
+              重置
+            </view>
+            <view class="button rounded-34 flex-center bg-F82F5C" bind:tap="onSureFilters">确认</view>
+          </view>
+        </block>
+      </view>
+    </view>
+  </view>
+  <!-- 列表 -->
+  <div class="list-contents">
+    <list-wrap data="{{list}}">
+      <list bind:load="onLoadMore" height="{{listHeight}}px" finished="{{finished}}">
+        <view class="mt-20 px-30 d-flex flex-wrap justify-content-between">
+          <goods-item wx:for="{{list}}" wx:key="item" data="{{item}}" bind:itemTap="onGoodsItemTap" />
+        </view>
+      </list>
+    </list-wrap>
+  </div>
+</view>

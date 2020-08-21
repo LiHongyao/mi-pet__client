@@ -1,11 +1,6 @@
-.search-box {
+.custom-class {
   width: 690rpx;
-  height: 60rpx;
-}
-
-.search-button {
-  width: 130rpx;
-  height: 60rpx;
+  margin: 0 auto;
 }
 
 
@@ -19,3 +14,23 @@
   height: 70rpx;
 }
 
+
+.coupon-dialog {
+  width: 590rpx;
+  height: 651rpx;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.coupon-dialog__buttons {
+  position: absolute;
+  bottom: 42rpx;
+  left: 50%;
+  transform: translateX(-50%);
+}
+.coupon-dialog__button {
+  width: 220rpx;
+  height: 78rpx;
+}

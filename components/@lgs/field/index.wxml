@@ -1,0 +1,23 @@
+<view class="lg-field {{customClass}}">
+  <!-- 输入框 -->
+  <input 
+    class="lg-field__control"
+    value="{{innerValue}}"
+    type="{{type}}" 
+    style="caret-color:{{caretColor}};"
+    placeholder="{{placeHolder}}"
+    placeholder-style="{{placeHolderStyle}}"
+    confirm-type="{{confirmType }}"
+    bind:input="onInput"
+    bind:focus="onFocus"
+    bind:blur="onBlur"
+    bind:confirm="onConfirm"
+  />
+  <!-- 删除按钮 -->
+  <image 
+    hidden="{{!showClear}}" 
+    class="lg-field__clear" 
+    src="./images/icon_clear.png" alt
+    bind:tap="onClear"
+  />
+</view>

@@ -1,0 +1,12 @@
+{
+  "navigationBarTitleText": "订单详情",
+  "usingComponents": {
+    "van-steps": "@vant/weapp/steps/index",
+    "van-button": "@vant/weapp/button/index",
+    "van-count-down": "@vant/weapp/count-down/index",
+    "address-item":"../../components/address-item/address-item",
+    "order-item":"../../components/order-item/order-item",
+    "order-info":"../../components/order-info/order-info",
+    "loading": "../../components/loading/loading"
+  }
+}

@@ -1,6 +1,7 @@
 {
   "navigationStyle": "custom",
   "usingComponents": {
-    "app-header": "../../components/app-header/app-header"
+    "app-header": "../../components/app-header/app-header",
+    "pet-archives-item": "../../components/pet-archives-item/pet-archives-item"
   }
 }

@@ -1,0 +1,5 @@
+{
+  "usingComponents": {
+    "lg-search": "../../components/@lgs/search/index"
+  }
+}

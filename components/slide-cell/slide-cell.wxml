@@ -1,0 +1,19 @@
+<movable-area class="slide-cell__wrapper" style="height: {{kH}}px; width: calc(100% - {{kSpacing}})">
+  <movable-view 
+    x="{{x}}"
+    class="slide-cell__scroll" 
+    direction="horizontal" 
+    inertia="true" 
+    out-of-bounds="true"
+    style="width: calc(100% + {{rW}}px)" 
+    bind:touchstart="onTouchStart"
+    bind:touchend="onTouchEnd"
+  >
+    <view class="slide-cell__contents" style="width: calc(100% - {{rW}}px)">
+      <slot />
+    </view>
+    <view class="slide-cell__delete" style="width: {{rW}}px" bind:tap="onDelete">
+      删除
+    </view> 
+  </movable-view>
+</movable-area>

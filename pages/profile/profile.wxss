@@ -1,6 +1,5 @@
 .user-info {
-  padding-top: 144rpx;
-  height: 332rpx;
+  height: 190rpx;
   background: linear-gradient(135deg, #FF6565, #F51358);
 }
 .infos {
@@ -9,7 +8,6 @@
 .avatar {
   width: 96rpx;
   height: 96rpx;
-  background-color: cornflowerblue;
 }
 .real-name {
   width: 92rpx;
@@ -32,12 +30,21 @@
 }
 
 .contents {
-  height: calc(100% - 332rpx);
+  height: calc(100% - 332rpx - 20rpx);
 }
 
 .pet-files-title {
   width: 240rpx;
   height: 40rpx;
+}
+
+.pet-list {
+  white-space: nowrap;
+  width: 100%;
+  height: 186rpx;
+}
+.add-pet-button {
+  height: 76rpx;
 }
 .icon-order {
   width: 60rpx;

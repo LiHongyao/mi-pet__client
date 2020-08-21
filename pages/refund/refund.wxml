@@ -1,0 +1,33 @@
+<view class="container">
+  <!-- 退款信息 -->
+  <view class="bg-FFFFFF mt-12 pt-20">
+    <view class="color-272727 f26 px-32">退款信息</view>
+    <order-item showBusiness="{{false}}" showAfterSaleButton="{{false}}" isOrderDetails="{{true}}" showPriceAndNum="{{false}}" />
+  </view>
+  <!-- 货物状态/退款金额 -->
+  <view class="px-32 py-28 bg-FFFFFF mt-12">
+    <view class="d-flex justify-content-between f28 lh-40">
+      <view class="color-828282 mr-68">货物状态</view>
+      <view class="color-2D2D2D flex-center">
+        <text class="mr-20">已收到货</text>
+        <image class="icon-arrow" src="../../assets/images/icon_arrow_right.png"></image>
+      </view>
+    </view>
+    <view class="d-flex f28 my-28">
+      <view class="color-828282 mr-68">退款金额</view>
+      <view class="color-FF0000">￥19.00</view>
+    </view>
+  </view>
+  <!-- 退款原因 -->
+  <view class="px-32 py-28 bg-FFFFFF mt-12">
+    <view class="color-828282 mb-20">退款原因</view>
+    <textarea class="f28 lh-40 p-0 w-full" placeholder="请输入退款原因" />
+  </view>
+  <!-- 上传凭证 -->
+  <view class="px-32 py-28 bg-FFFFFF mt-12">
+    <view class="mb-20 f-bold">上传凭证</view>
+    <van-uploader file-list="{{ fileList }}" bind:after-read="afterRead" />
+  </view>
+  <!-- 提交申请 -->
+  <view class="submit-buton bg-F82F5C rounded-44 mt-48 f30 mx-auto color-FFFFFF flex-center" catch:tap="onSubmit">提交申请</view>
+</view>

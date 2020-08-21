@@ -1,0 +1,108 @@
+<view wx:if="{{!order}}" class="container">
+  <!-- 顶栏 -->
+  <view class="top-bar px-40 pt-40 pb-30 color-FFFFFF {{title === '待收货' ? 'dsh': ''}}">
+    <!-- 标题 -->
+    <view wx:if="{{title === '已完成'}}" class="f-bold f32 lh-44 mb-10">交易成功</view>
+    <view wx:else class="f-bold f32 lh-44 mb-10">{{title}}</view>
+    <!-- 描述 -->
+    <view wx:if="{{title === '待付款'}}" class="f30 lh-42 d-flex align-items-center">
+      <text class="mr-32">剩余支付时间</text>
+      <van-count-down time="{{ time }}" format="mm 分 ss 秒" />
+    </view>
+    <view wx:elif="{{title === '待发货'}}" class="f30 lh-42 f-lighter">24小时内发货，请耐心等待</view>
+    <block wx:elif="{{title === '待收货'}}">
+      <view class="f30 lh-42 f-lighter mb-10">签收3天之后未收货自动收货</view>
+      <view class="f30 lh-42 d-flex">
+        <view class="mr-68">顺丰快递  {{order.express_no}}</view>
+        <view catch:tap="onCopy">复制</view>
+      </view>
+    </block>
+    <view wx:elif="{{title === '退款/售后'}}" class="f30 lh-42 f-lighter">等待商家退款</view>
+  </view>
+  <address-item wx:if="{{title !== '退款/售后'}}" data="{{order.address_data}}"  editable="{{false}}" showLeftIcon="{{true}}" showDefaultTips="{{false}}" />
+  <!-- 物流信息 -->
+  <view wx:if="{{title === '待收货'}}" class="bg-FFFFFF my-12 px-32">
+    <van-steps steps="{{ steps }}" active="{{ active }}" direction="vertical" />
+  </view>
+  <!-- 订单信息/退款信息 -->
+  <block wx:if="{{title === '退款/售后'}}">
+    <view class="bg-FFFFFF mt-12 pt-20">
+      <view class="color-272727 f26 px-32">退款信息</view>
+      <order-info data="{{order.items[0]}}" showAmountAndNum="{{false}}" ></order-info>
+    </view>
+    <view class="px-32 py-28 bg-FFFFFF mt-12 mb-40">
+      <view class="d-flex f28 lh-40">
+        <view class="color-828282 mr-68">退款原因</view>
+        <view class="color-2D2D2D">买错了</view>
+      </view>
+      <view class="d-flex f28 my-28">
+        <view class="color-828282 mr-68">退款金额</view>
+        <view class="color-2D2D2D">￥19.00</view>
+      </view>
+      <view class="d-flex f28 my-28">
+        <view class="color-828282 mr-68">申请时间</view>
+        <view class="color-2D2D2D">2020-07-09 13:32:44</view>
+      </view>
+      <view class="d-flex f28">
+        <view class="color-828282 mr-68">退款编号</view>
+        <view class="color-2D2D2D">734827957057</view>
+      </view>
+    </view>
+  </block>
+  <order-info wx:elif="{{title === '已完成'}}" data="{{order.items[0]}}" showAfterSaleButton="{{true}}" bind:afterSale="onAfterSale"></order-info>
+  <order-info wx:else  data="{{order.items[0]}}"></order-info>
+  <!-- 其他信息 -->
+  <block wx:if="{{title !== '退款/售后'}}">
+    <view class="mt-12 bg-FFFFFF px-32 py-28">
+      <view class="d-flex justify-content-between align-items-center mb-28">
+        <view class="color-828282 f28 lh-40">运费</view>
+        <view class="color-FF2121 f28 lh-34">¥0.00</view>
+      </view>
+      <view class="d-flex justify-content-between align-items-center">
+        <view class="color-828282 f28 lh-40">优惠券抵扣</view>
+        <view class="color-FF2121 f28 lh-34">¥{{order.discount_price}}</view>
+      </view>
+    </view>
+    <view class="mt-12 py-34 bg-FFFFFF px-32 d-flex justify-content-between align-items-center">
+      <view class="color-828282 f28 lh-40">实付</view>
+      <view class="color-FF2121 f38 lh-34 f-bold">￥{{order.total_price}}</view>
+    </view>
+  </block>
+  <!-- 待收货展示信息 -->
+  <view wx:if="{{title === '待发货' || title === '待收货' || title === '已完成'}}" class="mt-12 py-34 bg-FFFFFF px-32 d-flex justify-content-between align-items-center f28 lh-40">
+    <view class="color-828282">付款方式</view>
+    <view>微信支付</view>
+  </view>
+  <!-- 待发货展示信息 -->
+  <block wx:if="{{title === '待发货' || title === '待收货' || title === '已完成'}}">
+    <view class="px-32 py-14 bg-FFFFFF mt-12 mb-40">
+      <view class="d-flex f28 lh-40 py-14">
+        <view class="color-828282 mr-68">订单编号</view>
+        <view class="color-2D2D2D">{{order.order_no || ''}}</view>
+      </view>
+      <view class="d-flex f28 py-14">
+        <view class="color-828282 mr-68">下单时间</view>
+        <view class="color-2D2D2D">{{order.add_time || ''}}</view>
+      </view>
+      <view class="d-flex f28 py-14">
+        <view class="color-828282 mr-68">付款时间</view>
+        <view class="color-2D2D2D">{{order.pay_time || ''}}</view>
+      </view>
+      <view wx:if="{{title === '待收货' || title === '已完成'}}" class="d-flex f28 py-14">
+        <view class="color-828282 mr-68">发货时间</view>
+        <view class="color-2D2D2D">{{order.delivery_time || ''}}</view>
+      </view>
+      <view wx:if="{{title === '已完成'}}" class="d-flex f28 py-14">
+        <view class="color-828282 mr-68">完成时间</view>
+        <view class="color-2D2D2D">{{order.collect_time || ''}}</view>
+      </view>
+    </view>
+  </block>
+  <!--  -->
+  <view class="flex-center mt-72">
+    <van-button type="default" custom-style="width:394rpx; height:88rpx; background: #F82F5C; color: #FFFFFF; font-size: 30rpx; border-radius: 44rpx;" bind:click="onPay">
+      微信付款
+    </van-button>
+  </view>
+</view>
+<loading wx:else />

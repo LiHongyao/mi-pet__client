@@ -1,0 +1,7 @@
+.title {
+  height: 94rpx;
+}
+.button {
+  width: 328rpx;
+  height: 100rpx;
+}

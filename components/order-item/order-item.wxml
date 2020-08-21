@@ -1,0 +1,64 @@
+<view class="order-item bg-FFFFFF pt-24  pb-26 pl-20 pr-24 my-12 rounded-24 " catch:tap="onOrderItemTap">
+  <!-- 顶栏 -->
+  <view class="d-flex justify-content-between align-items-center mb-22">
+    <view class=" color-828282 f26 lh-36">订单编号：{{data.order_no}}</view>
+    <view wx:if  ="{{title === '待付款'}}" class="status color-F82F5C bg-FFE2E2 rounded-16 f24 lh-34 px-12">待付款</view>
+    <view wx:elif="{{title === '待发货'}}" class="status color-53CAFF bg-E2F6FF rounded-16 f24 lh-34 px-12">待发货</view>
+    <view wx:elif="{{title === '待收货'}}" class="status color-70B73A bg-DCEECF rounded-16 f24 lh-34 px-12">待收货</view>
+    <view wx:elif="{{title === '已完成'}}" class="status color-828282 bg-EFEFEF rounded-16 f24 lh-34 px-12">已完成</view>
+    <view wx:elif="{{title === '退款/售后'}}" class="status color-FF0000 bg-FFE4E4 rounded-16 f24 lh-34 px-12">退款</view>
+  </view>
+  <!-- 订单信息 -->
+  <view class="d-flex">
+    <view class="thumbnail border border-E9E9E9 rounded-10 mr-24">
+      <image class="w-full h-full" src="{{data.items[0].images}}" />
+    </view>
+    <view class="flex-1">
+      <view class="color-2D2D2D f28 lh-40 line-clamp-2 mb-28">{{data.items[0].title}}</view>
+      <view class="d-flex justify-content-between">
+        <view wx:if="{{title === '退款/售后'}}" class="color-2D2D2D ">
+          <text class="f26 lh-36 mr-10">实付</text>
+          <text class="f20 lh-38 f-bold">¥</text>
+          <text class="f32 lh-38 f-bold">{{data.items[0].total_price}}</text>
+        </view>
+        <view wx:else class="d-flex align-items-end">
+          <text class="color-2D2D2D f26 lh-36 mr-10">实付</text>
+          <text class="color-FF2121 f20 lh-38 f-bold">¥</text>
+          <text class="color-FF2121 f32 lh-38 f-bold">{{data.items[0].total_price}}</text>
+        </view>
+        <view class="color-2D2D2D f26 lh-36">x{{data.items[0].buy_number}}</view>
+      </view>
+      <view wx:if="{{title === '退款/售后'}}" class="f26 lh-36 color-2D2D2D mt-24">
+        <text class="f-bold mr-8">退款中</text>
+        <text>等待商家确认退款</text>
+      </view>
+      <view wx:if="{{title === '待付款'}}" class="d-flex align-items-center f22 lh-32 color-2D2D2D mt-12">
+          <text class="mr-10">剩余支付时间</text>
+          <van-count-down class="count-down" time="{{ data.items[0].surplus_time }}" format="mm 分 ss 秒" />
+      </view>
+      <!-- 交互按钮 -->
+      <view class="d-flex justify-content-end align-items-center mt-22 f26">
+        <block wx:if="{{title === '待付款'}}">
+          <view class="button rounded-34 flex-center ml-28 border border-E1E1E1 color-272727" catch:tap="onCancelOrder">取消订单</view>
+          <view class="button rounded-34 flex-center ml-28 bg-F82F5C color-FFFFFF" catch:tap="onPayment">立即付款</view>
+        </block>
+         <block wx:if="{{title === '待发货'}}">
+          <view class="button rounded-34 flex-center ml-28 border border-E1E1E1 color-272727" catch:tap="onRefund">退款</view>
+          <view class="button rounded-34 flex-center ml-28 bg-F82F5C color-FFFFFF" catch:tap="onReminder">发起催单</view>
+        </block>
+        <block wx:elif="{{title === '待收货'}}">
+          <view class="button rounded-34 flex-center ml-28 border border-E1E1E1 color-272727" catch:tap="onOrderItemTap">查看物流</view>
+          <view class="button rounded-34 flex-center ml-28 bg-F82F5C color-FFFFFF" catch:tap="onConfirmReceipt">确认收货</view>
+        </block>
+        <block wx:elif="{{title === '已完成'}}">
+          <view class="button rounded-34 flex-center ml-28 border border-E1E1E1 color-272727" catch:tap="onEvaluate">立即评价</view>
+          <view class="button rounded-34 flex-center ml-28 bg-F82F5C color-FFFFFF" catch:tap="onBuyAgain">再买一单</view>
+        </block>
+        <block wx:elif="{{title === '退款/售后'}}">
+          <view class="button rounded-34 flex-center ml-28 border border-E1E1E1 color-272727" catch:tap="onRevoke">撤销申请</view>
+          <view class="button rounded-34 flex-center ml-28 bg-F82F5C color-FFFFFF" catch:tap="onOrderItemTap">查看详情</view>
+        </block>
+      </view>
+    </view>
+  </view>
+</view>

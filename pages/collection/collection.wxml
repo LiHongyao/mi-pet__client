@@ -1,2 +1,23 @@
-<!--pages/collection/collection.wxml-->
-<text>pages/collection/collection.wxml</text>
+<view class="container">
+  <!-- 切换菜单 -->
+  <view class="pt-18 bg-FFFFFF mb-20">
+    <menu-bar menus="{{menus}}" active="{{active}}" bind:change="onChange" />
+  </view>
+  <!-- 菜单内容 -->
+  <view class="tab-contents px-30">
+    <list-wrap class="{{active === 0 ? 'd-block' : 'd-none'}}" data="{{goodsList}}">
+      <list bind:load="onLoadMore" height="{{listHeight}}px" finished="{{goodsFinished}}">
+       <view class="d-flex justify-content-between flex-wrap">
+         <goods-item wx:for="{{goodsList}}" wx:key="guideId"  data="{{item}}"  bind:itemTap="onGoodsItemTap"/>
+       </view>
+      </list>
+    </list-wrap>
+    <list-wrap class="{{active === 1 ? 'd-block' : 'd-none'}}" data="{{guideList}}">
+      <list bind:load="onLoadMore" height="{{listHeight}}px" finished="{{guideFinished}}">
+        <slide-cell wx:for="{{guideList}}" wx:key="guideId" index="{{index}}" bind:delete="onDelete">
+          <guide-item data="{{item}}" bind:itemTap="onGuideItemTap" />
+        </slide-cell>
+      </list>
+    </list-wrap>
+  </view>
+</view>

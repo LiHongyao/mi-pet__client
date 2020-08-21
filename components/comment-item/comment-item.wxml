@@ -1,0 +1,13 @@
+<view class="evaluate-item pt-28 d-flex">
+  <!-- 头像 -->
+  <image class="avatar mr-8 bg-F82F5C rounded-half" src="{{data.avatar}}" />
+  <!-- 评论详情 -->
+  <view class="infos pb-28 border-bottom border-F5F5F5 flex-1">
+    <view class="d-flex justify-content-between align-items-center">
+      <text class="color-272727 f26 lh-36">{{data.nickname}}</text>
+      <text class="color-B2B2B2 f22 lh-32">{{data.time}}</text>
+    </view>
+    <van-rate value="{{ data.rate }}" size="{{ 12 }}" color="#FFD21D" void-color="#eee" void-icon="star"  />
+    <view class="color-272727 f26 lh-36">{{data.content}}</view>
+  </view>
+</view>

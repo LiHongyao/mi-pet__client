@@ -1,0 +1,21 @@
+<view class="godos-item pb-32 position-relative pt-8"  bind:tap="onTap">
+  <!-- 缩略图 -->
+  <view class="goods-thumbnail mx-auto">
+    <image class="w-full h-max-full" src="{{data.thumbnail}}" ></image>
+  </view>
+  <!-- 标题 -->
+  <view class="title color-2D2D2D px-20 f26 lh-36 line-clamp-2 mb-14">{{data.title || '______'}}</view>
+  <!-- 价格 -->
+  <view class="px-20 d-flex justify-content-between align-items-center">
+    <view class="flex-center">
+      <view class="d-flex color-FF2121 f-bold ff-DIN-Bold lh-38">
+        <view class="f20 mr-4">¥</view>
+        <view class="f32">{{data.salePrice || '__'}}</view>
+      </view>
+      <view wx:if="{{data.discount}}" class="discount f16 color-FF7F2A border border-FF7F2A flex-center rounded-4 ml-12">限时折扣</view>
+    </view>
+    <view class="color-BFBFBF f20 lh-28 line-through">¥{{data.originPrice || '__'}}</view>
+  </view>
+  <!-- 包邮 -->
+  <image wx:if="{{data.isFreeShipping}}" class="free-shipping absolute-tl" src="./images/free_shipping.png" />
+</view>

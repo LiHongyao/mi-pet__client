@@ -1,0 +1,16 @@
+<view class="container px-20">
+  <!-- 可用优惠券 -->
+  <view class=" mt-38 ">
+    <view class=" color-2D2D2D f36 lh-50 f-bold mb-18">可用优惠券({{coupons.use.length}})</view>
+    <view class="coupons">
+      <coupon-item wx:for="{{coupons.use}}" wx:key="couponId" data="{{item}}" bind:itemTap="onCouponItemTap"/>
+    </view>
+  </view>
+  <!-- 不可用优惠券 -->
+  <view class="mt-38" wx:if="{{coupons.unuse.length > 0}}">
+    <view class=" color-2D2D2D f36 lh-50 f-bold mb-18">不可用优惠券({{coupons.unuse.length}})</view>
+    <view class="coupons">
+      <coupon-item disabled wx:for="{{coupons.unuse}}" data="{{item}}"  wx:key="couponId"/>
+    </view>
+  </view>
+</view>

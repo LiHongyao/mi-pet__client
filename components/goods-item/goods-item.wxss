@@ -1,0 +1,23 @@
+.godos-item {
+  width: 336rpx;
+  height: 424rpx;
+  margin-bottom: 30rpx;
+  background-color: #FFFFFF;
+  border-radius: 24rpx;
+}
+
+.goods-thumbnail {
+  width: 234rpx;
+  height: 274rpx;
+}
+
+.discount {
+  width: 70rpx;
+  height: 24rpx;
+}
+
+.free-shipping {
+  width: 110rpx;
+  height: 110rpx;
+}
+

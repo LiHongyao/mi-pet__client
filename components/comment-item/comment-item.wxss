@@ -1,0 +1,8 @@
+.avatar {
+  width: 58rpx;
+  height: 58rpx;
+}
+.business-avatar {
+  width: 30rpx;
+  height: 30rpx;
+}

@@ -1,0 +1,12 @@
+textarea {
+  height: 120rpx;
+}
+
+.icon-arrow {
+  width: 12rpx;
+  height: 22rpx;
+}
+.submit-buton {
+  width: 394rpx;
+  height: 88rpx;
+}

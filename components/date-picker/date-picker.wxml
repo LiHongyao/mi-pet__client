@@ -1,0 +1,26 @@
+<view class="date-picker__wrapper {{visible ? 'show' : ''}}">
+  <view class="date-picker__infos">
+    <!-- 顶栏 -->
+    <view class="date-picker__bar">
+      <view class="date-picker__button" catch:tap="onCancel">取消</view>
+      <view class="date-picker__button" catch:tap="onSure">确认</view>
+    </view>
+    <picker-view class="date-picker__picker" indicator-style="height: 50px;" value="{{value}}" bindchange="bindChange">
+      <picker-view-column>
+        <view wx:for="{{years}}" wx:key="item">
+          {{item}}年
+        </view>
+      </picker-view-column>
+      <picker-view-column>
+        <view wx:for="{{months}}" wx:key="item">
+          {{item}}月
+        </view>
+      </picker-view-column>
+      <picker-view-column>
+        <view wx:for="{{days}}" wx:key="item">
+          {{item}}日
+        </view>
+      </picker-view-column>
+    </picker-view>
+  </view>
+</view>

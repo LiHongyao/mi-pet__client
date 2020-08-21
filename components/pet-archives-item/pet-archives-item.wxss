@@ -1,0 +1,11 @@
+.pet-archives-item {
+  display: inline-block;
+  width: 436rpx;
+  height: 186rpx;
+}
+
+.pet-avatar {
+  width: 80rpx;
+  height: 80rpx;
+  background-color: pink;
+}

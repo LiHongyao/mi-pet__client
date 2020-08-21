@@ -1,0 +1,8 @@
+.status-image {
+  width: 113rpx;
+  height: 113rpx;
+}
+.button {
+  width: 328rpx;
+  height: 100rpx;
+}

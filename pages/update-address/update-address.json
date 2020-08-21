@@ -1,0 +1,7 @@
+{
+  "navigationBarTitleText": "收货地址",
+  "usingComponents": {
+    "van-button": "@vant/weapp/button/index",
+    "van-switch": "@vant/weapp/switch/index"
+  }
+}

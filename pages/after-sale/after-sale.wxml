@@ -1,0 +1,33 @@
+<view class="container">
+  <!-- 退款信息 -->
+  <order-item data="{{order}}" />
+  <!-- 状态/金额 -->
+  <view class="px-32 pt-38 pb-28 bg-FFFFFF my-12 f28 lh-40">
+    <view class="d-flex justify-content-between align-items-center mb-28" bind:tap="onStatusTap">
+      <view class="color-828282 ">货物状态</view>
+      <view>
+        <text class="color-2D2D2D mr-20">{{status || "是否收到货？"}}</text>
+        <image class="icon-arrow" src="../../assets/images/icon_arrow_right.png"></image>
+      </view>
+    </view>
+    <view class="d-flex align-items-center">
+      <view class="color-828282 f28 lh-40 mr-68">退款金额</view>
+      <view class="color-FF0000">￥{{order.total_price}}</view>
+    </view>
+  </view>
+  <!-- 退款原因 -->
+   <view class="px-32 py-28 bg-FFFFFF  f28 lh-40">
+     <view class="color-828282 mb-20">退款原因</view>
+     <textarea class="color-2D2D2D f28 lh-40 border-bottom rounded-10" placeholder="请输入退款原因" bindinput="onInput">
+       
+     </textarea>
+  </view>
+   <!-- 提交申请 -->
+  <view class="flex-center mt-72">
+    <van-button type="default" custom-style="width:394rpx; height:88rpx; background: #F82F5C; color: #FFFFFF; font-size: 30rpx; border-radius: 44rpx;" bind:click="onSubmit">
+      提交申请
+    </van-button>
+  </view>
+</view>
+
+<single-picker show="{{show}}" options="{{options}}" bind:change="onPickerChange" />

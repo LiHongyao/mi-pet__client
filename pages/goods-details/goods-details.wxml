@@ -1,0 +1,118 @@
+<wxs src="./goods-details.wxs" module="fn" />
+<block wx:if="{{goods}}">
+  <scroll-view class="container goods-details" scroll-y="true">
+    <!-- banner -->
+    <swiper wx:if="{{goods.images.length > 0}}" class="banners" indicator-dots="{{true}}" indicator-color="rgba(0, 0, 0, .3)" indicator-active-color="#F5F5F5" duration="400" circular="{{true}}">
+      <swiper-item class="h-full" wx:for="{{goods.images}}" wx:key="index">
+        <view class="swiper-item h-full">
+          <image src="{{item}}" class="w-full h-full" />
+        </view>
+      </swiper-item>
+    </swiper>
+    <!-- 标题 & 价格 -->
+    <view class="px-40 bg-FFFFFF pt-24 pb-32">
+      <view class="f30 lh-42 f-bold mb-16">{{goods.title + goods.specifications[0].title}}</view>
+      <view class="d-flex justify-content-between align-items-center">
+        <view class="d-flex align-items-center">
+          <view class="color-FF2121 lh-58 f-bold mr-16">
+            <text class="f30">¥</text>
+            <text class="f48">{{goods.specifications[0].salePrice}}</text>
+          </view>
+          <view class="discount bg-FF7F2A rounded-4 flex-center f20 color-FFFFFF lh-28 px-4">限时折扣</view>
+        </view>
+        <view class="f20 lh-28 color-BFBFBF line-through">￥{{goods.specifications[0].originPrice}}</view>
+      </view>
+    </view>
+    <!-- 信息 -->
+    <view class="mt-2 px-40 bg-FFFFFF d-flex flex-wrap">
+      <view class="info-item d-flex align-items-center f26">
+        <text class="color-828282">配送：</text>
+        <text>{{goods.isFreeShipping ? '包邮' : ''}}</text>
+      </view>
+      <view class="info-item d-flex align-items-center f26">
+        <text class="color-828282">品牌：</text>
+        <text>{{goods.brand}}</text>
+      </view>
+      <view class="info-item d-flex align-items-center f26">
+        <text class="color-828282">分类：</text>
+        <text>{{goods.category}}</text>
+      </view>
+      <view class="info-item d-flex align-items-center f26">
+        <text class="color-828282">品种：</text>
+        <text>{{goods.breed}}</text>
+      </view>
+      <view class="info-item d-flex align-items-center f26">
+        <text class="color-828282">保质：</text>
+        <text>{{goods.expires}}</text>
+      </view>
+    </view>
+    <!-- 用户评价 -->
+    <view wx:if="{{goods.evaluates.length > 0}}" class="mt-20 pl-42 pr-28 bg-FFFFFF pt-24">
+      <!-- 标题 -->
+      <view class="d-flex justify-content-between align-items-center">
+        <view class="f32 color-2A2A2A lh-44">用户评价</view>
+        <view bind:tap="onQueryComments">
+          <text class="f24 color-F82F5C lh-34">查看全部</text>
+          <image class="icon-arrow ml-12" src="../../assets/images/icon_arrow_right_1.png" />
+        </view>
+      </view>
+      <!-- 列表 -->
+      <view class="evaluate-list mb-16">
+        <comment-item wx:for="{{goods.evaluates}}" wx:key="index" data="{{item}}" />
+      </view>
+    </view>
+    <!-- 商品详情图 -->
+    <view class="detail-images">
+      <image class="detail-image" wx:for="{{goods.infos}}" src="{{item}}" wx:key="index" mode="widthFix"></image>
+    </view>
+    <!-- 服务 -->
+    <view class="mt-20 pl-24 pr-42 pt-28 pb-38 bg-FFFFFF border-bottom border-12 border-F5F5F5">
+      <view class="flex-center mb-40">
+        <view class="line bg-E6E6E6" />
+        <view class="mx-22 f-bold color-393939 f28 lh-40">品质服务质量</view>
+        <view class="line bg-E6E6E6" />
+      </view>
+      <!-- 七天无理由退款 -->
+      <view class="d-flex mb-40">
+        <image class="service-icon mr-18" src="./images/icon_refund.png" />
+        <view class="flex-1">
+          <view class="color-393939 f28 lh-40 mb-6">7天无理由退款</view>
+          <view class="color-828282 f24 lh-34">
+            自商品签收之日7天内，支持无理由退款，食品健康外包装不能拆封，其他品类商品外包装完整；（若有）要求吊牌完整；相关附（配）件齐全；商品无破损可申请无理由退货，包邮商品由买家承担相应邮费
+          </view>
+        </view>
+      </view>
+      <!-- 消费者保障质量 -->
+      <view class="d-flex">
+        <image class="service-icon mr-18" src="./images/icon_guarantee.png" />
+        <view class="flex-1">
+          <view class="color-393939 f28 lh-40 mb-6">消费者保障质量</view>
+          <view class="color-828282 f24 lh-34">
+            平台为买家提供1000圆担保金再确认收货7天内，如有商品质量问题/描述不符或未收到货等，您有权申请退款退货，来回邮费由卖家承担
+          </view>
+        </view>
+      </view>
+    </view>
+  </scroll-view>
+
+  <!-- 立即购买 -->
+  <view class="page-action--safe fixed-bottom bg-FFFFFF d-flex justify-content-between align-items-center ">
+    <view class="icons d-flex align-items-center">
+      <button class="button flex-v-center mr-60" open-type="share">
+        <image class="icon-image" src="./images/icon_share.png"></image>
+        <text class="color-747474 f20 lh-28">分享</text>
+      </button>
+      <view class="button flex-v-center" catch:tap="onFavorTap">
+        <image class="icon-image" src="{{fn.favor(goods.isFavor).imgPath}}"></image>
+        <text class="color-747474 f20 lh-28">{{fn.favor(goods.isFavor).text}}</text>
+      </view>
+    </view>
+    <van-button wx:if="{{isBindPhone}}" type="default" custom-style="background-color: #F82F5C; width: 222rpx; height: 68rpx;border-radius:34rpx;color:#FFFFFF;font-size:32rpx;" bind:tap="onGoFillOrder">
+      立即购买
+    </van-button>
+    <button wx:else open-type="getPhoneNumber" class="open-button flex-center  bg-F82F5C rounded-34 color-FFFFFF f32" bindgetphonenumber="onGetPhoneNumber">
+      立即购买
+    </button>
+  </view>
+</block>
+<loading wx:else />
