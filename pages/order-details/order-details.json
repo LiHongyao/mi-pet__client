@@ -7,6 +7,7 @@
     "address-item":"../../components/address-item/address-item",
     "order-item":"../../components/order-item/order-item",
     "order-info":"../../components/order-info/order-info",
-    "loading": "../../components/loading/loading"
+    "lg-loading": "../../components/@lgs/loading/index",
+    "lg-cell": "../../components/@lgs/cell/index"
   }
 }

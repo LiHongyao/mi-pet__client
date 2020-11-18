@@ -1,0 +1,6 @@
+<view class="lg-radio">
+  <view class="lg-radio__item" wx:for="{{data}}" wx:key="value" data-label="{{item.label}}" data-value="{{item.value}}" catch:tap="onRadioItemTap">
+    <image class="lg-radio__icon" src="{{(selected === item.label || selected === item.value) ? checkedIconPath : iconPath}}"/>
+    <text class="lg-radio__label">{{item.label}}</text>
+  </view>
+</view>

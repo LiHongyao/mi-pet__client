@@ -1,4 +1,0 @@
-<view class="no-data__wrapper">
-  <image class="no-data__img" src="./images/no-data.png" />
-  <view wx:if="{{tips}}" class="no-data__tips">{{tips}}</view>
-</view>

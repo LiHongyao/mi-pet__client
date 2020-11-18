@@ -1,10 +1,8 @@
 {
   "navigationBarTitleText": "收藏",
   "usingComponents": {
-    "menu-bar": "../../components/menu-bar/menu-bar",
-    "loading": "../../components/loading/loading",
-    "list": "../../components/list/list",
-    "list-wrap": "../../components/list-wrap/list-wrap",
+    "lg-menu-bar": "../../components/@lgs/menu-bar/index",
+    "lg-list": "../../components/@lgs/list/index",
     "goods-item": "../../components/goods-item/goods-item",
     "guide-item": "../../components/guide-item/guide-item",
     "slide-cell": "../../components/slide-cell/slide-cell"

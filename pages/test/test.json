@@ -1,5 +1,6 @@
 {
   "usingComponents": {
-    "lg-search": "../../components/@lgs/search/index"
+    "lg-search": "../../components/@lgs/search/index",
+    "lg-cell": "../../components/@lgs/cell/index"
   }
 }

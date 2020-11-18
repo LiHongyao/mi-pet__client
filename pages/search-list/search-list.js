@@ -19,6 +19,7 @@ Page({
   },
   // methods
   _getData() {
+    
     goodsList({
       status: 1,
       keyword: this.keyword,

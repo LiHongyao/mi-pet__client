@@ -56,138 +56,112 @@ export function orderPay(data) {
   }, '处理中，请稍后...')
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 /**
  * 订单列表
  * @param {*} data 
- * 订单状态
- * 1：待付款
- * 2：待发货
- * 3：待收货
- * 4：已完成
- * 5：退款/售后
+ * data.type
+ * data.pageSize
+ * data.page
  */
 export function orders(data) {
   return request({
-    url: '/order/Index',
+    url: '/order/list',
     method: 'POST',
     data
   })
 }
-
-
 /**
  * 取消订单
- * @param {*} data 
+ * @param {*} orderId 
  */
-export function cancelOrder(data) {
+export function deleteOrder(orderId) {
   return request({
-    url: '/order/Cancel',
+    url: '/order/delete',
+    method: 'POST',
+    data: { orderId }
+  }, '处理中，请稍后...')
+}
+/**
+ * 退款
+ * @param {*} data 
+ * data.orderId
+ * data.reason
+ * data.images
+ */
+export function refund(data) {
+  return request({
+    url: '/order/refund',
     method: 'POST',
     data
-  })
+  }, '处理中，请稍后...')
 }
 
 /**
  * 确认收货
- * @param {*} id 
+ * @param {*} orderId 
  */
-export function confirmReceipt(id) {
+export function confirmReceipt(orderId) {
   return request({
-    url: '/order/Collect',
+    url: '/order/confirm',
     method: 'POST',
-    data: { id }
-  })
+    data: { orderId }
+  }, '处理中，请稍后...')
 }
 
-
-
-/**
- * 退款
- * @param {*} id // 订单id 
- */
-export function refund(id) {
-  return request({
-    url: '/order/refund',
-    method: 'POST',
-    data: { id }
-  })
-}
-/**
- * 催单
- * @param {*} order_id 
- */
-export function reminder(order_id) {
-  return request({
-    url: '/order/reminder',
-    method: 'POST',
-    data: { order_id }
-  })
-}
-
-/**
- * 申请售后
- * @param {*} data 
- */
-export function applyAfterSale(data) {
-  return request({
-    url: '/order/Create',
-    method: 'POST',
-    data
-  })
-}
-/**
- * 撤销售后
- * data.id
- */
-export function cancelAfterSale(data) {
-  return request({
-    url: '/order/order_after_cancel',
-    method: 'POST',
-    data
-  })
-}
 /**
  * 评价
  * @param {*} data 
+ * data.orderId
+ * data.content
+ * data.star
  */
 export function evaluate(data) {
   return request({
-    url: '/order/CommentsSave',
+    url: '/order/comment',
     method: 'POST',
     data
   })
 }
 
 /**
- * 使用优惠券结算
- * @param {*} data 
- * data.coupon_id
- * data.order_no
+ * 撤销售后
+ * orderId
  */
-export function useCoupon(data) {
+export function cancelAfterSale(orderId) {
   return request({
-    url: '/order/coupon_use',
+    url: '/order/cancell',
+    method: 'POST',
+    data: { orderId }
+  }, '撤销中...')
+}
+
+
+/**
+ * 催单
+ * @param {*} orderId 
+ */
+export function reminder(orderId) {
+  return request({
+    url: '/order/reminder',
+    method: 'POST',
+    data: { orderId }
+  }, '处理中，请稍后...')
+}
+
+/**
+ * 更新支付状态
+ * @param {*} data 
+ * data.status 支付状态  1 成功 0 失败
+ * data.orderId
+ */
+export function payStatus(data) {
+  return request({
+    url: '/order/payStatus',
     method: 'POST',
     data
   })
 }
+
+
+
+

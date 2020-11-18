@@ -1,6 +1,7 @@
 
 import { petFiles } from '../../api/pets'
 import { user } from '../../api/user'
+import { checkAuth } from '../../utils/common'
 import eventBus from '../../utils/eventBus'
 var appInst = getApp();
 
@@ -30,6 +31,18 @@ Page({
     eventBus.$on('PHONE_CHANGE', () => {
       this._initData();
     });
+    // 监听用户下单更新优惠券
+    eventBus.$on('COUPON_USED', () => {
+      this._initData();
+    });
+    // 监听宠物添加/修改/删除
+    eventBus.$on('PET_UPDATE', () => {
+      this._getPetFiles();
+    });
+    // 监听登录
+    eventBus.$on('LOGGED', () => {
+      this._initData();
+    });
   },
   _initData() {
     const isAuth = appInst.globalData.isAuth;
@@ -50,7 +63,6 @@ Page({
   // 获取宠物档案
   _getPetFiles() {
     petFiles().then(res => {
-      console.log(res);
       this.setData({
         petFiles: res.data
       })
@@ -58,9 +70,11 @@ Page({
   },
   // events
   onOrderItemTap(e) {
-    const { status, title } = e.currentTarget.dataset;
-    wx.navigateTo({
-      url: `../orders/orders?title=${title}&status=${status}`
+    checkAuth().then(() => {
+      const { status, title } = e.currentTarget.dataset;
+      wx.navigateTo({
+        url: `../orders/orders?title=${title}&status=${status}`
+      })
     })
   },
   onMenuItemTap({ currentTarget: { dataset: { text, to } } }) {
@@ -72,7 +86,14 @@ Page({
         break;
       case '联系客服':
         wx.makePhoneCall({
-          phoneNumber: '17398888669'
+          phoneNumber: '4000778182'
+        })
+        break;
+      case '收货地址': 
+        checkAuth().then(() => {
+          wx.navigateTo({
+            url: to,
+          })
         })
         break;
       default: {
@@ -84,22 +105,12 @@ Page({
   },
   onAddPet() {
     wx.navigateTo({
-      url: '../add-pets/add-pets',
-      events: {
-        refreshPetFile: () => {
-          this._getPetFiles();
-        }
-      }
+      url: '../add-pets/add-pets'
     })
   },
   onPetArchivesItemTap({ detail }) {
     wx.navigateTo({
-      url: `../pet-details/pet-details?petId=${detail}`,
-      events: {
-        refreshPetFile: () => {
-          this._getPetFiles();
-        }
-      }
+      url: `../pet-details/pet-details?petId=${detail}`
     })
   },
   onPush(e) {
@@ -109,14 +120,8 @@ Page({
     })
   },
   onLogin() {
-    let _this = this;
     wx.navigateTo({
-      url: '../login/login',
-      events: {
-        refresh() {
-          _this._initData();
-        }
-      },
+      url: '../login/login'
     });
   }
 })

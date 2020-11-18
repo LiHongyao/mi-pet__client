@@ -1,4 +1,4 @@
-import { calcListHeight, checkAuth } from '../../utils/common'
+import { calcListHeight } from '../../utils/common'
 import { screeningConditions, goodsList } from '../../api/goods'
 import { registerWatcher } from '../../utils/watcher'
 
@@ -20,6 +20,7 @@ Page({
     wx.setNavigationBarTitle({
       title: title || ''
     });
+    this.isRecommend = 1;
     this.goodsType = +goodsType;
     this._initData();
   },
@@ -32,18 +33,21 @@ Page({
           this.setData({ priceStatus: -1 })
           this.orderName = undefined;
           this.orderVal = undefined;
+          this.isRecommend = 1;
           break;
         case 1:
           this.setData({ priceStatus: -1 })
           this.orderName = 'sales';
           this.orderVal = 'asc';
+          this.isRecommend = 0;
           break;
         case 2:
           let priceStatus = this.data.priceStatus;
           this.orderName = 'salePrice';
           priceStatus = priceStatus === -1 ? 0 : ( priceStatus === 1  ? 0: 1);
-          this.orderVal = priceStatus === 1  ? 'asc': 'desc';
-          this.setData({ priceStatus })
+          this.orderVal = priceStatus === 1  ? 'desc': 'asc';
+          this.setData({ priceStatus });
+          this.isRecommend = 0;
           break;
       }
       this.setData({
@@ -67,7 +71,7 @@ Page({
     })
   },
   _getBreedsAndBrands() {
-    screeningConditions().then(res => {
+    screeningConditions(this.goodsType).then(res => {
       this.setData({
         breedsAndBrands: res.data
       })
@@ -75,6 +79,7 @@ Page({
   },
   _getGoodsFilterList() {
     goodsList({
+      isRecommend: this.isRecommend,
       status: 1,
       typeId: this.goodsType,
       orderName: this.orderName,
@@ -82,7 +87,7 @@ Page({
       brand: this.brand,
       breedId: this.breedId,
       keyword: this.keyword,
-      pageSize: 20,
+      pageSize: 6,
       page: this.page
     }).then(res => {
       const list = this.data.list;
@@ -156,11 +161,12 @@ Page({
     this._getGoodsFilterList();
   },
   onGoodsItemTap({ detail: { goodsId } }) {
-    checkAuth().then(() => {
-      wx.navigateTo({
-        url: `../goods-details/goods-details?goodsId=${goodsId}`
-      })
+    wx.navigateTo({
+      url: `../goods-details/goods-details?goodsId=${goodsId}`
     })
+  },
+  onScreenMaskTap() {
+    this.setData({screenChecked: false})
   }
 })
 

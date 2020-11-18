@@ -21,7 +21,7 @@
       <!-- 性别 -->
       <view class="form-item d-flex justify-content-between align-items-center">
         <justify-view class="item-title mr-42 f26 color-272727" text="性别" required />
-        <radio-box key="gender" data="{{radio.gender}}" defaultSelected="{{values.gender}}" bind:change="onRadioChange" class="flex-1" />
+        <lg-radio key="gender" data="{{radio.gender}}" defaultSelected="{{values.gender}}" bind:change="onRadioChange" class="flex-1" />
       </view>
       <!-- 生日 -->
       <view class="form-item d-flex justify-content-between align-items-center" catch:tap="onShowPicker" data-key="birthday">
@@ -31,12 +31,12 @@
       <!-- 品级 -->
       <view class="form-item d-flex justify-content-between align-items-center">
         <justify-view class="item-title mr-42 f26 color-272727" text="品级" />
-        <radio-box key="grade" data="{{radio.grade}}" defaultSelected="{{values.grade}}" bind:change="onRadioChange" class="flex-1" />
+        <lg-radio key="grade" data="{{radio.grade}}" defaultSelected="{{values.grade}}" bind:change="onRadioChange" class="flex-1" />
       </view>
       <!-- 是否绝育 -->
       <view class="form-item d-flex justify-content-between align-items-center">
         <justify-view class="item-title mr-42 f26 color-272727" text="是否绝育" />
-        <radio-box key="is_sterilization" data="{{radio.sterilization}}" defaultSelected="{{values.is_sterilization}}" bind:change="onRadioChange" class="flex-1" />
+        <lg-radio key="is_sterilization" data="{{radio.sterilization}}" defaultSelected="{{values.is_sterilization}}" bind:change="onRadioChange" class="flex-1" />
       </view>
     </view>
   </view>
@@ -47,7 +47,7 @@
     </van-button>
   </view>
   <!-- 日期选择器 -->
-  <date-picker show="{{show}}" bind:change="onPickerChange" />
+  <lg-date-picker show="{{show}}" bind:change="onPickerChange" />
   <!-- 疫苗情况v2.0 -->
   <!-- <view class="content px-20 pt-32 pb-24 mt-20 bg-FFFFFF rounded-24 mb-99">
     <view class="color-272727 f28 lh-40 f-bold mb-22">疫苗情况（必填）</view>

@@ -1,7 +1,8 @@
 {
   "navigationBarTitleText": "宠物详情",
   "usingComponents": {
-    "justify-view":"../../components/justify-view/justify-view",
-    "loading":"../../components/loading/loading"
+    "justify-view":"../../components/@lgs/justify-view/justify-view",
+    "lg-loading":"../../components/@lgs/loading/index",
+    "lg-cell":"../../components/@lgs/cell/index"
   }
 }

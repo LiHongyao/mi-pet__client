@@ -7,9 +7,9 @@
     "van-loading": "@vant/weapp/loading/index",
     "van-overlay": "@vant/weapp/overlay/index",
     "lg-search":"../../components/@lgs/search/index",
-    "app-header": "../../components/app-header/app-header",
-    "goods-item": "../../components/goods-item/goods-item",
-    "loading":"../../components/loading/loading"
+    "lg-loading": "../../components/@lgs/loading/index",
+    "lg-app-header": "../../components/@lgs/app-header/index",
+    "goods-item": "../../components/goods-item/goods-item"
   }
 }
 

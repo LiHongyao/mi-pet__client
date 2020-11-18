@@ -22,30 +22,24 @@
   </view>
   <!-- 配送方式/优惠券 -->
   <view class="px-32 py-28 bg-FFFFFF">
-    <view class="d-flex justify-content-between align-items-center mb-28">
-       <justify-view class="title color-2D2D2D f26 lh-36" text="配送方式" />
-      <text class="color-828282 f26 lh-36">包邮</text>
-    </view>
-    <view class="d-flex justify-content-between align-items-center f26 lh-36" catch:tap="onChooseCoupon">
-      <justify-view class="title color-2D2D2D " text="优惠券" />
-      <view wx:if="{{!deduction}}">
-        <text class="color-FF2121  mr-16">{{coupons.use.length}}张可用</text>
-        <image class="icon-arrow-right" src="../../assets/images/icon_arrow_right_1.png"></image>
+    <lg-cell title="配送方式" value="包邮" alignRight />
+    <lg-cell title="优惠券" alignRight catch:tap="onChooseCoupon">
+      <view slot="value">
+        <view wx:if="{{!deduction}}" class="color-FF2121">{{coupons.use.length}}张可用</view>
+        <text wx:else class="color-FF2121 ">已抵扣 ￥{{deduction}}</text>
       </view>
-      <text wx:else class="color-FF2121 ">已抵扣 ￥{{deduction}}</text>
-    </view>
+      <image slot="icon" class="icon-arrow-right ml-16" src="../../assets/images/icon_arrow_right_1.png"></image>
+    </lg-cell>
   </view>
   <!-- 收货信息 -->
-  <view class="px-32 py-28 bg-FFFFFF mt-12">
-    <view class="d-flex align-items-center mb-28 f26 lh-36">
-      <justify-view class="title color-2D2D2D " text="收货人" />
-      <text class=" mr-20">{{order.address.name}}</text>
-      <text class=" color-828282 f24 lh-34">{{order.address.phone}}</text>
-    </view>
-     <view class="d-flex justify-content-between mb-28 f26 lh-36 ">
-      <justify-view class="title color-2D2D2D" text="收货地址" />
-      <text class="color-393939 flex-1">{{order.address.address + order.address.doorplate}}</text>
-    </view>
+  <view class="px-32  bg-FFFFFF mt-12">
+    <lg-cell title="收货人">
+      <view slot="value">
+        <text class=" color-2D2D2D mr-20">{{order.address.name}}</text>
+        <text class=" color-828282 f24 lh-34">{{order.address.phone}}</text>
+      </view>
+    </lg-cell>
+    <lg-cell title="收货地址" value="{{order.address.address + (order.address.doorplate || '')}}" custom-class="cell" value-class="address-item" />
   </view>
   <!-- 立即支付 -->
   <view class="page-action--safe fixed-bottom bg-FFFFFF d-flex justify-content-between align-items-center">
@@ -67,4 +61,4 @@
     </van-button>
   </view>
 </view>
-<loading  wx:else/>
+<lg-loading  wx:else/> 

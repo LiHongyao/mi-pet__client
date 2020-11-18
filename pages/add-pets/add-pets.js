@@ -2,6 +2,7 @@
 import { toast, imgToBase64 } from '../../utils/common'
 import { uploadFile } from '../../api/upload'
 import { petUpdate } from '../../api/pets'
+import eventBus from '../../utils/eventBus'
 
 Page({
   data: {
@@ -43,7 +44,6 @@ Page({
         Object.keys(this.data.values).forEach(key => {
           values[key] = data[key];
         });
-        console.log(values);
         this.setData({
           values,
           isAdd: 0,
@@ -88,7 +88,7 @@ Page({
       avatar: avatar ? avatar : files[0].url
     }).then(() => {
       toast({ title: isAdd ? '添加成功' : '修改成功' }).then(() => {
-        this.eventChannel.emit('refreshPetFile');
+        eventBus.$emit('PET_UPDATE');
         wx.navigateBack();
       });
     })
@@ -125,7 +125,6 @@ Page({
   },
   onFilesAfterRead(event) {
     const { file } = event.detail;
-    console.log(file);
     this.setData({
       files: [ { url: file.path }],
       isEditAvatar: true
@@ -155,6 +154,7 @@ Page({
   },
   // 显示日期拾取器
   onShowPicker(event) {
+    console.log(event);
     this.pickerKey = event.currentTarget.dataset.key;
     this.setData({
       show: true

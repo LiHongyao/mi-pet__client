@@ -71,14 +71,41 @@ function expires(timeStamp) {
   return Math.floor((targetDate - currentDate ) / 1000 / 60 / 60 / 24);
 }
 
+/**
+ * 金额格式
+ * @param amount 
+ */
+function amountFormat(amount) {
+  return amount.toFixed(2);
+}
 
+/**
+ * 退款标题
+ * @param refundStatus 
+ */
+function refundTitle(refundStatus ) {
+  console.log('退款状态', refundStatus)
+  return refundStatus === 1 ? '退款中' : (refundStatus === 2 ? '退款成功' : '退款失败')
+}
+/**
+ * 退款描述
+ * @param refundStatus 
+ * @param payAmount 
+ */
+function refundDesc(refundStatus, payAmount, failReason ) {
+
+  return refundStatus === 1 ? '等待商家确认退款' : (refundStatus === 2 ? '退款金额:' + payAmount :  failReason)
+}
 // 1603209599999
 
 module.exports = {
   telFormat: telFormat,
   richTextFormat: richTextFormat,
   dateFormat:dateFormat,
-  expires:expires
+  expires:expires,
+  amountFormat: amountFormat,
+  refundTitle:refundTitle,
+  refundDesc:refundDesc
 }
 
 

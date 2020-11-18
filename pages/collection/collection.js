@@ -2,7 +2,7 @@
 
 import eventBus from '../../utils/eventBus'
 import { favorSwitch } from '../../api/collection'
-import { calcListHeight } from '../../utils/common'
+import { calcListHeight, checkAuth } from '../../utils/common'
 import { collections } from '../../api/collection'
 Page({
   data: {
@@ -14,6 +14,7 @@ Page({
     guideFinished: false,
     guideList: null
   },
+
   onLoad() {
     // 注册事件
     eventBus.$on('COLLECTION_CHANGE', ({ type }) => {
@@ -34,7 +35,7 @@ Page({
       this.setData({
         listHeight: height
       });
-    })
+    });
     // 初始化数据
     this.type = 1;
     this._initData();

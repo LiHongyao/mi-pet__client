@@ -1,6 +1,0 @@
-<view class="menu-bar__wrapper {{custom-class}}" style="justify-content: {{mode === 'around' ? 'space-around' : 'flex-start'}};background-color: {{backgroundColor}}">
-  <view class="menu-bar__item {{index === currentIndex ? 'menu-bar__item_selected' : ''}}" wx:for="{{menus}}" wx:key="item" data-index="{{index}}" bind:tap="onItemTap">
-    {{item}}
-  </view>
-  <view class="menu-bar__cursor" style="left:{{locations[currentIndex]}}px;"/>
-</view>

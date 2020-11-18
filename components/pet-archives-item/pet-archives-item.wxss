@@ -4,6 +4,10 @@
   height: 186rpx;
 }
 
+.pet-archives-item > view {
+  top: 20rpx;
+  left: 20rpx;
+}
 .pet-avatar {
   width: 80rpx;
   height: 80rpx;

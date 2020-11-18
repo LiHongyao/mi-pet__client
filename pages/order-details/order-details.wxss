@@ -15,3 +15,26 @@
   width: 394rpx;
   height: 88rpx;
 }
+.icon-arrow-right {
+  width: 12rpx;
+  height: 22rpx;
+}
+
+.item .item-title {
+  color: #828282;
+  font-size: 28rpx;
+}
+.item .item-value {
+  color: #2D2D2D;
+  font-size: 28rpx;
+}
+
+.item .item-value-pay {
+  font-size: 38rpx;
+  color: #FF2121;
+  font-weight: bold;
+}
+
+.van-step__title {
+  font-size: 22rpx;
+}

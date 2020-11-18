@@ -20,6 +20,7 @@ button::after {
 }
 
 
+.border-box { box-sizing: border-box; }
 
 /* 尺寸 */
 .w-full { width: 100%;  }
@@ -208,6 +209,7 @@ button::after {
 .px-15 { padding-left: 15rpx; padding-right: 15rpx;}
 .px-18 { padding-left: 18rpx; padding-right: 18rpx;}
 .px-20 { padding-left: 20rpx; padding-right: 20rpx;}
+.px-24 { padding-left: 24rpx; padding-right: 24rpx;}
 .px-28 { padding-left: 28rpx; padding-right: 28rpx;}
 .px-30 { padding-left: 30rpx; padding-right: 30rpx;}
 .px-32 { padding-left: 32rpx; padding-right: 32rpx;}
@@ -221,6 +223,7 @@ button::after {
 .py-6  { padding-top: 6rpx ; padding-bottom: 6rpx;}
 .py-14 { padding-top: 14rpx; padding-bottom: 14rpx;}
 .py-20 { padding-top: 20rpx; padding-bottom: 20rpx;}
+.py-24 { padding-top: 24rpx; padding-bottom: 24rpx;}
 .py-28 { padding-top: 28rpx; padding-bottom: 28rpx;}
 .py-34 { padding-top: 34rpx; padding-bottom: 34rpx;}
 .py-36 { padding-top: 36rpx; padding-bottom: 36rpx;}
@@ -263,6 +266,7 @@ button::after {
 
 .pl-20 { padding-left: 20rpx; }
 .pl-24 { padding-left: 24rpx; }
+.pl-28 { padding-left: 28rpx; }
 .pl-30 { padding-left: 30rpx; }
 .pl-32 { padding-left: 32rpx; }
 .pl-42 { padding-left: 42rpx; }
@@ -338,6 +342,7 @@ button::after {
 .ml-6  { margin-left: 6rpx;  }
 .ml-10 { margin-left: 10rpx; }
 .ml-12 { margin-left: 12rpx; }
+.ml-16 { margin-left: 16rpx; }
 .ml-28 { margin-left: 28rpx; }
 .ml-34 { margin-left: 34rpx; }
 .ml-42 { margin-left: 42rpx; }
@@ -388,6 +393,11 @@ button::after {
 .scroll-y { overflow-y: scroll; -webkit-overflow-scrolling: touch; } 
 
 /* 行数 */
+.line-clamp-1 {
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+}
 .line-clamp-2 {
 	text-overflow: ellipsis;
 	display: -webkit-box;

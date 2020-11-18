@@ -10,11 +10,12 @@
         <address-item wx:for="{{list}}" wx:key="index" data="{{item}}" :index="{{index}}" bind:edit="onEditAddress" bind:itemTap="onAddressItemTap" />
       </view>
     </block>
-    <no-data wx:else tips="您还没有添加地址哟~"></no-data>
+    <lg-no-data wx:else tips="您还没有添加地址哟~"></lg-no-data>
     <!-- 按钮 -->
     <view class="color-FFFFFF f30 lh-42 d-flex justify-content-between align-items-center mt-48 px-30 pb-74">
       <view class="button flex-center rounded-50 bg-FF9191" bind:tap="onImportAddress">导入微信地址</view>
       <view class="button flex-center rounded-50 bg-F82F5C" bind:tap="onGoAddAddress">添加收货地址</view>
     </view>
   </block>
+  <lg-loading wx:else/>
 </view>

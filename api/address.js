@@ -22,7 +22,7 @@ export function updateAddress(data) {
     url: '/address/update',
     method: 'POST',
     data
-  })
+  }, '处理中，请稍后...')
 }
 
 /**
@@ -34,5 +34,5 @@ export function deleteAddress(addrId) {
     url: '/address/delete',
     method: 'POST',
     data: { addrId }
-  })
+  }, '正在删除...')
 }

@@ -1,0 +1,20 @@
+
+<view class="lg-list" style="height:{{height}}" >
+  <block wx:if="{{data}}">
+    <scroll-view 
+      wx:if="{{data.length > 0}}"
+      style="height:{{height}}" 
+      scroll-y 
+      bindscrolltolower="onLoadMore" 
+    >
+      <view class="lg-list__contents">
+        <slot />
+        <view class="lg-list__load_more">
+          {{finished ? finishedText : loadingText}}
+        </view>
+      </view>
+    </scroll-view>
+    <lg-no-data wx:else tips="{{tips}}" />
+  </block>
+  <lg-loading wx:else top="50px" />
+</view>

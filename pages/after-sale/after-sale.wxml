@@ -1,33 +1,46 @@
 <view class="container">
   <!-- 退款信息 -->
-  <order-item data="{{order}}" />
+  <view class="pt-20 pb-30 pl-28 pr-46 bg-FFFFFF ">
+    <view class=" f-bold f26 lh-36 color-272727 mb-40">退款信息</view>
+    <view class="d-flex align-items-start">
+      <image class="thumbnail mr-24 border rounded-10" src="{{order.thumbnail}}"></image>
+      <view class="flex-1 color-2D2D2D f28 lh-40">{{order.title}}</view>
+    </view>
+  </view>
   <!-- 状态/金额 -->
   <view class="px-32 pt-38 pb-28 bg-FFFFFF my-12 f28 lh-40">
+
     <view class="d-flex justify-content-between align-items-center mb-28" bind:tap="onStatusTap">
       <view class="color-828282 ">货物状态</view>
       <view>
-        <text class="color-2D2D2D mr-20">{{status || "是否收到货？"}}</text>
+        <text class="color-2D2D2D mr-20">{{status && status.label || "是否收到货？"}}</text>
         <image class="icon-arrow" src="../../assets/images/icon_arrow_right.png"></image>
       </view>
     </view>
+
     <view class="d-flex align-items-center">
       <view class="color-828282 f28 lh-40 mr-68">退款金额</view>
-      <view class="color-FF0000">￥{{order.total_price}}</view>
+      <view class="color-FF0000">￥{{order.payAmount}}</view>
     </view>
   </view>
   <!-- 退款原因 -->
    <view class="px-32 py-28 bg-FFFFFF  f28 lh-40">
      <view class="color-828282 mb-20">退款原因</view>
-     <textarea class="color-2D2D2D f28 lh-40 border-bottom rounded-10" placeholder="请输入退款原因" bindinput="onInput">
+     <textarea class="color-2D2D2D f28 lh-40 border-bottom rounded-10" placeholder="请输入退款原因..." bindinput="onInput">
        
      </textarea>
   </view>
+  <!-- 上传凭据 -->
+  <view wx:if="{{status && status.value === 1}}" class=" pt-24 px-32 pb-28 bg-FFFFFF mt-12">
+     <view class=" f-bold f26 lh-36 color-272727 mb-40">上传凭据</view>
+     <van-uploader file-list="{{ files }}" bind:after-read="onAfterRead" bind:delete="onDeleteFile" />
+  </view>
    <!-- 提交申请 -->
-  <view class="flex-center mt-72">
+  <view class="flex-center mt-72 pb-98">
     <van-button type="default" custom-style="width:394rpx; height:88rpx; background: #F82F5C; color: #FFFFFF; font-size: 30rpx; border-radius: 44rpx;" bind:click="onSubmit">
       提交申请
     </van-button>
   </view>
 </view>
 
-<single-picker show="{{show}}" options="{{options}}" bind:change="onPickerChange" />
+<lg-single-picker show="{{show}}" options="{{options}}" bind:change="onPickerChange" />

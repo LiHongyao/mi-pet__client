@@ -1,7 +1,0 @@
-{
-  "component": true,
-  "usingComponents": {
-    "loading": "../../components/loading/loading",
-    "no-data": "../no-data/no-data"
-  }
-}

@@ -1,6 +1,0 @@
-<block wx:if="{{data}}">
-
-  <slot wx:if="{{data.length > 0}}" />
-  <no-data wx:else tips="没有更多数据啦~" />
-</block>
-<loading wx:else />

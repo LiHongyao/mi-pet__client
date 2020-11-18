@@ -1,49 +1,52 @@
 <block wx:if="{{banners && goodsTypes && goods}}">
-	<scroll-view class="container" scroll-y="{{true}}"  bindscrolltolower="onLoadMore" >
-			<!-- 头部 -->
-			<app-header title="觅宠" leftStyle="custom" backgroundColor="#FFFFFF">
-					<!-- <view class="flex-center" slot="left" bind:tap="onPush" data-path="../city-list/city-list">
+	<scroll-view class="container" scroll-y="{{true}}" bindscrolltolower="onLoadMore">
+		<!-- 头部 -->
+		<lg-app-header title="觅宠" leftStyle="custom" backgroundColor="#FFFFFF">
+			<!-- <view class="flex-center" slot="left" bind:tap="onPush" data-path="../city-list/city-list">
 					<span class="f14">{{city}}</span>
 					<van-icon name="arrow-down" size="12" />
 			</view> -->
-			</app-header>
-			<!-- 搜索栏 -->
-			<view class="py-20 bg-FFFFFF">
-				<lg-search placeHolder="搜索商品品牌、名称" disabled="{{true}}" bind:tap="onSearch"/>
+		</lg-app-header>
+		<!-- 搜索栏 -->
+		<view class="py-20 bg-FFFFFF">
+			<lg-search placeHolder="搜索商品品牌、名称" disabled="{{true}}" bind:tap="onSearch" />
+		</view>
+		<!-- banner -->
+		<swiper class="banners" indicator-dots="{{true}}" indicator-color="rgba(0, 0, 0, .3)"
+			indicator-active-color="#F5F5F5" duration="400" circular="{{true}}">
+			<swiper-item class="h-full" wx:for="{{banners}}" wx:key="index" data-url="{{item.url}}" catch:tap="onBannerTap">
+				<view class="swiper-item h-full">
+					<image src="{{item.image}}" class=" w-full h-full" />
+				</view>
+			</swiper-item>
+		</swiper>
+		<!-- 频道 -->
+		<view class="channel d-flex justify-content-around align-items-center py-36 bg-FFFFFF">
+			<view wx:for="{{goodsTypes}}" wx:key="index" class=" flex-v-center" bind:tap="onGoodsTypeItemTap"
+				data-title="{{item.name}}" data-goods-type="{{item.goodsType}}" data-path="../goods/goods">
+				<image class="channel-icon" src="{{item.image}}" />
+				<text class="f26 color-2A2A2A f-bold mt-20">{{item.name}}</text>
 			</view>
-			<!-- banner -->
-			<swiper class="banners" indicator-dots="{{true}}" indicator-color="rgba(0, 0, 0, .3)" indicator-active-color="#F5F5F5" duration="400" circular="{{true}}">
-					<swiper-item class="h-full" wx:for="{{banners}}" wx:key="index">
-							<view class="swiper-item h-full">
-									<image src="{{item.image}}" class=" w-full h-full" />
-							</view>
-					</swiper-item>
-			</swiper>
-			<!-- 频道 -->
-			<view class="channel d-flex justify-content-around align-items-center py-36 bg-FFFFFF">
-					<view wx:for="{{goodsTypes}}" wx:key="index" class=" flex-v-center" bind:tap="onGoodsTypeItemTap" data-title="{{item.name}}" data-goods-type="{{item.goodsType}}" data-path="../goods/goods">
-							<image class="channel-icon" src="{{item.image}}" />
-							<text class="f26 color-2A2A2A f-bold mt-20">{{item.name}}</text>
-					</view>
-			</view>
-			<!-- 商品列表 -->
-			<view class="goods-list mt-20 px-30 d-flex flex-wrap justify-content-between">
-					<goods-item wx:for="{{goods}}" wx:key="index" data="{{item}}" bind:itemTap="onGoodsItemTap" />
-			</view>
-			<!-- 提示信息 -->
-			<view class="text-center color-828282 f24 ls-6 mt-32 pb-44">
-				{{finished ? '没有更多啦~' : '数据加载中...'}}
-			</view>
+		</view>
+		<!-- 商品列表 -->
+		<view class="goods-list mt-20 px-30 d-flex flex-wrap justify-content-between">
+			<goods-item wx:for="{{goods}}" wx:key="index" data="{{item}}" bind:itemTap="onGoodsItemTap" />
+		</view>
+		<!-- 提示信息 -->
+		<view class="text-center color-828282 f24 ls-6 mt-32 pb-44">
+			{{finished ? '没有更多啦~' : '数据加载中...'}}
+		</view>
 	</scroll-view>
 	<!-- 优惠券弹窗 -->
 	<van-overlay show="{{ showCouponDialog }}" bind:tap="onHideCouponDialog">
-			<view class="coupon-dialog">
-					<image class="coupon-dialog__img w-full h-full" src="./images/coupon_dialog.png" />
-					<view class="coupon-dialog__buttons w-full flex-center">
-							<image class="coupon-dialog__button mr-20" src="./images/dialog_button_sure.png" catch:tap="onHideCouponDialog" />
-							<image class="coupon-dialog__button" src="./images/dialog_button_query.png" catch:tap="onQueryCoupons" />
-					</view>
+		<view class="coupon-dialog">
+			<image class="coupon-dialog__img w-full h-full" src="./images/coupon_dialog.png" />
+			<view class="coupon-dialog__buttons w-full flex-center">
+				<image class="coupon-dialog__button mr-20" src="./images/dialog_button_sure.png"
+					catch:tap="onHideCouponDialog" />
+				<image class="coupon-dialog__button" src="./images/dialog_button_query.png" catch:tap="onQueryCoupons" />
 			</view>
+		</view>
 	</van-overlay>
 </block>
-<loading wx:else />
+<lg-loading wx:else />

@@ -1,27 +1,28 @@
 <view class="container px-20">
-  <list-wrap data="{{orders}}">
-    <list finished="{{true}}">
-      <order-item 
-        wx:for="{{orders}}"
-        wx:key="order_no" 
-        title="{{title}}"
-        status="{{status}}" 
-        data="{{item}}"
-        index="{{index}}"
-        bind:orderTap="onOrderItemTap"
-        bind:cancel="onCancelOrder"
-        bind:payment="onPayment"
-        bind:confirmReceipt="onConfirmReceipt"
-        bind:evaluate="onEvaluate"
-        bind:buyAgain="onBuyAgain"
-        bind:revoke="onRevoke"
-        bind:refund="onRefund"
-        bind:reminder="onReminder"
-      />
-    </list>
-  </list-wrap>
+  <lg-list data="{{orders}}" finished="{{finished}}" bind:load="onLoadMore">
+    <order-item 
+      wx:for="{{orders}}"
+      wx:key="order_no" 
+      title="{{title}}"
+      status="{{status}}" 
+      data="{{item}}"
+      index="{{index}}"
+
+      bind:orderTap="onOrderItemTap"
+
+      bind:delete="onDeleteOrder"
+
+      bind:confirmReceipt="onConfirmReceipt"
+      
+      bind:evaluate="onEvaluate"
+      bind:buyAgain="onBuyAgain"
+      bind:revoke="onRevoke"
+      bind:refund="onRefund"
+      bind:reminder="onReminder"
+    />
+  </lg-list>
   <!-- 评价信息 -->
-  <van-overlay show="{{ show }}" bind:tap="onCancelEvaluate">
+  <van-overlay show="{{ show }}">
     <view class="evaluate-wrapper position-relative">
       <view class="evaluate-content bg-FFFFFF rounded-24 px-32 pt-40 absolute-top t-100">
         <!-- 评分视图 -->
@@ -33,11 +34,11 @@
             color="#FFD21D"
             void-color="#eee"
             void-icon="star"
-            bind:change="onEvaluateValueChange"
+            catch:change="onEvaluateValueChange"
           />
         </view>
         <!-- 评价内容 -->
-        <textarea class="border border-E8E8E8 py-20 px-20 rounded-16  color-828282" value="{{evaluateContent}}"  placeholder="从多个角度评价商品，可以帮助更多想买的人"  bindinput="onEvaluateContentInput"></textarea>
+        <textarea class="border border-E8E8E8 py-20 px-20 rounded-16  color-828282" value="{{evaluateContent}}"  placeholder="从多个角度评价商品，可以帮助更多想买的人..."  bindinput="onEvaluateContentInput"></textarea>
         <!-- 提交评价按钮 -->
         <view class="d-flex justify-content-center align-items-center mt-22">
           <van-button type="default" custom-style="width: 222rpx; height: 68rpx; background-color:#F82F5C; color:#FFFFFF; border-radius: 34rpx;" catch:tap="onSubmitEvaluate">

@@ -3,6 +3,6 @@
   "usingComponents": {
     "comment-item": "../../components/comment-item/comment-item",
     "van-button": "@vant/weapp/button/index",
-    "loading":"../../components/loading/loading"
+    "lg-loading":"../../components/@lgs/loading/index"
   }
 }

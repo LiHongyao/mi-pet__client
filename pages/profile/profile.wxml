@@ -1,7 +1,7 @@
 <wxs src="../../filters/index.wxs" module="filters" />
 <view class="container">
   <!-- 导航栏 -->
-  <app-header title="个人中心" backgroundColor="linear-gradient(30deg, #FF6565, #F51358)" tintColor="#FFFFFF" />
+  <lg-app-header title="个人中心" backgroundColor="linear-gradient(30deg, #FF6565, #F51358)" tintColor="#FFFFFF" />
   <!-- 用户信息 -->
   <view class="user-info px-38 position-relative mb-20">
     <!-- 信息 -->

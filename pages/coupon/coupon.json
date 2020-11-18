@@ -3,9 +3,8 @@
   "usingComponents": {
     "van-tab": "@vant/weapp/tab/index",
     "van-tabs": "@vant/weapp/tabs/index",
-    "list": "../../components/list/list",
-    "loading": "../../components/loading/loading",
-    "no-data": "../../components/no-data/no-data",
+    "lg-list":"../../components/@lgs/list/index",
+    "lg-loading": "../../components/@lgs/loading/index",
     "coupon-item": "../../components/coupon-item/coupon-item"
   }
 }

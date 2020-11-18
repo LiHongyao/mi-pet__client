@@ -23,43 +23,40 @@
       </view>
     </view>
     <!-- 品种/拍拍筛选面板 -->
-    <view hidden="{{!screenChecked}}" class="drop-mask absolute-tl t-full w-full" style="height: {{listHeight}}px;">
+    <view hidden="{{!screenChecked}}" class="drop-mask absolute-tl t-full w-full" style="height: {{listHeight}}px;" catch:tap="onScreenMaskTap">
       <view class="bg-FFFFFF px-32 pb-42 pt-28 ">
         <!-- 品种选择 -->
         <view class="f28 lh-40">品种选择</view>
         <view class="d-flex align-items-center flex-wrap fw-150">
-          <view class="screem-item flex-center border border-DFDFDF rounded-16 my-16 position-relative {{breedSelectedIndex === index ? 'selected' : ''}}" wx:for="{{breedsAndBrands}}" wx:key="index" data-index="{{index}}" data-id="{{item.id}}" bind:tap="onBreedItemTap">
+          <view class="screem-item flex-center border border-DFDFDF rounded-20 my-16 position-relative {{breedSelectedIndex === index ? 'selected' : ''}}" wx:for="{{breedsAndBrands}}" wx:key="index" data-index="{{index}}" data-id="{{item.id}}" catch:tap="onBreedItemTap">
             {{item.name}}
             <image class="icon-selected absolute-tr" src="./images/icon_selected.png"></image>
           </view>
         </view>
         <!-- 品牌选择 -->
-        <block wx:if="{{breedsAndBrands[breedSelectedIndex].brand}}">
+        <block wx:if="{{breedsAndBrands[breedSelectedIndex].brand && breedsAndBrands[breedSelectedIndex].brand.length > 0}}">
           <view class="f28 lh-40 mt-32">品牌选择</view>
           <view class="d-flex align-items-center flex-wrap fw-150">
-            <view wx:for="{{breedsAndBrands[breedSelectedIndex].brand}}" wx:key="index"  data-index="{{index}}" data-brand="{{item}}" class="screem-item flex-center border border-DFDFDF rounded-16 my-16 position-relative {{brandSelectedIndex === index ? 'selected' : ''}}"  bind:tap="onBrandItemTap">
+            <view wx:for="{{breedsAndBrands[breedSelectedIndex].brand}}" wx:key="index"  data-index="{{index}}" data-brand="{{item}}" class="screem-item flex-center border border-DFDFDF rounded-20 my-16 position-relative {{brandSelectedIndex === index ? 'selected' : ''}}"  catch:tap="onBrandItemTap">
               {{item}}
               <image class="icon-selected absolute-tr" src="./images/icon_selected.png"></image>
             </view>
           </view>
-          <view class="flex-center f32 color-FFFFFF mt-32">
-            <view class="button rounded-34 flex-center bg-FF9972 mr-46" bind:tap="onResetFilters">
-              重置
-            </view>
-            <view class="button rounded-34 flex-center bg-F82F5C" bind:tap="onSureFilters">确认</view>
-          </view>
         </block>
+        <!-- 操作按钮 -->
+        <view class="flex-center f32 color-FFFFFF mt-32">
+          <view class="button rounded-34 flex-center bg-FF9972 mr-46" catch:tap="onResetFilters">重置</view>
+          <view class="button rounded-34 flex-center bg-F82F5C" catch:tap="onSureFilters">确认</view>
+        </view>
       </view>
     </view>
   </view>
   <!-- 列表 -->
   <div class="list-contents">
-    <list-wrap data="{{list}}">
-      <list bind:load="onLoadMore" height="{{listHeight}}px" finished="{{finished}}">
-        <view class="mt-20 px-30 d-flex flex-wrap justify-content-between">
-          <goods-item wx:for="{{list}}" wx:key="item" data="{{item}}" bind:itemTap="onGoodsItemTap" />
-        </view>
-      </list>
-    </list-wrap>
+    <lg-list data="{{list}}" bind:load="onLoadMore" height="{{listHeight}}px" finished="{{finished}}">
+      <view class="mt-20 px-30 d-flex flex-wrap justify-content-between">
+        <goods-item wx:for="{{list}}" wx:key="item" data="{{item}}" bind:itemTap="onGoodsItemTap" />
+      </view>
+    </lg-list>
   </div>
 </view>

@@ -11,3 +11,4 @@ export function uploadFile(images) {
     data: images
   }, '处理中，请稍后...');
 }
+

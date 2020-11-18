@@ -2,6 +2,7 @@
   "navigationBarTitleText": "收货地址",
   "usingComponents": {
     "address-item":"../../components/address-item/address-item",
-    "no-data":"../../components/no-data/no-data"
+    "lg-no-data":"../../components/@lgs/no-data/index",
+    "lg-loading":"../../components/@lgs/loading/index"
   }
 }

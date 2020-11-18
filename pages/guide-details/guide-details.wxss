@@ -5,6 +5,10 @@
 }
 
 .check-image {
-  width: 44rpx;
-  height: 44rpx;
+  width: 124rpx;
+  height: 124rpx;
+  position: fixed;
+  bottom: 122rpx;
+  right: 50rpx;
+  
 }

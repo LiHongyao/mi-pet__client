@@ -1,0 +1,27 @@
+<view class="lg-cell {{border && 'lg-cell__border'}} custom-class'" catch:tap="onTap">
+
+
+  <!-- 标题 -->
+  <view 
+    class="lg-cell__title title-class"
+    style="{{ titleWidth ? 'max-width:' + titleWidth + ';min-width:' + titleWidth : '' }}"
+  >
+    <block wx:if="{{title}}">
+      <text  wx:for="{{letters}}" wx:key="index">{{item}}</text>
+    </block>
+    <slot wx:else name="title" />
+  </view>
+
+  <view 
+    class="lg-cell__value value-class" 
+    style="padding-right:{{isLink ? '20px' : '0'}}; text-align: {{alignRight ? 'right' : 'left' }}"
+  >
+    {{value}}
+    <slot name="value" />
+  </view>
+  
+
+  <image wx:if="{{isLink}}" class="lg-cell__arrow" src="./images/icon_arrow_right.png" alt />
+  <slot name="icon" />
+</view>
+

@@ -1,0 +1,41 @@
+.lg-single-picker {
+  display: none;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, .75);
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 1000000;
+}
+.lg-single-picker.show {
+  display: block;
+}
+.lg-single-picker__infos {
+  width: 100%;
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  background-color: #FFFFFF;
+}
+
+.lg-single-picker__bar {
+  box-sizing: border-box;
+  padding: 20rpx 32rpx;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #EEEEEE;
+}
+.lg-single-picker__button {
+  color: #828282;
+  font-size: 32rpx;
+  letter-spacing: 4rpx;
+}
+.lg-single-picker__picker {
+  height: 270px;
+  text-align: center;
+  line-height: 50px;
+}
+
+

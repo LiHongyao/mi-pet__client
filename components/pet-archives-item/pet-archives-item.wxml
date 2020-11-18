@@ -1,5 +1,5 @@
-<view class="pet-archives-item d-inline-block bg-FFFFFF mr-20 p-20 rounded-24" bind:tap="onItemTap">
-  <view class="d-flex">
+<view class="pet-archives-item d-inline-block bg-FFFFFF mr-20 p-20 rounded-24 position-relative" bind:tap="onItemTap">
+  <view class="d-flex position-absolute ">
     <image class="pet-avatar rounded-half mr-22" src="{{data.avatar}}" />
     <view class="color-6E6E6E f26 lh-36">
       <view class="">昵称：{{data.nickname}}</view>

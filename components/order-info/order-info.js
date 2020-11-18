@@ -4,14 +4,9 @@ Component({
     addGlobalClass: true,
   },
   properties: {
-    data: {
-      type: Object
-    },
+    data: Object,
     // 是否显示申请售后按钮
-    showAfterSaleButton: {
-      type: Boolean,
-      value: false
-    },
+    showAfterSaleButton:Boolean,
     // 是否显示付款金额和数量
     showAmountAndNum: {
       type: Boolean,

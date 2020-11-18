@@ -1,0 +1,16 @@
+.lg-radio {
+  display: flex;
+}
+.lg-radio__item {
+  margin-right: 50rpx;
+}
+.lg-radio__label {
+  color: #2D2D2D;
+  font-size: 24rpx;
+  line-height: 34rpx;
+}
+.lg-radio__icon {
+  width: 32rpx;
+  height: 32rpx;
+  margin-right: 16rpx;
+}

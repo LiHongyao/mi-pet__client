@@ -5,11 +5,11 @@
   </view>
   <!-- 搜索结果 -->
   <view class="search-res">
-    <list wx:if="{{list}}" class="goods-list" finished="{{finished}}" height="{{listHeight}}px" bind:load="onLoadMore">
+    <lg-list wx:if="{{list}}" data="{{list}}" class="goods-list" finished="{{finished}}" height="{{listHeight}}px" bind:load="onLoadMore" tips="没有匹配的商品哟o(╥﹏╥)o">
       <view class=" mt-20 px-30 d-flex flex-wrap justify-content-between">
         <goods-item wx:for="{{list}}" wx:key="index" data="{{item}}" bind:itemTap="onGoodsItemTap" />
       </view>
-    </list>
-    <loading wx:if="{{showLoading}}" />
+    </lg-list>
+    <lg-loading wx:if="{{showLoading}}"/>
   </view>
 </view>

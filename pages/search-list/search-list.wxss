@@ -3,7 +3,7 @@
   margin: 0 auto;
 }
 
-.hy-list__contents  {
+.lg-list__contents  {
   display: flex;
   flex-wrap: wrap;
 }

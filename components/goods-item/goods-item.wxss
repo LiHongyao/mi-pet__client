@@ -1,6 +1,6 @@
 .godos-item {
   width: 336rpx;
-  height: 424rpx;
+  height: 384rpx;
   margin-bottom: 30rpx;
   background-color: #FFFFFF;
   border-radius: 24rpx;
@@ -8,7 +8,7 @@
 
 .goods-thumbnail {
   width: 234rpx;
-  height: 274rpx;
+  height: 234rpx;
 }
 
 .discount {

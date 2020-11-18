@@ -1,5 +1,5 @@
 // 基地址
-const BASE_URI = 'http://221.237.36.69:33331/api';
+const BASE_URI = 'https://api.imichong.com/api';
 
 // request
 const request = (options, loadingTips) => {
@@ -48,7 +48,7 @@ const request = (options, loadingTips) => {
         console.log('「接口请求异常：」', err);
       },
       complete() {
-        wx.hideLoading();
+        loadingTips && wx.hideLoading();
       }
     })
   })

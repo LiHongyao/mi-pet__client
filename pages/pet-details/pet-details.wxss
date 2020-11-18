@@ -2,13 +2,8 @@
   width: 128rpx;
   height: 128rpx;
 }
-
-
-.info-item {
-  height: 92rpx;
-}
-.info-title {
-  width: 140rpx;
+.info-item .info-value {
+  color: #272727;
 }
 
 .pet-image {

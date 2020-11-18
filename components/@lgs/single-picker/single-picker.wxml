@@ -1,0 +1,16 @@
+<view class="lg-single-picker {{visible ? 'show' : ''}}">
+  <view class="lg-single-picker__infos">
+    <!-- 顶栏 -->
+    <view class="lg-single-picker__bar">
+      <view class="lg-single-picker__button" catch:tap="onCancel">取消</view>
+      <view class="lg-single-picker__button" catch:tap="onSure">确认</view>
+    </view>
+    <picker-view class="lg-single-picker__picker" indicator-style="height: 50px;" value="{{value}}" bindchange="bindChange">
+      <picker-view-column>
+        <view wx:for="{{options}}" wx:key="value">
+          {{item.label}}
+        </view>
+      </picker-view-column>
+    </picker-view>
+  </view>
+</view>

@@ -3,7 +3,7 @@
   "usingComponents": {
     "van-stepper": "@vant/weapp/stepper/index",
     "van-button": "@vant/weapp/button/index",
-    "loading":"../../components/loading/loading",
+    "lg-loading":"../../components/@lgs/loading/index",
     "address-item":"../../components/address-item/address-item"
   }
 }

@@ -1,10 +1,11 @@
 {
   "navigationBarTitleText": "添加宠物",
   "usingComponents": {
+    "lg-radio": "../../components/@lgs/radio/index",
+    "lg-date-picker":"../../components/@lgs/date-picker/index",
     "van-button": "@vant/weapp/button/index",
     "van-uploader": "@vant/weapp/uploader/index",
-    "radio-box": "../../components/radio-box/radio-box",
-    "date-picker":"../../components/date-picker/date-picker",
-    "justify-view":"../../components/justify-view/justify-view"
+   
+    "justify-view":"../../components/@lgs/justify-view/justify-view"
   }
 }

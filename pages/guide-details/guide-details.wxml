@@ -1,4 +1,4 @@
-<wxs src="../../filters/index.wxs" module="filters" />
+<wxs src="../../filters/index.wxs" module="utils" />
 <view wx:if="{{details}}" class="container bg-FFFFFF px-32">
   <!-- 头 -->
   <view class="mb-28">
@@ -9,10 +9,8 @@
     </view>
   </view>
   <!-- 内容 -->
-  <rich-text class="rich-text f26 lh-36 color-393939 pb-30 bg-FFFFFF" nodes="{{filters.richTextFormat(details.content)}}"></rich-text>
-  <!-- 悬浮按钮 -->
-  <view class="fixed-box position-fixed l-20 b-20 rounded-12 flex-center" catch:tap="onFavorTap">
-    <image class="check-image" src="{{details.isFavor ? './images/icon_checked.png' : './images/icon_check.png'}}" ></image>
-  </view>
+  <rich-text class="rich-text f26 lh-36 color-393939 pb-30 bg-FFFFFF" nodes="{{utils.richTextFormat(details.content)}}"></rich-text>
+  <!-- 分享按钮 -->
+  <image class="check-image" src="{{details.isFavor ? './images/icon_checked.png' : './images/icon_check.png'}}" catch:tap="onFavorTap"></image>
 </view>
-<loading wx:else />
+<lg-loading wx:else />

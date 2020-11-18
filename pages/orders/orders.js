@@ -1,5 +1,5 @@
 
-import { orders, cancelOrder, confirmReceipt, reminder, refund, evaluate, cancelAfterSale } from '../../api/order'
+import { orders, deleteOrder, confirmReceipt, reminder, evaluate, cancelAfterSale } from '../../api/order'
 import { toast } from '../../utils/common'
 
 Page({
@@ -14,147 +14,99 @@ Page({
   onLoad(options) {
     const { status, title } = options;
     // 设置标题
-    wx.setNavigationBarTitle({
-      title
-    });
-    this.setData({
-      status,
-      title
-    });
+    wx.setNavigationBarTitle({title});
+    this.setData({title});
     this.page = 1;
+    this.type = status;
     this._getOrders();
   },
   // methods
   _getOrders() {
     orders({
       page: this.page,
-      status: this.data.status
+      pageSize: 10,
+      type: this.type,
     }).then(res => {
-      if (res.status === '200') {
-        this.setData({
-          orders: res.data.data
-        });
-      }
-    }).catch(error => {
-      console.log(error);
+      console.log(res.data);
+      const orders = this.data.orders;
+      const {data, pages: { pageNo, total }} = res.data;
+      this.setData({
+        finished: pageNo >= total,
+        orders: orders ? [...orders, ...data] : data
+      })
     })
   },
   // events
-  onOrderItemTap({ detail: { id } }) {
-    if (this.data.status === '1') {
-      wx.navigateTo({
-        url: `../pay-order/pay-order?orderId=${id}`,
-      })
-    } else {
-      wx.navigateTo({
-        url: `../order-details/order-details?title=${this.data.title}&orderId=${id}`,
-      })
-    }
+  onLoadMore() {
+    this.page += 1;
+    this._getOrders();
+  },
+  onOrderItemTap({ detail: { orderId } }) {
+    wx.navigateTo({
+      url: `../order-details/order-details?title=${this.data.title}&orderId=${orderId}`,
+    });
   },
   // 取消订单
-  onCancelOrder({ detail: { index, id } }) {
-    cancelOrder({
-      id
-    }).then(res => {
-      if (res.status === '200') {
-        wx.showToast({
-          title: res.message,
-          icon: 'none',
-          complete: () => {
-            const orders = this.data.orders;
-            orders.splice(index, 1);
-            this.setData({
-              orders
-            });
-          }
-        })
-      }
-    }).catch(error => {
-      console.log(error);
-    })
-  },
-  // 立即付款
-  onPayment({ detail: { id } }) {
-    wx.navigateTo({
-      url: `../pay-order/pay-order?orderId=${id}`,
-    })
-  },
-  // 退款
-  onRefund({ detail: { id } }) {
+  onDeleteOrder({ detail: { index, orderId } }) {
+    let _this = this;
     wx.showModal({
       title: '提示',
-      content: '是否确认退款？',
-      success(res) {
+      content: '您确定要删除订单么？',
+      success (res) {
         if (res.confirm) {
-          refund(id).then(res => {
-            if (res.status === '200') {
-              wx.showToast({
-                title: res.message,
-                icon: 'none'
-              })
-            } else {
-              wx.showToast({
-                title: '系统繁忙，请稍后再试！',
-                icon: 'none'
-              })
-            }
-          }).catch(error => {
+          deleteOrder(orderId).then(() => {
             wx.showToast({
-              title: '系统繁忙，请稍后再试！',
-              icon: 'none'
+              title: "订单已删除",
+              icon: 'none',
+              complete: () => {
+                const orders = _this.data.orders;
+                orders.splice(index, 1);
+                _this.setData({orders});
+              }
             })
-            console.log(error);
           })
         }
+      }
+    })  
+  },
+ 
+  // 退款
+  onRefund({ detail: { data } }) {
+    wx.navigateTo({
+      url: `../after-sale/after-sale`,
+      success: res => {
+        res.eventChannel.emit('acceptDataFromOpenerPage', data )
       }
     })
   },
   // 催单
-  onReminder({ detail: { id } }) {
-    reminder(id).then(res => {
-      if (res.status === '200') {
-        wx.showToast({
-          title: res.message,
-          icon: 'none'
-        })
-      } else {
-        wx.showToast({
-          title: '系统繁忙，请稍后再试！',
-          icon: 'none'
-        })
-      }
-    }).catch(error => {
-      console.log(error);
+  onReminder({ detail: { orderId } }) {
+    reminder(orderId).then(res => {
+      wx.showToast({
+        title: res.msg,
+        icon: 'none'
+      })
     })
-
   },
   // 确认收货
-  onConfirmReceipt({ detail: { index, id } }) {
-    confirmReceipt(id).then(res => {
-      if (res.status === '200') {
-        wx.showToast({
-          title: res.message,
-          icon: 'none',
-          complete: () => {
-            const orders = this.data.orders;
-            orders.splice(index, 1);
-            this.setData({
-              orders
-            });
-          }
-        })
-      }
-    }).catch(error => {
-      console.log(error);
+  onConfirmReceipt({ detail: { index, orderId } }) {
+    confirmReceipt(orderId).then(res => {
+      wx.showToast({
+        title: res.msg,
+        icon: 'none',
+        complete: () => {
+          const orders = this.data.orders;
+          orders.splice(index, 1);
+          this.setData({orders});
+        }
+      })
     })
   },
   // 立即评价
   onEvaluate({ detail: { orderId, goodsId } }) {
     this.orderId = orderId;
     this.goodsId = goodsId;
-    this.setData({
-      show: true
-    })
+    this.setData({ show: true })
   },
   onSubmitEvaluate() {
     const { evaluateRate, evaluateContent } = this.data;
@@ -171,27 +123,13 @@ Page({
     } else {
       console.log('tag', this.evaluateContent, this.evaluateRate)
       evaluate({
-        id: this.orderId,
-        business_type: 'order',
-        goods_id: this.goodsId,
-        rating: evaluateRate,
+        orderId: this.orderId,
+        star: evaluateRate,
         content: evaluateContent
       }).then(res => {
-        if (res.status === '200') {
-          toast({ title: res.message }).then(() => {
-            this.setData({
-              show: false
-            })
-          })
-        } else {
-          toast({ title: res.message }).then(() => {
-            this.setData({
-              show: false
-            })
-          })
-        }
-      }).catch(error => {
-        console.log(error)
+        toast({ title: res.msg }).then(() => {
+          this.setData({show: false})
+        })
       })
     }
   },
@@ -219,23 +157,22 @@ Page({
     })
   },
   // 撤销申请
-  onRevoke() {
+  onRevoke({ detail: { index, orderId }}) {
     wx.showModal({
       title: '提示',
       content: '是否确认撤销？',
-      success(res) {
+      success: (res) => {
         if (res.confirm) {
-          cancelAfterSale({
-
-          }).then(res => {
-            if (res.status === '200') {
-              wx.showToast({
-                title: res.message,
-                icon: 'none'
-              })
-            }
-          }).catch(error => {
-            console.log(error)
+          cancelAfterSale(orderId).then(res => {
+            wx.showToast({
+              title: res.msg,
+              icon: 'none',
+              complete: () => {
+                const orders = this.data.orders;
+                orders.splice(index, 1);
+                this.setData({orders});
+              }
+            });
           })
         }
       }

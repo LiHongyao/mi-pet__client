@@ -1,22 +1,23 @@
 import { edit } from '../../api/user'
+import eventBus from '../../utils/eventBus'
 var appInst = getApp();
 
 Page({
-
-  onLoad() {
-    this.eventChannel = this.getOpenerEventChannel();
-  },
   onGetUserInfo({ detail }) {
-    const { avatarUrl, nickName } = detail.userInfo;
+    console.log(detail)
     if (/ok/.test(detail.errMsg)) { // 成功授权
+      const { avatarUrl, nickName } = detail.userInfo;
       edit({
         nickname: nickName,
         avatar: avatarUrl
       }).then(() => {
         appInst.globalData.isAuth = true;
-        this.eventChannel.emit('refresh');
+        eventBus.$emit('LOGGED');
         wx.navigateBack();
       })
+    }else {
+      // 拒绝授权
+      console.log('用户拒绝获取用户信息');
     }
   },
   onNoLogin() {

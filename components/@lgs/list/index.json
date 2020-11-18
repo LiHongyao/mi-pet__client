@@ -1,0 +1,7 @@
+{
+  "component": true,
+  "usingComponents": {
+    "lg-loading":"../loading/index",
+    "lg-no-data":"../no-data/index"
+  }
+}

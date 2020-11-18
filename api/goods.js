@@ -3,6 +3,7 @@ import request from '../utils/request'
 /**
  * 商品列表数据（包括数据搜索/过滤/筛选）
  * @param {*} data 
+ * data.isRecommend 商品是否随机推荐（1为随机0为不随机）
  * data.status  商品状态id（0为待审核1为上架2为下架），传入status查对应状态，不传则默认查1，2状态
  * data.typeId  商品分类id（主粮、用品、零食等）
  * data.breedId 商品品种id（猫猫、狗狗等）
@@ -57,9 +58,10 @@ export function goodsComments(data) {
 
 /**
  * 商品筛选条件（品种/品牌）
+ * @param {*} goodsTypeId 商品类型id（主粮，零食...）
  */
-export function screeningConditions() {
+export function screeningConditions(goodsTypeId) {
   return request({
-    url: '/goodsfilters/list'
+    url: `/goodsfilters/${goodsTypeId}`
   })
 }

@@ -5,69 +5,63 @@ Component({
   },
   properties: {
     // 订单数据
-    data: {
-      type: Object
-    },
+    data: Object,
     // 订单所在列表中的下标位置
-    index: {
-      type: Number
-    },
-    // 订单状态 1~5
-    status: {
-      type: Number
-    },
+    index: Number,
     // 标题
-    title: {
-      type: String
-    },
+    title: String
   },
   lifetimes: {
     attached() {
-      console.log(this.properties.data)
+      const {index, data: { orderId, goodsId }} = this.properties;
+      this.index = index;
+      this.orderId = orderId;
+      this.goodsId = goodsId;
     }
   },
   methods: {
     onOrderItemTap() {
       // 点击
-      this.triggerEvent('orderTap', { id: this.properties.data.id });
+      this.triggerEvent('orderTap', { orderId: this.orderId });
     },
     
-    onCancelOrder() {
-      // 取消订单
-      const { index, data} = this.properties;
-      this.triggerEvent('cancel', { index, id: data.id });
+    onDeleteOrder() {
+      // 删除订单
+      this.triggerEvent('delete', { index: this.index, orderId: this.orderId });
     },
+
     onPayment() {
       // 支付
-      this.triggerEvent('payment', {id: this.properties.data.id});
+      this.triggerEvent('payment', {orderId: this.orderId});
     },
     onRefund() {
       // 退款
-      this.triggerEvent('refund', {id: this.properties.data.id});
+      const { thumbnail, title, payAmount,orderId } = this.data.data;
+      this.triggerEvent('refund',  { data: { thumbnail, title, payAmount,orderId }} );
     },
     onReminder() {
       // 催单
-      this.triggerEvent('reminder', {id: this.properties.data.id});
+      this.triggerEvent('reminder', {orderId: this.orderId});
     },
     onConfirmReceipt() {
       // 确认收货
-      const { index, data} = this.properties;
-      this.triggerEvent('confirmReceipt', { index, id: data.id });
+      const { index, data: { orderId }} = this.properties;
+      this.triggerEvent('confirmReceipt', { index, orderId });
     },
     onEvaluate() {
       // 立即评价
       this.triggerEvent('evaluate', { 
-        orderId: this.properties.data.id,
-        goodsId: this.properties.data.items[0].goods_id
+       orderId: this.orderId,
+       goodsId: this.goodsId
       });
     },
     onBuyAgain() {
       // 再买一单
-      this.triggerEvent('buyAgain', { goodsId: this.properties.data.items[0].goods_id });
+      this.triggerEvent('buyAgain', { goodsId: this.goodsId });
     },
     onRevoke() {
       // 撤销申请
-      this.triggerEvent('revoke', { id: this.properties.data.id });
+      this.triggerEvent('revoke', { index: this.index, orderId: this.orderId });
     }
   }
 })

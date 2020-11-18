@@ -5,20 +5,16 @@
   </view>
   <!-- 切换菜单 -->
   <view class="bg-FFFFFF mb-20">
-    <menu-bar menus="{{menus}}" active="{{active}}" bind:change="onChange" />
+    <lg-menu-bar menus="{{menus}}" active="{{active}}" bind:change="onChange" />
   </view>
   <view class="tab-contents px-20">
     <!-- 猫猫指南 -->
-    <list-wrap class="{{active === 0 ? 'd-block' : 'd-none'}}" data="{{catList}}">
-      <list class="{{active === 0 ? 'd-block' : 'd-none'}}" bind:load="onLoadMore" height="{{listHeight}}px" finished="{{catFinished}}">
-        <guide-item wx:for="{{catList}}" wx:key="id" data="{{item}}" bind:itemTap="onItemTap" />
-      </list>
-    </list-wrap>
+    <lg-list class="{{active === 0 ? 'd-block' : 'd-none'}}" data="{{catList}}" bind:load="onLoadMore" height="{{listHeight}}px" finished="{{catFinished}}">
+      <guide-item wx:for="{{catList}}" wx:key="id" data="{{item}}" bind:itemTap="onItemTap" />
+    </lg-list>
     <!-- 狗狗指南 -->
-    <list-wrap class="{{active === 1 ? 'd-block' : 'd-none'}}" data="{{dogList}}">
-      <list class="{{active === 1 ? 'd-block' : 'd-none'}}" bind:load="onLoadMore" height="{{listHeight}}px" finished="{{dogFinished}}">
-        <guide-item wx:for="{{dogList}}" wx:key="id" data="{{item}}" bind:itemTap="onItemTap" />
-      </list>
-    </list-wrap>
+    <lg-list class="{{active === 1 ? 'd-block' : 'd-none'}}" data="{{dogList}}" bind:load="onLoadMore" height="{{listHeight}}px" finished="{{dogFinished}}">
+      <guide-item wx:for="{{dogList}}" wx:key="id" data="{{item}}" bind:itemTap="onItemTap" />
+    </lg-list>
   </view>
 </view>

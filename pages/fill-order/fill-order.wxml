@@ -1,8 +1,8 @@
-<view wx:if="{{address !== null}}" class="container fill-order">
+<view wx:if="{{address}}" class="container fill-order">
   <scroll-view class="contents" scroll-x="false" scroll-y="true">
     <!-- 已有收货信息 -->
     <address-item 
-      wx:if="{{address}}" 
+      wx:if="{{address != -1}}" 
       data="{{address}}" 
       editable="{{false}}" 
       showLeftIcon="{{true}}" 
@@ -11,7 +11,7 @@
       bind:itemTap="onGoAddressList"
     />
     <!-- 暂无收货信息 -->
-    <view wx:else class="bg-FFFFFF px-32 pt-76 pb-74 d-flex align-items-center" bind:tap="onGoAddress">
+    <view wx:else class="bg-FFFFFF px-32 pt-76 pb-74 d-flex align-items-center" bind:tap="onGoAddressList">
       <image class="icon-location" src="../../assets/images/icon_location.png" />
       <text class=" color-828282 f26 lh-36 mx-24">暂无收货信息，点击添加</text>
       <image class="icon-arrow-right" src="../../assets/images/icon_arrow_right.png" />
@@ -79,4 +79,4 @@
     </van-button>
   </view>
 </view>
-<loading wx:else />
+<lg-loading wx:else />

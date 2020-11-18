@@ -1,31 +1,13 @@
 <view wx:if="{{petInfo}}" class="container px-20 pt-20">
   <!-- 基本信息 -->
-  <view class="pl-24 bg-FFFFFF pt-32 rounded-24">
+  <view class="px-24 bg-FFFFFF pt-32 rounded-24">
     <image class="avatar d-flex mx-auto mb-40" src="{{petInfo.avatar}}" />
-    <view class="info-item border-bottom d-flex align-items-center color-272727 f26">
-      <justify-view class="info-title" text="宠物昵称" />
-      <text class="ml-42">{{petInfo.nickname}}</text>
-    </view>
-    <view class="info-item border-bottom d-flex align-items-center color-272727 f26">
-      <justify-view class="info-title" text="品种" />
-      <text class="ml-42">{{petInfo.breed}}</text>
-    </view>
-    <view class="info-item border-bottom d-flex align-items-center color-272727 f26">
-      <justify-view class="info-title" text="性别" />
-      <text class="ml-42">{{petInfo.gender}}</text>
-    </view>
-    <view class="info-item border-bottom d-flex align-items-center color-272727 f26">
-      <justify-view class="info-title" text="生日" />
-      <text class="ml-42">{{petInfo.birthday}}</text>
-    </view>
-    <view class="info-item border-bottom d-flex align-items-center color-272727 f26">
-      <justify-view class="info-title" text="品级" />
-      <text class="ml-42">{{petInfo.grade}}</text>
-    </view>
-    <view class="info-item d-flex align-items-center color-272727 f26">
-      <justify-view class="info-title" text="是否绝育" />
-      <text class="ml-42">{{petInfo.isSterilization ? '已绝育' : '未绝育'}}</text>
-    </view>
+    <lg-cell custom-class="info-item" value-class="info-value" border title="宠物昵称" value="{{petInfo.nickname}}" />
+    <lg-cell custom-class="info-item" value-class="info-value" border title="品种" value="{{petInfo.breed}}" />
+    <lg-cell custom-class="info-item" value-class="info-value" border title="性别" value="{{petInfo.gender}}" />
+    <lg-cell custom-class="info-item" value-class="info-value" border title="生日" value="{{petInfo.birthday}}" />
+    <lg-cell custom-class="info-item" value-class="info-value" border title="品级" value="{{petInfo.grade}}" />
+    <lg-cell custom-class="info-item" value-class="info-value" border title="是否绝育" value="{{petInfo.isSterilization ? '已绝育' : '未绝育'}}" />
   </view>
   <view class="buttons flex-center mt-22 f26">
     <view class="button ls-6 rounded-44 flex-center border border-E1E1E1 color-272727" catch:tap="onDeletePetFile">
@@ -68,5 +50,4 @@
     </view>
   </view> -->
 </view>
-
-<loading wx:else />
+<lg-loading wx:else />

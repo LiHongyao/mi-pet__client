@@ -1,4 +1,4 @@
-.order-image {
+.thumbnail {
   width: 148rpx;
   height: 148rpx;
 }

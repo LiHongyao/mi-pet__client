@@ -1,8 +1,5 @@
 <view class="container pl-42 pr-28 bg-FFFFFF">
-  <list-wrap wx:if="list" data="{{list}}">
-    <list finished="{{finished}}" bind:load="onLoadMore" >
-      <comment-item wx:for="{{list}}" wx:key="id" data="{{item}}" />
-    </list>
-  </list-wrap>
-  <loading wx:else/>
+  <lg-list data="{{list}}" finished="{{finished}}" bind:load="onLoadMore" >
+    <comment-item wx:for="{{list}}" wx:key="id" data="{{item}}" />
+  </lg-list>
 </view>

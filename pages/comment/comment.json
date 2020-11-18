@@ -1,9 +1,7 @@
 {
   "navigationBarTitleText": "评论列表",
   "usingComponents": {
-    "list-wrap": "../../components/list-wrap/list-wrap",
-    "list": "../../components/list/list",
-    "comment-item":"../../components/comment-item/comment-item",
-    "loading":"../../components/loading/loading"
+    "lg-list": "../../components/@lgs/list/index",
+    "comment-item":"../../components/comment-item/comment-item"
   }
 }

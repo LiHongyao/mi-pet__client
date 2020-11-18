@@ -2,7 +2,7 @@
   "navigationBarTitleText": "订单支付",
   "usingComponents": {
     "van-button": "@vant/weapp/button/index",
-    "justify-view": "../../components/justify-view/justify-view",
-    "loading":"../../components/loading/loading"
+    "lg-loading":"../../components/@lgs/loading/index",
+    "lg-cell":"../../components/@lgs/cell/index"
   }
 }

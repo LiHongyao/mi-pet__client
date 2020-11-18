@@ -1,7 +1,9 @@
 <view class="guide-item bg-FFFFFF py-28 px-32 mb-20 rounded-24 d-flex" catch:tap="onTap">
+    <!-- 缩略图 -->
     <image class="avatar mr-32 rounded-16" src="{{data.thumbnail}}" />
-    <view class="flex-1">
-      <view class="f-bold color-2C2C2C f30 lh-42 mb-6">{{data.title}}</view>
+    <!-- 指南信息 -->
+    <view class="flex-1 overflow-hidden">
+      <view class="f-bold color-2C2C2C f30 lh-42 mb-6 line-clamp-1">{{data.title}}</view>
       <view class="color-B5B5B5 f20 lh-28 mb-26">{{data.time}}</view>
       <view class="color-A7A7A7 f20 lh-34">
         <text class="mr-62">{{data.readNum}}人看过</text>

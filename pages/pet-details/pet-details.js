@@ -1,13 +1,16 @@
 import { petFileDetails, deletePetFile } from '../../api/pets'
 import { toast } from '../../utils/common'
+import eventBus from '../../utils/eventBus'
 Page({
   data: {
     petInfo: null
   },
   onLoad({petId}) {
-    this.eventChannel = this.getOpenerEventChannel();
     this.petId = petId;
     this._getPetFileDetails();
+    eventBus.$on('PET_UPDATE', () => {
+      this._getPetFileDetails();
+    });
   },
   // methods
   _getPetFileDetails() {
@@ -25,11 +28,10 @@ Page({
       success: res =>  {
         if (res.confirm) {
           deletePetFile(this.petId).then(response => {
-            console.log(response);
             toast({
               title: response.msg
             }).then(() => {
-              this.eventChannel.emit('refreshPetFile');
+              eventBus.$emit('PET_UPDATE');
               wx.navigateBack();
             })
           })
@@ -40,12 +42,6 @@ Page({
   onEditPetFile() {
     wx.navigateTo({
       url: '../add-pets/add-pets',
-      events: {
-        refreshPetFile: () => {
-          this._getPetFileDetails();
-          this.eventChannel.emit('refreshPetFile');
-        }
-      },
       success: res => {
         res.eventChannel.emit('acceptDataFromOpenerPage', this.data.petInfo)
       }

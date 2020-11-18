@@ -1,3 +1,0 @@
-<view class="loading__wrapper" style="padding-top: {{top}}">
-  <van-loading size="40" color="#F82F5C" />
-</view>

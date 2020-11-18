@@ -2,7 +2,7 @@
 <block wx:if="{{goods}}">
   <scroll-view class="container goods-details" scroll-y="true">
     <!-- banner -->
-    <swiper wx:if="{{goods.images.length > 0}}" class="banners" indicator-dots="{{true}}" indicator-color="rgba(0, 0, 0, .3)" indicator-active-color="#F5F5F5" duration="400" circular="{{true}}">
+    <swiper wx:if="{{goods.images.length > 0}}" class="banners" indicator-dots="{{true}}" indicator-color="rgba(0, 0, 0, .3)" indicator-active-color="#F5F5F5" duration="400" circular="{{true}}"  style="height: {{imageHeight}}px">
       <swiper-item class="h-full" wx:for="{{goods.images}}" wx:key="index">
         <view class="swiper-item h-full">
           <image src="{{item}}" class="w-full h-full" />
@@ -43,26 +43,31 @@
       </view>
       <view class="info-item d-flex align-items-center f26">
         <text class="color-828282">保质：</text>
-        <text>{{goods.expires}}</text>
+        <text>{{goods.expires}}个月</text>
       </view>
     </view>
     <!-- 用户评价 -->
-    <view wx:if="{{goods.evaluates.length > 0}}" class="mt-20 pl-42 pr-28 bg-FFFFFF pt-24">
+    <view class="mt-20 px-28 bg-FFFFFF py-24 mb-16">
       <!-- 标题 -->
       <view class="d-flex justify-content-between align-items-center">
-        <view class="f32 color-2A2A2A lh-44">用户评价</view>
+        <view class="f28 color-2A2A2A lh-44 f-bold">用户评价</view>
         <view bind:tap="onQueryComments">
           <text class="f24 color-F82F5C lh-34">查看全部</text>
           <image class="icon-arrow ml-12" src="../../assets/images/icon_arrow_right_1.png" />
         </view>
       </view>
       <!-- 列表 -->
-      <view class="evaluate-list mb-16">
+      <view class="evaluate-list">
         <comment-item wx:for="{{goods.evaluates}}" wx:key="index" data="{{item}}" />
       </view>
     </view>
     <!-- 商品详情图 -->
-    <view class="detail-images">
+    <view class="detail-images bg-FFFFFF pt-24">
+      <view class="pl-28 mb-26 d-flex justify-content-center align-items-center">
+        <view class="splite_line"></view>
+        <view class="f28 color-2A2A2A lh-44 f-bold mx-22">商品详情</view>
+        <view class="splite_line"></view>
+      </view>
       <image class="detail-image" wx:for="{{goods.infos}}" src="{{item}}" wx:key="index" mode="widthFix"></image>
     </view>
     <!-- 服务 -->
@@ -98,7 +103,7 @@
   <!-- 立即购买 -->
   <view class="page-action--safe fixed-bottom bg-FFFFFF d-flex justify-content-between align-items-center ">
     <view class="icons d-flex align-items-center">
-      <button class="button flex-v-center mr-60" open-type="share">
+      <button class="button flex-v-center" open-type="share">
         <image class="icon-image" src="./images/icon_share.png"></image>
         <text class="color-747474 f20 lh-28">分享</text>
       </button>
@@ -107,7 +112,10 @@
         <text class="color-747474 f20 lh-28">{{fn.favor(goods.isFavor).text}}</text>
       </view>
     </view>
-    <van-button wx:if="{{isBindPhone}}" type="default" custom-style="background-color: #F82F5C; width: 222rpx; height: 68rpx;border-radius:34rpx;color:#FFFFFF;font-size:32rpx;" bind:tap="onGoFillOrder">
+    <van-button wx:if="{{!isAuth}}" type="default" custom-style="background-color: #F82F5C; width: 222rpx; height: 68rpx;border-radius:34rpx;color:#FFFFFF;font-size:32rpx;" bind:tap="goAuth">
+      立即购买
+    </van-button>
+    <van-button wx:elif="{{isBindPhone}}" type="default" custom-style="background-color: #F82F5C; width: 222rpx; height: 68rpx;border-radius:34rpx;color:#FFFFFF;font-size:32rpx;" bind:tap="onGoFillOrder">
       立即购买
     </van-button>
     <button wx:else open-type="getPhoneNumber" class="open-button flex-center  bg-F82F5C rounded-34 color-FFFFFF f32" bindgetphonenumber="onGetPhoneNumber">
@@ -115,4 +123,4 @@
     </button>
   </view>
 </block>
-<loading wx:else />
+<lg-loading wx:else />

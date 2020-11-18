@@ -17,8 +17,8 @@
     </view>
     <view class="right-box flex-center">
       <view wx:if="{{type === 1}}" class="bg-D85410  rounded-24 f24 lh-40 px-14 py-4">{{utils.expires(data.end_date)}}天后过期</view>
-      <view wx:elif="{{type === 2}}" class="f28 lh-40 px-14  py-4">已使用</view>
-      <view wx:elif="{{type === 3}}" class="f28 lh-40 px-14  py-4">已过期</view>
+      <view wx:elif="{{type === 2}}" class="f28 lh-40 px-14  py-4">已过期</view>
+      <view wx:elif="{{type === 3}}" class="f28 lh-40 px-14  py-4">已使用</view>
     </view>
   </view>
 </view>

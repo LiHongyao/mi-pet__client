@@ -1,7 +1,7 @@
 
 import { goodstypes, goodsList } from '../../api/goods'
 import { banners } from '../../api/banners'
-import { login } from '../../api/user'
+import { login, edit } from '../../api/user'
 import { checkAuth } from '../../utils/common'
 var appInst = getApp();
 
@@ -46,6 +46,23 @@ Page({
                 this.setData({
                   showCouponDialog: isFirstIn
                 });
+                wx.getSetting({
+                  success: res => {
+                    if (res.authSetting['scope.userInfo']) {
+                      wx.getUserInfo({
+                        success: (result) => {
+                          const { avatarUrl, nickName } = result.userInfo;
+                          edit({
+                            nickname: nickName,
+                            avatar: avatarUrl
+                          }).then(() => {
+                            console.log('__用户信息修改成功__');
+                          })
+                        }
+                      })
+                    }
+                  }
+                });
                 resolve();
               }
             })
@@ -73,7 +90,9 @@ Page({
     goodsList({
       status: 1,
       page: this.page,
-      pageSize: 6
+      pageSize: 20,
+      typeId: 1,
+      isRecommend: 1
     }).then(res => {
       const goods = this.data.goods;
       const {data, pages: { pageNo, total }} = res.data;
@@ -93,10 +112,8 @@ Page({
     console.log('tag', e)
   },
   onGoodsItemTap({ detail: { goodsId } }) {
-    checkAuth().then(() => {
-      wx.navigateTo({
-        url: `../goods-details/goods-details?goodsId=${goodsId}`
-      })
+    wx.navigateTo({
+      url: `../goods-details/goods-details?goodsId=${goodsId}`
     })
   },
   onGoodsTypeItemTap({currentTarget:{dataset: { title, goodsType }}}) {
@@ -125,5 +142,16 @@ Page({
     if(this.data.finished) return;
     this.page += 1;
     this._getGoods();
+  },
+  onBannerTap(event) {
+    checkAuth().then(() => {
+      const url = event.currentTarget.dataset.url;
+      if(url) {
+        wx.navigateTo({ url })
+      };
+    })
+  },
+  onShareAppMessage() {
+    
   }
 })

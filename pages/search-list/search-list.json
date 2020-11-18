@@ -2,8 +2,8 @@
   "navigationBarTitleText": "搜索",
   "usingComponents": {
     "lg-search":"../../components/@lgs/search/index",
-    "list":"../../components/list/list",
-    "goods-item": "../../components/goods-item/goods-item",
-    "loading": "../../components/loading/loading"
+    "lg-list":"../../components/@lgs/list/index",
+    "lg-loading":"../../components/@lgs/loading/index",
+    "goods-item": "../../components/goods-item/goods-item"
   }
 }

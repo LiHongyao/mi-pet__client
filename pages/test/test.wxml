@@ -1,9 +1,9 @@
-<lg-search
-  placeHolder="请输入账号" 
-  value="" 
-  bind:change="onChange" 
-  clear="{{true}}" 
-  bind:confirm="onConfirm" 
-  bind:search="onSearch"
-/>
-
+<view class=" px-20">
+  <lg-cell  title="收货地址" title-width="200rpx" value="哈哈哈" details="额呵呵呵" border  isLink="{{true}}" />
+  <lg-cell title="收藏" title-width="200rpx" value="哈哈jdks" align-right details="额呵呵呵" border  isLink="{{true}}" />
+  <lg-cell title="手机号" title-width="200rpx" value="额呵的撒空间方法萨法哒凯撒奖到家了撒娇大家都呵呵" border isLink="{{true}}" />
+  <lg-cell  title-width="200rpx">
+    <view slot="title" class="">我是标题</view>
+    <input slot="value"  placeholder="请输入账号密码"/>
+  </lg-cell>
+</view>

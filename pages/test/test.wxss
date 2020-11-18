@@ -1,4 +1,4 @@
-.custom-class {
-  width: 700rpx;
-  margin: 0 auto;
+.lg-cell {
+  height: 60rpx;
+  align-items: flex-start !important;
 }
