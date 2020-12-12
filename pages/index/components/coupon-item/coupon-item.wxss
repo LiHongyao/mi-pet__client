@@ -1,0 +1,13 @@
+.coupon-item {
+  width: 464rpx;
+  height: 140rpx;
+  background: url('https://img.meituan.net/csc/5c702b3004364b3c03b3e4614454c4c116972.png') no-repeat center center;
+  background-size: 100% 100%;
+}
+
+.coupon-item__box {
+  height: 100%;
+}
+.coupon-item__box.amount {
+  width: 170rpx;
+}

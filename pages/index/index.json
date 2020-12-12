@@ -9,7 +9,9 @@
     "lg-search":"../../components/@lgs/search/index",
     "lg-loading": "../../components/@lgs/loading/index",
     "lg-app-header": "../../components/@lgs/app-header/index",
-    "goods-item": "../../components/goods-item/goods-item"
+    "goods-item": "../../components/goods-item/goods-item",
+    "coupon-item": "./components/coupon-item/coupon-item",
+    "fixed-gift": "../../components/fixed-gift/fixed-gift"
   }
 }
 

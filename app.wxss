@@ -4,7 +4,7 @@
 page { height: 100%; }
 .container {
 	height: calc(100% - constant(safe-area-inset-bottom));
-  height: calc(100% - env(safe-area-inset-bottom));
+	height: calc(100% - env(safe-area-inset-bottom));
 	background-color: #F8F8F8;
 	padding-bottom: constant(safe-area-inset-bottom);
 	padding-bottom: env(safe-area-inset-bottom);
@@ -23,14 +23,17 @@ button::after {
 .border-box { box-sizing: border-box; }
 
 /* 尺寸 */
-.w-full { width: 100%;  }
+.w-100  { width: 100%;  }
 .w-auto { width: auto;  }
-.h-full { height: 100%; }
+.h-100  { height: 100%; }
 .h-auto { height: auto; }
 .h-max-full { max-height: 100%; }
 .h-min-full { min-height: 100%; }
 
+.icon-48x48 { width: 48rpx; height: 48rpx; }
+
 /* 颜色 */
+.bg-FFF8F7 { background-color: #FFF8F7; }
 .bg-FFFFFF { background-color: #FFFFFF; }
 .bg-F82F5C { background-color: #F82F5C; }
 .bg-88582E { background-color: #88582E; }
@@ -78,8 +81,10 @@ button::after {
 .color-53CAFF { color: #53CAFF; }
 .color-70B73A { color: #70B73A; }
 .color-FF0000 { color: #FF0000; }
+.color-FF2727 { color: #FF2727; }
 .color-6E6E6E { color: #6E6E6E; }
 .color-202020 { color: #202020; }
+.color-FF4141 { color: #FF4141; }
 
 
 /* 字体尺寸 */
@@ -109,6 +114,7 @@ button::after {
 
 
 
+.icon-50x50 { width: 50rpx; height: 50rpx;}
 
 
 /* 定位 */
@@ -235,8 +241,10 @@ button::after {
 .pt-20 { padding-top: 20rpx; }
 .pt-24 { padding-top: 24rpx; }
 .pt-28 { padding-top: 28rpx; }
+.pt-30 { padding-top: 30rpx; }
 .pt-32 { padding-top: 32rpx; }
 .pt-34 { padding-top: 34rpx; }
+.pt-36 { padding-top: 36rpx; }
 .pt-38 { padding-top: 38rpx; }
 .pt-40 { padding-top: 40rpx; }
 .pt-54 { padding-top: 54rpx; }
@@ -261,6 +269,7 @@ button::after {
 .pb-38 { padding-bottom: 38rpx;}
 .pb-42 { padding-bottom: 42rpx;}
 .pb-44 { padding-bottom: 44rpx;}
+.pb-60 { padding-bottom: 60rpx;}
 .pb-74 { padding-bottom: 74rpx;}
 .pb-98 { padding-bottom: 98rpx;}
 
@@ -293,6 +302,7 @@ button::after {
 .mt-34 { margin-top: 34rpx; }
 .mt-36 { margin-top: 36rpx; }
 .mt-38 { margin-top: 38rpx; }
+.mt-40 { margin-top: 40rpx; }
 .mt-44 { margin-top: 44rpx; }
 .mt-48 { margin-top: 48rpx; }
 .mt-72 { margin-top: 72rpx; }
@@ -320,7 +330,8 @@ button::after {
 .mr-68  { margin-right: 68rpx; }
 .mr-118 { margin-right: 118rpx; }
 
-.mb-6  { margin-bottom: 6rpx;  }
+.mb-6  { margin-bottom: 6rpx; }
+.mb-8  { margin-bottom: 8rpx; }
 .mb-9  { margin-bottom: 9rpx; }
 .mb-10 { margin-bottom: 10rpx; }
 .mb-12 { margin-bottom: 12rpx; }
@@ -366,6 +377,8 @@ button::after {
 .rounded-30 { border-radius: 30rpx; }
 .rounded-34 { border-radius: 34rpx; }
 .rounded-44 { border-radius: 44rpx; }
+.rounded-46 { border-radius: 46rpx; }
+.rounded-48 { border-radius: 48rpx; }
 .rounded-50 { border-radius: 50rpx; }
 .rounded-half { border-radius: 50%; }
 

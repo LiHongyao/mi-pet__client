@@ -1,4 +1,7 @@
-import { couponList, orderPay } from '../../api/order'
+import {
+  couponList,
+  orderPay
+} from '../../api/order'
 import lgNumber from '../../utils/lg-number'
 Page({
   data: {
@@ -10,7 +13,7 @@ Page({
   onLoad() {
     const eventChannel = this.getOpenerEventChannel();
     eventChannel.on('acceptDataFromOpenerPage', data => {
-      this.setData({ 
+      this.setData({
         order: data,
         payAmount: data.totalSaleTPrice
       })
@@ -30,7 +33,7 @@ Page({
   },
   // events
   onChooseCoupon() {
-    if(this.data.coupons.use.length === 0) {
+    if (this.data.coupons.use.length === 0) {
       wx.showToast({
         title: '当前无可用优惠券',
         icon: 'none'
@@ -43,19 +46,25 @@ Page({
         res.eventChannel.emit('acceptDataFromOpenerPage', this.data.coupons);
       },
       events: {
-        selectedCoupon: ({ coupon: { condition, value, couponId } }) => {
+        selectedCoupon: ({
+          coupon: {
+            condition,
+            value,
+            couponId
+          }
+        }) => {
           const totalSaleTPrice = this.data.order.totalSaleTPrice;
           let deduction = 0;
           this.couponId = couponId;
-          if(condition) { // 满减券
+          if (condition) { // 满减券
             deduction = value;
-          }else { // 折扣券
+          } else { // 折扣券
             const disPrice = lgNumber.multiply(totalSaleTPrice, value / 10);
             deduction = lgNumber.minus(totalSaleTPrice, disPrice);
           }
           this.setData({
             deduction,
-            payAmount: lgNumber.minus(totalSaleTPrice, deduction)
+            payAmount: deduction > totalSaleTPrice ? 0 : lgNumber.minus(totalSaleTPrice, deduction)
           });
         }
       }
@@ -63,25 +72,41 @@ Page({
   },
   // 微信支付
   onPay() {
-    const {payAmount, order: { orderId }} = this.data;
+    const {
+      payAmount,
+      order: {
+        orderId
+      }
+    } = this.data;
     orderPay({
       payAmount,
       orderId,
       couponId: this.couponId
     }).then(res => {
-      wx.requestPayment({
-        ...res.data,
-        success: () => {
-          wx.navigateTo({
-            url: `../pay-res/pay-res?status=1&orderId=${orderId}`
-          })
-        },
-        fail: () => {
-          wx.navigateTo({
-            url: `../pay-res/pay-res?status=2&orderId=${orderId}`
-          })
-        }
-      })
+      if (res.status === 200 && res.data) {
+        wx.requestPayment({
+          ...res.data,
+          success: () => {
+            wx.navigateTo({
+              url: `../pay-res/pay-res?status=1&orderId=${orderId}`
+            })
+          },
+          fail: () => {
+            wx.navigateTo({
+              url: `../pay-res/pay-res?status=2&orderId=${orderId}`
+            })
+          }
+        })
+      } else if(res.status === 201) {
+        wx.navigateTo({
+          url: `../pay-res/pay-res?status=1&orderId=${orderId}`
+        })
+      } else {
+        wx.showToast({
+          title: '支付异常',
+          icon: 'none'
+        })
+      }
     })
   }
 })

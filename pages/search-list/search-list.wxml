@@ -12,4 +12,6 @@
     </lg-list>
     <lg-loading wx:if="{{showLoading}}"/>
   </view>
+  <!-- 首单有礼 -->
+	<!-- <fixed-gift /> -->
 </view>

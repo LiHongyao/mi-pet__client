@@ -72,12 +72,19 @@ Page({
  
   // 退款
   onRefund({ detail: { data } }) {
-    wx.navigateTo({
-      url: `../after-sale/after-sale`,
-      success: res => {
-        res.eventChannel.emit('acceptDataFromOpenerPage', data )
-      }
-    })
+    if(+data.payAmount === 0) {
+      wx.showToast({
+        title: '该笔订单不支持退款',
+        icon: 'none'
+      })
+    }else {
+      wx.navigateTo({
+        url: `../after-sale/after-sale`,
+        success: res => {
+          res.eventChannel.emit('acceptDataFromOpenerPage', data )
+        }
+      })
+    }
   },
   // 催单
   onReminder({ detail: { orderId } }) {

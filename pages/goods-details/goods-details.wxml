@@ -3,9 +3,9 @@
   <scroll-view class="container goods-details" scroll-y="true">
     <!-- banner -->
     <swiper wx:if="{{goods.images.length > 0}}" class="banners" indicator-dots="{{true}}" indicator-color="rgba(0, 0, 0, .3)" indicator-active-color="#F5F5F5" duration="400" circular="{{true}}"  style="height: {{imageHeight}}px">
-      <swiper-item class="h-full" wx:for="{{goods.images}}" wx:key="index">
-        <view class="swiper-item h-full">
-          <image src="{{item}}" class="w-full h-full" />
+      <swiper-item class="h-100 " wx:for="{{goods.images}}" wx:key="index">
+        <view class="swiper-item h-100 ">
+          <image src="{{item}}" class="w-100  h-100 " />
         </view>
       </swiper-item>
     </swiper>
@@ -124,3 +124,5 @@
   </view>
 </block>
 <lg-loading wx:else />
+<!-- 首单有礼 -->
+<!-- <fixed-gift /> -->

@@ -2,6 +2,7 @@
   "navigationStyle": "custom",
   "usingComponents": {
     "lg-app-header": "../../components/@lgs/app-header/index",
-    "pet-archives-item": "../../components/pet-archives-item/pet-archives-item"
+    "pet-archives-item": "../../components/pet-archives-item/pet-archives-item",
+    "fixed-gift": "../../components/fixed-gift/fixed-gift"
   }
 }

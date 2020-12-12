@@ -14,6 +14,7 @@ Page({
     userInfo: null,
     imageHeight:  wx.getSystemInfoSync().windowWidth
   },
+
   onLoad({ goodsId }) {
 
     this.goodsId = goodsId;
@@ -60,6 +61,7 @@ Page({
     });
   },
   onFavorTap() {
+
     checkAuth().then(() => {
       let { goodsId, isFavor } = this.data.goods;
       isFavor = isFavor ? 0 : 1;

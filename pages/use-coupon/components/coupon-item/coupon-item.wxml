@@ -12,6 +12,7 @@
   </view>
   <view class="d-flex justify-content-between align-items-center">
     <view class="color-828282 f24 lh-34">{{utils.dateFormat(data.start_date, 'yyyy-mm-dd')}}至{{utils.dateFormat(data.end_date, 'yyyy-mm-dd')}}</view>
-    <view wx:if="{{data.condition}}" class="color-828282 f24 lh-34">满{{data.condition}}元可用</view>
+    <view wx:if="{{data.condition > 0.01}}" class="color-828282 f24 lh-34">满{{data.condition}}元可用</view>
+    <view wx:if="{{data.condition === 0.01}}" class="color-828282 f24 lh-34">无门槛立减</view>
   </view>
 </view>

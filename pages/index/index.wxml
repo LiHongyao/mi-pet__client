@@ -14,9 +14,9 @@
 		<!-- banner -->
 		<swiper class="banners" indicator-dots="{{true}}" indicator-color="rgba(0, 0, 0, .3)"
 			indicator-active-color="#F5F5F5" duration="400" circular="{{true}}">
-			<swiper-item class="h-full" wx:for="{{banners}}" wx:key="index" data-url="{{item.url}}" catch:tap="onBannerTap">
-				<view class="swiper-item h-full">
-					<image src="{{item.image}}" class=" w-full h-full" />
+			<swiper-item class="h-100 " wx:for="{{banners}}" wx:key="index" data-url="{{item.url}}" catch:tap="onBannerTap">
+				<view class="swiper-item h-100 ">
+					<image src="{{item.image}}" class=" w-100  h-100 " />
 				</view>
 			</swiper-item>
 		</swiper>
@@ -38,15 +38,23 @@
 		</view>
 	</scroll-view>
 	<!-- 优惠券弹窗 -->
-	<van-overlay show="{{ showCouponDialog }}" bind:tap="onHideCouponDialog">
-		<view class="coupon-dialog">
-			<image class="coupon-dialog__img w-full h-full" src="./images/coupon_dialog.png" />
-			<view class="coupon-dialog__buttons w-full flex-center">
-				<image class="coupon-dialog__button mr-20" src="./images/dialog_button_sure.png"
-					catch:tap="onHideCouponDialog" />
-				<image class="coupon-dialog__button" src="./images/dialog_button_query.png" catch:tap="onQueryCoupons" />
+	<!-- <van-overlay show="{{ showCouponDialog }}" bind:tap="onHideCouponDialog">
+		<view class="coupon-dialog position-relative">
+			<image src="https://img.meituan.net/csc/e9886dff935416304b456db0457ae40699655.png" class="w-100 h-100" />
+			<view class="coupon-wrapper absolute-top">
+				<coupon-item></coupon-item>
 			</view>
+			<image src="https://img.meituan.net/csc/214a6bcfbf313e8fe189e3133adf2e3d17628.png" class="coupon-dialog__button absolute-bottom" alt="立即手下按钮"/>
+		</view>
+	</van-overlay> -->
+	<!-- 双十二活动弹窗 -->
+	<van-overlay show="{{ showActivitiesDialog }}" bind:tap="onHideCouponDialog">
+		<view class="activities-dialog position-relative">
+			<image src="https://img.meituan.net/csc/b64d5c6f47859514b084a34d3ccfc1ce69664.png" class="w-100 rounded-46 " mode="widthFix"/>
+			<image src="https://img.meituan.net/csc/0f74dcf6992e1828006926735c5efbd2649.png" class="icon-50x50 d-block mx-auto mt-32" bindtap="onActiviesDialogClose"></image>
 		</view>
 	</van-overlay>
+	<!-- 首单有礼 -->
+	<!-- <fixed-gift bottom="{{50}}"/> -->
 </block>
 <lg-loading wx:else />

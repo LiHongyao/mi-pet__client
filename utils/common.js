@@ -49,9 +49,8 @@ export function calcListHeight(context, sel) {
  */
 export function checkAuth() {
   const appInst =  getApp();
-  
   return new Promise(resolve => {
-    if(appInst.globalData.isAuth) {
+    if(appInst.globalData.isAuth && wx.getStorageSync("token")) {
       resolve();
     }else {
       wx.navigateTo({
@@ -60,6 +59,8 @@ export function checkAuth() {
     }
   })
 }
+
+
 
 /**
  * 轻提示

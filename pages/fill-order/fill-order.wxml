@@ -53,7 +53,7 @@
       <!-- 配送方式 -->
       <view class="row-item pl-32 d-flex align-items-center">
         <view class="left-title color-2D2D2D f26 lh-36 mr-46 text-justify">配送方式</view>
-        <view class="flex-1 h-full pr-28 border-bottom d-flex justify-content-end align-items-center color-828282 f26 lh-36">
+        <view class="flex-1 h-100  pr-28 border-bottom d-flex justify-content-end align-items-center color-828282 f26 lh-36">
           {{goods.isFreeShipping ? '包邮' : ''}}
         </view>
       </view>

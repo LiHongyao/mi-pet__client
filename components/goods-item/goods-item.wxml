@@ -1,7 +1,7 @@
 <view class="godos-item pb-32 position-relative pt-8"  bind:tap="onTap">
   <!-- 缩略图 -->
-  <view class="goods-thumbnail mx-auto">
-    <image class="w-full h-max-full" src="{{data.thumbnail}}" ></image>
+  <view class="goods-thumbnail mx-auto mb-8">
+    <image class="w-100  h-max-full" src="{{data.thumbnail}}" ></image>
   </view>
   <!-- 标题 -->
   <view class="title color-2D2D2D px-20 f26 lh-36 line-clamp-2 mb-14">{{data.title || '______'}}</view>

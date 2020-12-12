@@ -17,4 +17,6 @@
       <guide-item wx:for="{{dogList}}" wx:key="id" data="{{item}}" bind:itemTap="onItemTap" />
     </lg-list>
   </view>
+  <!-- 首单有礼 -->
+	<!-- <fixed-gift /> -->
 </view>

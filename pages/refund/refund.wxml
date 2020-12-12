@@ -21,7 +21,7 @@
   <!-- 退款原因 -->
   <view class="px-32 py-28 bg-FFFFFF mt-12">
     <view class="color-828282 mb-20">退款原因</view>
-    <textarea class="f28 lh-40 p-0 w-full" placeholder="请输入退款原因" />
+    <textarea class="f28 lh-40 p-0 w-100 " placeholder="请输入退款原因" />
   </view>
   <!-- 上传凭证 -->
   <view class="px-32 py-28 bg-FFFFFF mt-12">

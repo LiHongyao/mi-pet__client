@@ -1,8 +1,15 @@
 <wxs src="../../filters/index.wxs" module="utils" />
 <wxs src="./coupon-item.wxs" module="fn" />
+
+<!-- 
+  condition取值：
+  0.01  无门槛
+  0     折扣券
+  >0.01 满减券
+ -->
 <view class="coupon-item mx-auto mb-20 position-relative {{type === 1 ? 'color-FFFFFF' : 'color-828282'}}" catch:tap="onCouponItemTap">
-  <image class="h-full" src="{{fn.getBgPath(type)}}" />
-  <view class="w-full h-full absolute-tr d-flex justify-content-between align-items-center pl-30">
+  <image class="h-100 " src="{{fn.getBgPath(type)}}" />
+  <view class="w-100  h-100  absolute-tr d-flex justify-content-between align-items-center pl-30">
     <view class="d-flex justify-content-start align-items-center">
       <view class="f-bold mr-46">
         <text wx:if="{{data.condition}}" class="f42">¥</text>
@@ -11,7 +18,8 @@
       </view>
       <view class="f28 lh-40">
         <view class="mb-14 f-bold">{{data.title}}</view>
-        <view wx:if="{{data.condition}}">满{{data.condition}}元可用</view>
+        <view wx:if="{{data.condition > 0.01}}">满{{data.condition}}元可用</view>
+        <view wx:elif="{{data.condition === 0.01}}">无门槛立减</view>
         <view class="f24 lh-34">{{utils.dateFormat(data.start_date, 'yyyy-mm-dd')}}至{{utils.dateFormat(data.end_date, 'yyyy-mm-dd')}}</view>
       </view>
     </view>

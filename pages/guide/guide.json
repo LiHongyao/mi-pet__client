@@ -4,7 +4,8 @@
     "lg-search":"../../components/@lgs/search/index",
     "lg-menu-bar": "../../components/@lgs/menu-bar/index",
     "lg-list": "../../components/@lgs/list/index",
-    "guide-item": "../../components/guide-item/guide-item"
+    "guide-item": "../../components/guide-item/guide-item",
+    "fixed-gift": "../../components/fixed-gift/fixed-gift"
     
   }
 }

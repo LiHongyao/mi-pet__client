@@ -1,4 +1,6 @@
 // 基地址
+// 生产环境：https://api.imichong.com/api
+// 开发环境：http://32d774f978.51vip.biz:30009/api
 const BASE_URI = 'https://api.imichong.com/api';
 
 // request
@@ -28,7 +30,7 @@ const request = (options, loadingTips) => {
       success(res) {
         if (res.statusCode === 200) {
           const { status, msg } = res.data;
-          if (status === 200) {
+          if (status === 200 || status === 201 ) {
             resolve(res.data)
           } else {
             wx.showToast({

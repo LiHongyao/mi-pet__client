@@ -15,22 +15,29 @@
 }
 
 
-.coupon-dialog {
-  width: 590rpx;
-  height: 651rpx;
+/* 双十二活动弹窗 */
+.activities-dialog {
+  width: 560rpx;
   position: fixed;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
 }
-
-.coupon-dialog__buttons {
-  position: absolute;
-  bottom: 42rpx;
+/* 优惠券弹窗 */
+.coupon-dialog {
+  width: 682rpx;
+  height: 588rpx;
+  position: fixed;
+  top: 50%;
   left: 50%;
-  transform: translateX(-50%);
+  transform: translate(-50%, -50%);
+}
+.coupon-wrapper {
+  top: 164rpx;
 }
 .coupon-dialog__button {
-  width: 220rpx;
-  height: 78rpx;
+  width: 518rpx;
+  height: 210rpx;
 }
+
+

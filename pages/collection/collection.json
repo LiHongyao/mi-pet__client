@@ -5,6 +5,7 @@
     "lg-list": "../../components/@lgs/list/index",
     "goods-item": "../../components/goods-item/goods-item",
     "guide-item": "../../components/guide-item/guide-item",
-    "slide-cell": "../../components/slide-cell/slide-cell"
+    "slide-cell": "../../components/slide-cell/slide-cell",
+    "fixed-gift": "../../components/fixed-gift/fixed-gift"
   }
 }

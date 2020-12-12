@@ -1,0 +1,15 @@
+<view class="coupon-item d-flex justify-content-between align-items-center">
+  <view class="coupon-item__box flex-1 color-FFFFFF pl-28 pt-36">
+    <view class="f36 lh-28 f-bold mb-18">新用户优惠券</view>
+    <view class="f20 lh-20">有效期至2020-12-12</view>
+  </view>
+  <view class="coupon-item__box amount flex-v-center">
+    <view class="color-FF0000 f-bold lh-48 flex-center">
+      <view class="f40">50</view>
+      <view class="f28">元</view>
+    </view>
+    <view class="f20 lh-24 color-FF0000">无门槛立减</view>
+  </view>
+</view>
+
+

@@ -6,7 +6,7 @@
   </view>
   <!-- 筛选 -->
   <view class="filters bg-FFFFFF position-relative">
-    <view class="h-full d-flex justify-content-around align-items-center">
+    <view class="h-100  d-flex justify-content-around align-items-center">
       <!-- 推荐 -->
       <view class="f26 lh-40 {{sIndex === 0 ? 'color-F82F5C' : 'color-828282'}}" data-index="{{0}}" bind:tap="onFilterItemTap">推荐</view>
       <!-- 销量 -->
@@ -23,7 +23,7 @@
       </view>
     </view>
     <!-- 品种/拍拍筛选面板 -->
-    <view hidden="{{!screenChecked}}" class="drop-mask absolute-tl t-full w-full" style="height: {{listHeight}}px;" catch:tap="onScreenMaskTap">
+    <view hidden="{{!screenChecked}}" class="drop-mask absolute-tl t-full w-100 " style="height: {{listHeight}}px;" catch:tap="onScreenMaskTap">
       <view class="bg-FFFFFF px-32 pb-42 pt-28 ">
         <!-- 品种选择 -->
         <view class="f28 lh-40">品种选择</view>

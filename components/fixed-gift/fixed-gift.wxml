@@ -1,0 +1,15 @@
+<view class="fixed-gift" >
+  <image src="https://img.meituan.net/csc/416d72f065672e1d3f418b3ab4485dda14357.png" class="fixed-gift__tap" bindtap="onTap" />
+  <van-overlay show="{{ dialogShow }}" bind:tap="onHideDialog">
+    <view class="dialog-box position-relative">
+      <image 
+        src="https://img.meituan.net/csc/914879d0e22d596104085ed3db448885225061.png" 
+        class="w-100" 
+        mode="widthFix" 
+        catchtap="onBuy"
+      />
+      <!-- 关闭按钮 -->
+      <image class="close-button icon-48x48 absolute-bottom" src="../../assets/images/icon_close.png" />
+    </view>
+  </van-overlay>
+</view>

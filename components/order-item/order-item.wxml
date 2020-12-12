@@ -12,7 +12,7 @@
   <!-- 订单信息 -->
   <view class="d-flex">
     <view class="thumbnail border border-E9E9E9 rounded-10 mr-24">
-      <image class="w-full h-full" src="{{data.thumbnail}}" />
+      <image class="w-100  h-100 " src="{{data.thumbnail}}" />
     </view>
     <view class="flex-1">
       <view class="color-2D2D2D f28 lh-40 line-clamp-2 mb-28">{{data.title}}</view>
