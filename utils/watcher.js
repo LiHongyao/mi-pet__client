@@ -4,11 +4,9 @@
   */
 function registerWatcher(context) {
   let { data, watch } = context;
-
   if (!data || !watch) {
     throw '「监听器」：“data”或“watch”对象未在页面中设置。';
   } else {
-
     Object.keys(watch).forEach(key => {
       
       let keyArr = key.split('.');
@@ -46,6 +44,7 @@ function watcher(data, key, fn, deep, context) {
       watcher(_oldValue, childKey, fn, deep, context); // 递归调用监听函数
     })
   }
+
   // 数据劫持
   Object.defineProperty(data, key, {
     configurable: true,
